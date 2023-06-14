@@ -84,3 +84,8 @@ type QueueRequest struct {
 	CreateImageEdit      EditImageRequest
 	CreateImageVariation CreateImageVariantRequest
 }
+
+type ResultRequest struct {
+	Record QueueRequest         "json:record"
+	Result openai.ImageResponse "json:result"
+}
