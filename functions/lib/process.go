@@ -10,7 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/lambda"
 )
 
-func SendResult(record interface{}, response interface{}) {
+func SendResult(record interface{}, response interface{}) string {
 	// Create a Lambda client
 	cfg, err := config.LoadDefaultConfig(context.TODO(),
 		config.WithRegion("us-east-1"),
@@ -31,5 +31,5 @@ func SendResult(record interface{}, response interface{}) {
 		panic(err)
 	}
 	fmt.Println(string(result.Payload))
-	return
+	return string(result.Payload)
 }
