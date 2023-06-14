@@ -1,0 +1,10 @@
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230613052342-768e8755f586 h1:EqOdeKZb9OH1+wf6pnWSmP3hPgp16eRdGfcgl7QUCXU=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230613052342-768e8755f586/go.mod h1:NzJUL56qZIugnm62aHxH5FSmt1eLYgZAwpxIBnq578s=
+github.com/aws/aws-lambda-go v1.41.0 h1:l/5fyVb6Ud9uYd411xdHZzSf2n86TakxzpvIoz7l+3Y=
+github.com/aws/aws-lambda-go v1.41.0/go.mod h1:jwFe2KmMsHmffA1X2R09hH6lFzJQxzI8qK17ewzbQMM=
+github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
+github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
+github.com/sashabaranov/go-openai v1.10.1 h1:6WyHJaNzF266VaEEuW6R4YW+Ei0wpMnqRYPGK7fhuhQ=
+github.com/sashabaranov/go-openai v1.10.1/go.mod h1:lj5b/K+zjTSFxVLijLSTDZuP7adOgerWeFyZLUhAKRg=
+github.com/stretchr/testify v1.7.2 h1:4jaiDzPyXQvSd7D0EjG45355tLlV3VOECpq10pLC+8s=
+gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=

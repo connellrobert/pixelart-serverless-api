@@ -1,4 +1,8 @@
-package types
+package lib
+
+import (
+	openai "github.com/sashabaranov/go-openai"
+)
 
 type ImageSize string
 
@@ -8,12 +12,36 @@ const (
 	Large  ImageSize = "1024x1024"
 )
 
+func (is ImageSize) OpenaiImageSize() string {
+	switch is {
+	case Small:
+		return openai.CreateImageSize256x256
+	case Medium:
+		return openai.CreateImageSize512x512
+	case Large:
+		return openai.CreateImageSize1024x1024
+	default:
+		return openai.CreateImageSize256x256
+	}
+}
+
 type ResponseFormat string
 
 const (
 	URL    ResponseFormat = "URL"
 	BASE64 ResponseFormat = "BASE64"
 )
+
+func (rf ResponseFormat) openaiResponseFormat() string {
+	switch rf {
+	case URL:
+		return openai.CreateImageResponseFormatURL
+	case BASE64:
+		return openai.CreateImageResponseFormatB64JSON
+	default:
+		return openai.CreateImageResponseFormatURL
+	}
+}
 
 type GenerateImageRequest struct {
 	Prompt         string
@@ -22,8 +50,8 @@ type GenerateImageRequest struct {
 	ResponseFormat ResponseFormat
 	User           string
 }
-
 type EditImageRequest struct {
+	Prompt         string
 	N              int
 	Size           ImageSize
 	ResponseFormat ResponseFormat
@@ -40,12 +68,12 @@ type CreateImageVariantRequest struct {
 	Image          string
 }
 
-type RequestAction string
+type RequestAction int
 
 const (
-	GenerateImage RequestAction = "createImage"
-	EditImage     RequestAction = "createImageEdit"
-	VariateImage  RequestAction = "createImageVariation"
+	GenerateImageAction RequestAction = iota
+	EditImageAction
+	VariateImageAction
 )
 
 type QueueRequest struct {
