@@ -3,7 +3,6 @@ module github.com/aimless-it/ai-canvas/functions/scheduler
 go 1.20
 
 require (
-	github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230614054443-4f569dd7eec2
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/aws/aws-sdk-go-v2 v1.18.1
 	github.com/aws/aws-sdk-go-v2/config v1.18.27
