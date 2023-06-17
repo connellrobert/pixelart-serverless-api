@@ -2,13 +2,17 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 
+	"github.com/aimless-it/ai-canvas/functions/lib"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	aws "github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
+	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
+	"github.com/aws/aws-sdk-go-v2/service/sqs"
 )
 
 func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) {
@@ -16,9 +20,12 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 	emptyDbAlarmName := os.Getenv("EMPTY_DB_ALARM_NAME")
 	queueUrl := os.Getenv("QUEUE_URL")
 	// get item from dynamodb
-	cfg := config.LoadDefaultConfig(context.TODO(),
+	cfg, err := config.LoadDefaultConfig(context.TODO(),
 		config.WithRegion("us-east-1"),
 	)
+	if err != nil {
+		panic(err)
+	}
 	dbClient := dynamodb.NewFromConfig(cfg)
 	//scan dynamodb table for top 10 items
 	scanInput := &dynamodb.ScanInput{
@@ -30,7 +37,7 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 		panic(err)
 	}
 	if len(result.Items) == 0 {
-		lib.sentAlarmState(emptyDbAlarmName, "ALARM")
+		lib.SetAlarmStatus(emptyDbAlarmName, "ALARM")
 		return request, nil
 	}
 
@@ -52,7 +59,7 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 			TableName: aws.String(tableName),
 			Key: map[string]types.AttributeValue{
 				"PK": &types.AttributeValueMemberS{
-					id: item.Id,
+					Value: fmt.Sprintf("%v", item.Id),
 				},
 			},
 		}

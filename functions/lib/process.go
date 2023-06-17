@@ -90,7 +90,7 @@ func SendRetrySignal(record QueueRequest) string {
 	return "success"
 }
 
-func setAlarmStatus(name, status string) {
+func SetAlarmState(name, status string) {
 	cfg, err := config.LoadDefaultConfig(context.TODO(),
 		config.WithRegion("us-east-1"),
 	)

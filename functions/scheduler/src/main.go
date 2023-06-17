@@ -2,8 +2,10 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/aimless-it/ai-canvas/functions/lib"
 	"github.com/aws/aws-lambda-go/events"
@@ -16,33 +18,38 @@ import (
 )
 
 // lambda handler
-func Handler(ctx context.Context, request events.ApiGatewayProxyRequest) {
-	mapping := map[string]map[string]string{
-		"GENERATE_IMAGE": {
+func Handler(ctx context.Context, request events.APIGatewayProxyRequest) {
+	mapping := map[lib.RequestAction]map[string]string{
+		lib.GenerateImageAction: {
 			"params":   "generateImage",
 			"TableEnv": "GI_TABLE_NAME",
 		},
-		"EDIT_IMAGE": {
+		lib.EditImageAction: {
 			"params":   "createImageEdit",
 			"TableEnv": "EI_TABLE_NAME",
 		},
-		"VARIATE_IMAGE": {
+		lib.VariateImageAction: {
 			"params":   "createImageVariation",
 			"TableEnv": "VI_TABLE_NAME",
 		},
 	}
 	id := uuid.New().String()
-	body := request.Body
-	action := body["action"]
-	paramName := mapping[action]["params"]
-	param := body[paramName]
+	body := make(map[string]interface{})
+	err := json.Unmarshal([]byte(request.Body), &body)
+	action, err := strconv.Atoi(fmt.Sprintf("%v", body["action"]))
+	if err != nil {
+		panic(err)
+	}
+	requestAction := lib.RequestAction(action)
+	paramName := mapping[requestAction]["params"]
+	param := fmt.Sprintf("%v", body[paramName])
 	record := lib.QueueRequest{
 		Id:       id,
-		Action:   action,
+		Action:   requestAction,
 		Priority: 0,
 	}
 	record[paramName] = param
-	tableName := os.Getenv(mapping[action]["TableEnv"])
+	tableName := os.Getenv(mapping[requestAction]["TableEnv"])
 	cfg, err := config.LoadDefaultConfig(context.TODO(),
 		config.WithRegion("us-east-1"),
 	)
@@ -54,13 +61,13 @@ func Handler(ctx context.Context, request events.ApiGatewayProxyRequest) {
 		TableName: aws.String(tableName),
 		Item: map[string]types.AttributeValue{
 			"PK": &types.AttributeValueMemberS{
-				id: record.Id,
+				Value: record.Id,
 			},
 			"Priority": &types.AttributeValueMemberN{
-				id: record.Priority,
+				Value: strconv.Itoa(record.Priority),
 			},
 			"request": &types.AttributeValueMemberM{
-				id: record,
+				Value: record,
 			},
 		},
 	}
