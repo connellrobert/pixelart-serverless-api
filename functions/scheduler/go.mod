@@ -3,13 +3,15 @@ module github.com/aimless-it/ai-canvas/functions/scheduler
 go 1.20
 
 require (
-	github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620220103-32ddc3579a4e
+	github.com/aimless-it/ai-canvas/functions/lib v0.0.0
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/aws/aws-sdk-go-v2 v1.18.1
 	github.com/aws/aws-sdk-go-v2/config v1.18.27
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.19.10
 	github.com/google/uuid v1.3.0
 )
+
+replace github.com/aimless-it/ai-canvas/functions/lib v0.0.0 => ../lib
 
 require (
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10 // indirect

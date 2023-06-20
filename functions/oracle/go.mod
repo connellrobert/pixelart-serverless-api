@@ -3,10 +3,12 @@ module github.com/aimless-it/ai-canvas/functions/oracle
 go 1.20
 
 require (
-	github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620220103-32ddc3579a4e
+	github.com/aimless-it/ai-canvas/functions/lib v0.0.0
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/sashabaranov/go-openai v1.11.2
 )
+
+replace github.com/aimless-it/ai-canvas/functions/lib v0.0.0 => ../lib
 
 require (
 	github.com/aws/aws-sdk-go-v2 v1.18.1 // indirect

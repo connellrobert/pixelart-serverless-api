@@ -26,7 +26,8 @@
 			"extensions": [
 				"github.copilot",
 				"hashicorp.terraform",
-				"golang.go"
+				"golang.go",
+				"earthly.earthfile-syntax-highlighting"
 			]
 		}
 	},

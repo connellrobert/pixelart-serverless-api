@@ -1,0 +1,14 @@
+VERSION 0.6
+
+deps:
+    FROM golang:1.18-alpine
+    WORKDIR /result
+    COPY ../lib+artifact/* /lib/
+    COPY go.mod go.sum ./
+    RUN go mod download
+
+compile:
+    FROM +deps
+    COPY ./src ./src
+    RUN GOOS=linux GOARCH=amd64 go build -o result ./src
+    SAVE ARTIFACT result
