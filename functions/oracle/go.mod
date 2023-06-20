@@ -3,7 +3,7 @@ module github.com/aimless-it/ai-canvas/functions/oracle
 go 1.20
 
 require (
-	github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230616020244-68a6fd959664
+	github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620002517-e5063e2cf264
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/sashabaranov/go-openai v1.11.2
 )

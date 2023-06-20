@@ -21,8 +21,10 @@ func Handler(ctx context.Context, request lib.QueueRequest) {
 		response = lib.CreateImageVariation(request.CreateImageVariation)
 	}
 	fmt.Println(response)
-
-	lib.SendResult(request, response)
+	wrapped := lib.ImageResponseWrapper{
+		Response: response,
+	}
+	lib.SendResult(request, wrapped)
 }
 
 func main() {
