@@ -98,6 +98,64 @@ type ResultRequest struct {
 	Result ImageResponseWrapper `json:"result"`
 }
 
+// Analytics Item
+type AnalyticsItem struct {
+	Id       string                       `json:"id"`
+	Record   QueueRequest                 `json:"record"`
+	Attempts map[int]ImageResponseWrapper `json:"attempts"`
+}
+
+// Create dynamodb mappings for AnalyticsItem
+func (r *AnalyticsItem) ToDynamoDB() map[string]types.AttributeValue {
+	return map[string]types.AttributeValue{
+		"PK": &types.AttributeValueMemberS{
+			Value: r.Id,
+		},
+		"request": &types.AttributeValueMemberM{
+			Value: r.Record.ToDynamoDB(),
+		},
+		"attempts": &types.AttributeValueMemberM{
+			Value: r.AttemptsToDynamoDB(),
+		},
+	}
+}
+
+func (r *AnalyticsItem) FromDynamoDB(item map[string]types.AttributeValue) {
+	r.Id = item["PK"].(*types.AttributeValueMemberS).Value
+	action, err := strconv.Atoi(item["request"].(*types.AttributeValueMemberM).Value["Action"].(*types.AttributeValueMemberN).Value)
+	if err != nil {
+		panic(err)
+	}
+	r.Record.Action = RequestAction(action)
+	switch r.Record.Action {
+	case GenerateImageAction:
+		r.Record.CreateImage.FromDynamoDB(item["request"].(*types.AttributeValueMemberM).Value["CreateImage"].(*types.AttributeValueMemberM).Value)
+	case EditImageAction:
+		r.Record.CreateImageEdit.FromDynamoDB(item["request"].(*types.AttributeValueMemberM).Value["CreateImageEdit"].(*types.AttributeValueMemberM).Value)
+	case VariateImageAction:
+		r.Record.CreateImageVariation.FromDynamoDB(item["request"].(*types.AttributeValueMemberM).Value["CreateImageVariation"].(*types.AttributeValueMemberM).Value)
+	}
+	r.AttemptsFromDynamoDB(item["attempts"].(*types.AttributeValueMemberM).Value)
+}
+
+func (r *AnalyticsItem) AttemptsToDynamoDB() map[string]types.AttributeValue {
+	attempts := make(map[string]types.AttributeValue)
+	for k, v := range r.Attempts {
+		attempts[strconv.Itoa(k)] = v.ToDynamoDB()
+	}
+	return attempts
+}
+
+func (r *AnalyticsItem) AttemptsFromDynamoDB(item map[string]types.AttributeValue) {
+	r.Attempts = make(map[int]ImageResponseWrapper)
+	for k, v := range item {
+		var response ImageResponseWrapper
+		response.FromDynamoDB(v.(*types.AttributeValueMemberM).Value)
+		key, _ := strconv.Atoi(k)
+		r.Attempts[key] = response
+	}
+}
+
 // Create dynamodb mappings for types
 func (r *QueueRequest) ToDynamoDB() map[string]types.AttributeValue {
 	return map[string]types.AttributeValue{
