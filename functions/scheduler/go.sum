@@ -1,5 +1,13 @@
 github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230616020244-68a6fd959664 h1:3rMk1YsLSSkLPaYJzlb7dQGQxlhFGINlwYc+ekqHsFI=
 github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230616020244-68a6fd959664/go.mod h1:sRCgemIj7YBbLMERb5wbs77od53OiVlkOXBi1Lbf26Y=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620213339-52380929195a h1:hKZTH66YVlwfVYbk1J1GIWGInE92DzXMC2pNS0AqadQ=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620213339-52380929195a/go.mod h1:FtKprkAzSF07SNNuN00gpi2ywHe3+aeHRpB2c2UljNo=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620214425-799f84280c9b h1:Z3hKKql3Md0E4eqQ5BM6w9y7deWh0hswqNUjSEiWSEo=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620214425-799f84280c9b/go.mod h1:FtKprkAzSF07SNNuN00gpi2ywHe3+aeHRpB2c2UljNo=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620215804-87f02cbc2925 h1:0amxQXTsEVTX9ZUlLnx0WRFwit6qmrdLMiuVE4mg//E=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620215804-87f02cbc2925/go.mod h1:FtKprkAzSF07SNNuN00gpi2ywHe3+aeHRpB2c2UljNo=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620220103-32ddc3579a4e h1:P+0HdXHiFClhO6pxCor9mKZK88cCZ+7Ipo6I5Togs1Y=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620220103-32ddc3579a4e/go.mod h1:FtKprkAzSF07SNNuN00gpi2ywHe3+aeHRpB2c2UljNo=
 github.com/aws/aws-lambda-go v1.41.0 h1:l/5fyVb6Ud9uYd411xdHZzSf2n86TakxzpvIoz7l+3Y=
 github.com/aws/aws-lambda-go v1.41.0/go.mod h1:jwFe2KmMsHmffA1X2R09hH6lFzJQxzI8qK17ewzbQMM=
 github.com/aws/aws-sdk-go-v2 v1.18.0/go.mod h1:uzbQtefpm44goOPmdKyAlXSNcwlRgF3ePWVW6EtJvvw=
@@ -41,6 +49,8 @@ github.com/aws/aws-sdk-go-v2/service/lambda v1.35.0 h1:iNLsDIOju/bbqw0mNaEXh+9Ms
 github.com/aws/aws-sdk-go-v2/service/lambda v1.35.0/go.mod h1:i23nHcGEyswthctBfhEO1agGpM5Uyh83aSmSB6DmdCk=
 github.com/aws/aws-sdk-go-v2/service/lambda v1.35.2 h1:MeukRLx5lbfObw2gH2FePNJPCsYrsC7vuXPNf+Oa5oo=
 github.com/aws/aws-sdk-go-v2/service/lambda v1.35.2/go.mod h1:Q8zQi5nZpjUF/H55dKEpKfEvFWJkgZzjjqvDb2AR5b4=
+github.com/aws/aws-sdk-go-v2/service/lambda v1.36.0 h1:pE6cEkDangeOnhhaBOKQAYHTyFlKbUX7qF32sApToNE=
+github.com/aws/aws-sdk-go-v2/service/lambda v1.36.0/go.mod h1:Q8zQi5nZpjUF/H55dKEpKfEvFWJkgZzjjqvDb2AR5b4=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.34.0 h1:2qt8zaVqQCMpnQHBB+PAbfSSXgMl9+zpTRNDHmachJk=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.34.0/go.mod h1:aVbf0sko/TsLWHx30c/uVu7c62+0EAJ3vbxaJga0xCw=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.35.0 h1:ya7fmrN2fE7s1P2gaPbNg5MTkERVWfsH8ToP1YC4Z9o=

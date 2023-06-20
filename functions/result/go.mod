@@ -3,7 +3,7 @@ module github.com/aimless-it/ai-canvas/functions/result
 go 1.20
 
 require (
-	github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230617011341-7f7f5a144eb5
+	github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230620220103-32ddc3579a4e
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/aws/aws-sdk-go-v2 v1.18.1
 	github.com/aws/aws-sdk-go-v2/config v1.18.27
@@ -24,7 +24,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.7.28 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.9.28 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.14.3 // indirect
-	github.com/aws/aws-sdk-go-v2/service/lambda v1.35.2 // indirect
+	github.com/aws/aws-sdk-go-v2/service/lambda v1.36.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.35.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.19.10 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sso v1.12.12 // indirect

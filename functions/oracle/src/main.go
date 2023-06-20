@@ -10,6 +10,7 @@ import (
 )
 
 // lambda handler
+// TODO: Retrieve images from s3 prior to calling openai requests
 func Handler(ctx context.Context, request lib.QueueRequest) {
 	var response openai.ImageResponse
 	switch request.Action {

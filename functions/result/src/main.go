@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"os"
+	"strconv"
 
 	"github.com/aimless-it/ai-canvas/functions/lib"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -21,7 +22,7 @@ func Handler(ctx context.Context, result lib.ResultRequest) {
 		panic(err)
 	}
 
-	tableName := os.Getenv("TABLE_NAME")
+	tableName := os.Getenv("ANALYTICS_TABLE_NAME")
 
 	getItemInput := &dynamodb.GetItemInput{
 		TableName: aws.String(tableName),
@@ -37,8 +38,10 @@ func Handler(ctx context.Context, result lib.ResultRequest) {
 	if err != nil {
 		panic(err)
 	}
-	attemptNum := len(record.Item["Attempts"]) + 1
-	record.Item["Attempts"] = append(record.Item["Attempts"], result.Result)
+	analyticsItem := lib.AnalyticsItem{}
+	analyticsItem.FromDynamoDB(record.Item)
+	attemptNum := len(analyticsItem.Attempts)
+	analyticsItem.Attempts[strconv.Itoa(attemptNum-1)] = result.Result
 
 	updateItemInput := &dynamodb.UpdateItemInput{
 		TableName: aws.String(tableName),
@@ -48,12 +51,10 @@ func Handler(ctx context.Context, result lib.ResultRequest) {
 			},
 		},
 		ExpressionAttributeNames: map[string]string{
-			"#A": "Attempts",
+			"#A": "Record",
 		},
 		ExpressionAttributeValues: map[string]types.AttributeValue{
-			":a": &types.AttributeValueMemberL{
-				Value: record.Item["Attempts"],
-			},
+			":a": &types.AttributeValueMemberM{Value: analyticsItem.ToDynamoDB()},
 		},
 	}
 
