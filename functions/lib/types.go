@@ -106,16 +106,18 @@ type AnalyticsItem struct {
 }
 
 // Create dynamodb mappings for AnalyticsItem
-func (r *AnalyticsItem) ToDynamoDB() map[string]types.AttributeValue {
-	return map[string]types.AttributeValue{
-		"PK": &types.AttributeValueMemberS{
-			Value: r.Id,
-		},
-		"request": &types.AttributeValueMemberM{
-			Value: r.Record.ToDynamoDB(),
-		},
-		"attempts": &types.AttributeValueMemberM{
-			Value: r.AttemptsToDynamoDB(),
+func (r *AnalyticsItem) ToDynamoDB() types.AttributeValueMemberM {
+	return types.AttributeValueMemberM{
+		Value: map[string]types.AttributeValue{
+			"PK": &types.AttributeValueMemberS{
+				Value: r.Id,
+			},
+			"request": &types.AttributeValueMemberM{
+				Value: r.Record.ToDynamoDB(),
+			},
+			"attempts": &types.AttributeValueMemberM{
+				Value: r.AttemptsToDynamoDB(),
+			},
 		},
 	}
 }
