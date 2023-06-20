@@ -106,18 +106,16 @@ type AnalyticsItem struct {
 }
 
 // Create dynamodb mappings for AnalyticsItem
-func (r *AnalyticsItem) ToDynamoDB() *types.AttributeValueMemberM {
-	return &types.AttributeValueMemberM{
-		Value: map[string]types.AttributeValue{
-			"PK": &types.AttributeValueMemberS{
-				Value: r.Id,
-			},
-			"request": &types.AttributeValueMemberM{
-				Value: r.Record.ToDynamoDB(),
-			},
-			"attempts": &types.AttributeValueMemberM{
-				Value: r.AttemptsToDynamoDB(),
-			},
+func (r *AnalyticsItem) ToDynamoDB() map[string]types.AttributeValue {
+	return map[string]types.AttributeValue{
+		"PK": &types.AttributeValueMemberS{
+			Value: r.Id,
+		},
+		"request": &types.AttributeValueMemberM{
+			Value: r.Record.ToDynamoDB(),
+		},
+		"attempts": &types.AttributeValueMemberM{
+			Value: r.AttemptsToDynamoDB(),
 		},
 	}
 }
@@ -143,12 +141,8 @@ func (r *AnalyticsItem) FromDynamoDB(item map[string]types.AttributeValue) {
 func (r *AnalyticsItem) AttemptsToDynamoDB() map[string]types.AttributeValue {
 	attempts := make(map[string]types.AttributeValue)
 	for k, v := range r.Attempts {
-		doc, err := json.Marshal(v)
-		if err != nil {
-			panic(err)
-		}
-		attempts[k] = &types.AttributeValueMemberS{
-			Value: string(doc),
+		attempts[k] = &types.AttributeValueMemberM{
+			Value: v.ToDynamoDB(),
 		}
 	}
 	return attempts
@@ -157,12 +151,9 @@ func (r *AnalyticsItem) AttemptsToDynamoDB() map[string]types.AttributeValue {
 func (r *AnalyticsItem) AttemptsFromDynamoDB(item map[string]types.AttributeValue) {
 	r.Attempts = make(map[string]ImageResponseWrapper)
 	for k, v := range item {
-		var attempt ImageResponseWrapper
-		err := json.Unmarshal([]byte(v.(*types.AttributeValueMemberS).Value), &attempt)
-		if err != nil {
-			panic(err)
-		}
-		r.Attempts[k] = attempt
+		var irw ImageResponseWrapper
+		irw.FromDynamoDB(v.(*types.AttributeValueMemberM).Value)
+		r.Attempts[k] = irw
 	}
 }
 
