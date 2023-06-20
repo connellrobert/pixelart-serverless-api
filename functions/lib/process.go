@@ -108,7 +108,7 @@ func SetAlarmState(name, status string) {
 
 }
 
-var CommonMapping = map[RequestAction]string{
+var ActionToTableEnvMapping = map[RequestAction]string{
 	GenerateImageAction: "GI_TABLE_NAME",
 	EditImageAction:     "EI_TABLE_NAME",
 	VariateImageAction:  "VI_TABLE_NAME",
