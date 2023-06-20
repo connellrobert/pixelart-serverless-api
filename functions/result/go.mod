@@ -3,7 +3,7 @@ module github.com/aimless-it/ai-canvas/functions/result
 go 1.20
 
 require (
-	github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230616020244-68a6fd959664
+	github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230617011341-7f7f5a144eb5
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/aws/aws-sdk-go-v2 v1.18.1
 	github.com/aws/aws-sdk-go-v2/config v1.18.27

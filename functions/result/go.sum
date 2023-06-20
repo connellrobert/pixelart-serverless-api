@@ -2,6 +2,8 @@ github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230614042356-391911156aaa
 github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230614042356-391911156aaa/go.mod h1:VNmhsvc/zOUPpvokXd/G+JAqGDKBrvMSEjQgGlH3enI=
 github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230616020244-68a6fd959664 h1:3rMk1YsLSSkLPaYJzlb7dQGQxlhFGINlwYc+ekqHsFI=
 github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230616020244-68a6fd959664/go.mod h1:sRCgemIj7YBbLMERb5wbs77od53OiVlkOXBi1Lbf26Y=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230617011341-7f7f5a144eb5 h1:mg4aoMx3rAQgLNoDvaXdpUIsDgADYCq7/IMLpM5/mcA=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230617011341-7f7f5a144eb5/go.mod h1:sRCgemIj7YBbLMERb5wbs77od53OiVlkOXBi1Lbf26Y=
 github.com/aws/aws-lambda-go v1.41.0 h1:l/5fyVb6Ud9uYd411xdHZzSf2n86TakxzpvIoz7l+3Y=
 github.com/aws/aws-lambda-go v1.41.0/go.mod h1:jwFe2KmMsHmffA1X2R09hH6lFzJQxzI8qK17ewzbQMM=
 github.com/aws/aws-sdk-go-v2 v1.18.0/go.mod h1:uzbQtefpm44goOPmdKyAlXSNcwlRgF3ePWVW6EtJvvw=

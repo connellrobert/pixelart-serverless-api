@@ -1,5 +1,7 @@
 github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230616020244-68a6fd959664 h1:3rMk1YsLSSkLPaYJzlb7dQGQxlhFGINlwYc+ekqHsFI=
 github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230616020244-68a6fd959664/go.mod h1:sRCgemIj7YBbLMERb5wbs77od53OiVlkOXBi1Lbf26Y=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230617011341-7f7f5a144eb5 h1:mg4aoMx3rAQgLNoDvaXdpUIsDgADYCq7/IMLpM5/mcA=
+github.com/aimless-it/ai-canvas/functions/lib v0.0.0-20230617011341-7f7f5a144eb5/go.mod h1:sRCgemIj7YBbLMERb5wbs77od53OiVlkOXBi1Lbf26Y=
 github.com/aws/aws-lambda-go v1.41.0 h1:l/5fyVb6Ud9uYd411xdHZzSf2n86TakxzpvIoz7l+3Y=
 github.com/aws/aws-lambda-go v1.41.0/go.mod h1:jwFe2KmMsHmffA1X2R09hH6lFzJQxzI8qK17ewzbQMM=
 github.com/aws/aws-sdk-go-v2 v1.18.0/go.mod h1:uzbQtefpm44goOPmdKyAlXSNcwlRgF3ePWVW6EtJvvw=
@@ -48,10 +50,16 @@ github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.14.3 h1:dBL3StFxHtpBzJ
 github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.14.3/go.mod h1:f1QyiAsvIv4B49DmCqrhlXqyaR+0IxMmyX+1P+AnzOM=
 github.com/aws/aws-sdk-go-v2/service/lambda v1.35.0 h1:iNLsDIOju/bbqw0mNaEXh+9Ms6Mm0RjcHPP9z4k9lUY=
 github.com/aws/aws-sdk-go-v2/service/lambda v1.35.0/go.mod h1:i23nHcGEyswthctBfhEO1agGpM5Uyh83aSmSB6DmdCk=
+github.com/aws/aws-sdk-go-v2/service/lambda v1.35.2 h1:MeukRLx5lbfObw2gH2FePNJPCsYrsC7vuXPNf+Oa5oo=
+github.com/aws/aws-sdk-go-v2/service/lambda v1.35.2/go.mod h1:Q8zQi5nZpjUF/H55dKEpKfEvFWJkgZzjjqvDb2AR5b4=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.34.0 h1:2qt8zaVqQCMpnQHBB+PAbfSSXgMl9+zpTRNDHmachJk=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.34.0/go.mod h1:aVbf0sko/TsLWHx30c/uVu7c62+0EAJ3vbxaJga0xCw=
+github.com/aws/aws-sdk-go-v2/service/s3 v1.35.0 h1:ya7fmrN2fE7s1P2gaPbNg5MTkERVWfsH8ToP1YC4Z9o=
+github.com/aws/aws-sdk-go-v2/service/s3 v1.35.0/go.mod h1:aVbf0sko/TsLWHx30c/uVu7c62+0EAJ3vbxaJga0xCw=
 github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.19.8 h1:eB91eEYUlh8+O2dXr189W8GJJd+/T8N/c5HocH2KzVo=
 github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.19.8/go.mod h1:3ARttS6G6U3auEdKfaN4GlnfS9UxYE9nqub1+0YGycA=
+github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.19.10 h1:eW8zPSh7ZLzb7029xCsIEFbnxLvNHPTt7aWwdKjNJc8=
+github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.19.10/go.mod h1:ezn6mzIRqTPdAbDpm03dx4y9g6rvGRb2q33wS76dCxw=
 github.com/aws/aws-sdk-go-v2/service/sqs v1.23.2 h1:Y2vfLiY3HmaMisuwx6fS2kMRYbajRXXB+9vesGVPseY=
 github.com/aws/aws-sdk-go-v2/service/sqs v1.23.2/go.mod h1:TaV67b6JMD1988x/uMDop/JnMFK6v5d4Ru+sDmFg+ww=
 github.com/aws/aws-sdk-go-v2/service/sso v1.12.10 h1:UBQjaMTCKwyUYwiVnUt6toEJwGXsLBI6al083tpjJzY=
@@ -78,6 +86,8 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/sashabaranov/go-openai v1.10.1 h1:6WyHJaNzF266VaEEuW6R4YW+Ei0wpMnqRYPGK7fhuhQ=
 github.com/sashabaranov/go-openai v1.10.1/go.mod h1:lj5b/K+zjTSFxVLijLSTDZuP7adOgerWeFyZLUhAKRg=
+github.com/sashabaranov/go-openai v1.11.2 h1:HuMf+18eldSKbqVblyeCQbtcqSpGVfqTshvi8Bn6zes=
+github.com/sashabaranov/go-openai v1.11.2/go.mod h1:lj5b/K+zjTSFxVLijLSTDZuP7adOgerWeFyZLUhAKRg=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.7.2 h1:4jaiDzPyXQvSd7D0EjG45355tLlV3VOECpq10pLC+8s=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=

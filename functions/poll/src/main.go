@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 
@@ -37,7 +38,7 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 		panic(err)
 	}
 	if len(result.Items) == 0 {
-		lib.SetAlarmStatus(emptyDbAlarmName, "ALARM")
+		lib.SetAlarmState(emptyDbAlarmName, "ALARM")
 		return request, nil
 	}
 
@@ -45,9 +46,13 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 
 	// send items to queue
 	for _, item := range result.Items {
+		j, e := json.Marshal(item)
+		if e != nil {
+			panic(err)
+		}
 		// send item to queue
 		sendMessageInput := &sqs.SendMessageInput{
-			MessageBody: aws.String(item),
+			MessageBody: aws.String(string(j)),
 			QueueUrl:    aws.String(queueUrl),
 		}
 		_, err := sqsClient.SendMessage(context.Background(), sendMessageInput)
@@ -59,7 +64,7 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 			TableName: aws.String(tableName),
 			Key: map[string]types.AttributeValue{
 				"PK": &types.AttributeValueMemberS{
-					Value: fmt.Sprintf("%v", item.Id),
+					Value: fmt.Sprintf("%v", item["Id"]),
 				},
 			},
 		}

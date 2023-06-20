@@ -27,7 +27,7 @@ func Handler(ctx context.Context, result lib.ResultRequest) {
 		TableName: aws.String(tableName),
 		Key: map[string]types.AttributeValue{
 			"PK": &types.AttributeValueMemberS{
-				id: result.record.Id,
+				Value: result.Record.Id,
 			},
 		},
 	}
@@ -38,13 +38,13 @@ func Handler(ctx context.Context, result lib.ResultRequest) {
 		panic(err)
 	}
 	attemptNum := len(record.Item["Attempts"]) + 1
-	record.Item["Attempts"] = append(record.Item["Attempts"], result.response)
+	record.Item["Attempts"] = append(record.Item["Attempts"], result.Result)
 
 	updateItemInput := &dynamodb.UpdateItemInput{
 		TableName: aws.String(tableName),
 		Key: map[string]types.AttributeValue{
 			"PK": &types.AttributeValueMemberS{
-				id: result.record.Id,
+				Value: result.Record.Id,
 			},
 		},
 		ExpressionAttributeNames: map[string]string{
@@ -52,7 +52,7 @@ func Handler(ctx context.Context, result lib.ResultRequest) {
 		},
 		ExpressionAttributeValues: map[string]types.AttributeValue{
 			":a": &types.AttributeValueMemberL{
-				Values: record.Item["Attempts"],
+				Value: record.Item["Attempts"],
 			},
 		},
 	}
@@ -63,7 +63,7 @@ func Handler(ctx context.Context, result lib.ResultRequest) {
 	}
 
 	if attemptNum < 3 {
-		lib.sendRetrySignal(result.record)
+		lib.SendRetrySignal(result.Record)
 	}
 
 }

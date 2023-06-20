@@ -20,10 +20,9 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 	"github.com/aws/aws-sdk-go-v2/service/lambda"
-	openai "github.com/sashabaranov/go-openai"
 )
 
-func SendResult(record QueueRequest, response openai.ImageResponse) string {
+func SendResult(record QueueRequest, response ImageResponseWrapper) string {
 	// Create a Lambda client
 	cfg, err := config.LoadDefaultConfig(context.TODO(),
 		config.WithRegion("us-east-1"),
@@ -107,4 +106,19 @@ func SetAlarmState(name, status string) {
 		panic(err)
 	}
 
+}
+
+var CommonMapping = map[RequestAction]map[string]string{
+	GenerateImageAction: {
+		"params":   "generateImage",
+		"TableEnv": "GI_TABLE_NAME",
+	},
+	EditImageAction: {
+		"params":   "createImageEdit",
+		"TableEnv": "EI_TABLE_NAME",
+	},
+	VariateImageAction: {
+		"params":   "createImageVariation",
+		"TableEnv": "VI_TABLE_NAME",
+	},
 }

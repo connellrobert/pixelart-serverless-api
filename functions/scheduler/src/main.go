@@ -19,20 +19,7 @@ import (
 
 // lambda handler
 func Handler(ctx context.Context, request events.APIGatewayProxyRequest) {
-	mapping := map[lib.RequestAction]map[string]string{
-		lib.GenerateImageAction: {
-			"params":   "generateImage",
-			"TableEnv": "GI_TABLE_NAME",
-		},
-		lib.EditImageAction: {
-			"params":   "createImageEdit",
-			"TableEnv": "EI_TABLE_NAME",
-		},
-		lib.VariateImageAction: {
-			"params":   "createImageVariation",
-			"TableEnv": "VI_TABLE_NAME",
-		},
-	}
+
 	id := uuid.New().String()
 	body := make(map[string]interface{})
 	err := json.Unmarshal([]byte(request.Body), &body)
@@ -41,7 +28,7 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) {
 		panic(err)
 	}
 	requestAction := lib.RequestAction(action)
-	paramName := mapping[requestAction]["params"]
+	paramName := lib.mapping[requestAction]["params"]
 	param := fmt.Sprintf("%v", body[paramName])
 	record := lib.QueueRequest{
 		Id:       id,
@@ -49,7 +36,7 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) {
 		Priority: 0,
 	}
 	record[paramName] = param
-	tableName := os.Getenv(mapping[requestAction]["TableEnv"])
+	tableName := os.Getenv(lib.mapping[requestAction]["TableEnv"])
 	cfg, err := config.LoadDefaultConfig(context.TODO(),
 		config.WithRegion("us-east-1"),
 	)
