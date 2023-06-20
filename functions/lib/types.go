@@ -365,3 +365,34 @@ func (r *ImageResponseWrapper) FromDynamoDB(item map[string]types.AttributeValue
 		r.Response.Data = append(r.Response.Data, data)
 	}
 }
+
+func (q *QueueRequest) MapParams(action RequestAction, params interface{}) {
+	switch action {
+	case GenerateImageAction:
+		q.CreateImage = GenerateImageRequest{
+			Prompt:         params.(map[string]interface{})["prompt"].(string),
+			N:              int(params.(map[string]interface{})["n"].(float64)),
+			Size:           ImageSize(params.(map[string]interface{})["size"].(string)),
+			ResponseFormat: ResponseFormat(params.(map[string]interface{})["responseFormat"].(string)),
+			User:           params.(map[string]interface{})["user"].(string),
+		}
+	case EditImageAction:
+		q.CreateImageEdit = EditImageRequest{
+			Prompt:         params.(map[string]interface{})["prompt"].(string),
+			N:              int(params.(map[string]interface{})["n"].(float64)),
+			Size:           ImageSize(params.(map[string]interface{})["size"].(string)),
+			ResponseFormat: ResponseFormat(params.(map[string]interface{})["responseFormat"].(string)),
+			User:           params.(map[string]interface{})["user"].(string),
+			Image:          params.(map[string]interface{})["image"].(string),
+			Mask:           params.(map[string]interface{})["mask"].(string),
+		}
+	case VariateImageAction:
+		q.CreateImageVariation = CreateImageVariantRequest{
+			N:              int(params.(map[string]interface{})["n"].(float64)),
+			Size:           ImageSize(params.(map[string]interface{})["size"].(string)),
+			ResponseFormat: ResponseFormat(params.(map[string]interface{})["responseFormat"].(string)),
+			User:           params.(map[string]interface{})["user"].(string),
+			Image:          params.(map[string]interface{})["image"].(string),
+		}
+	}
+}
