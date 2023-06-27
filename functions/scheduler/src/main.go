@@ -17,23 +17,18 @@ import (
 	"github.com/google/uuid"
 )
 
+// List of environment variables:
+// ANALYTICS_TABLE_NAME
+// EMPTY_DB_ALARM_NAME
+
 // lambda handler
 func Handler(ctx context.Context, request events.APIGatewayProxyRequest) {
 
-	/*
-		{
-			body: {
-				action: 0,
-				params: {
-					<type of image create, edit, or variate>
-				}
-			}
-		}
-	*/
-
 	id := uuid.New().String()
 	body := make(map[string]interface{})
-	err := json.Unmarshal([]byte(request.Body), &body)
+	if err := json.Unmarshal([]byte(request.Body), &body); err != nil {
+		panic(err)
+	}
 	action, err := strconv.Atoi(fmt.Sprintf("%v", body["action"]))
 	if err != nil {
 		panic(err)
@@ -95,6 +90,8 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) {
 	if err != nil {
 		panic(err)
 	}
+
+	lib.SetAlarmState(os.Getenv("EMPTY_DB_ALARM_NAME"), "OK")
 
 	fmt.Println(request)
 }

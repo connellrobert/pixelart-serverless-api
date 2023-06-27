@@ -10,5 +10,5 @@ deps:
 compile:
     FROM +deps
     COPY ./src ./src
-    RUN GOOS=linux GOARCH=amd64 go build -o scheduler ./src
-    SAVE ARTIFACT scheduler
+    RUN GOOS=linux GOARCH=amd64 go build -o bin/scheduler ./src
+    SAVE ARTIFACT bin

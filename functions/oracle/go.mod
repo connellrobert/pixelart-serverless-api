@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/aimless-it/ai-canvas/functions/lib v0.0.0
 	github.com/aws/aws-lambda-go v1.41.0
-	github.com/sashabaranov/go-openai v1.11.2
+	github.com/sashabaranov/go-openai v1.12.0
 )
 
 replace github.com/aimless-it/ai-canvas/functions/lib v0.0.0 => ../lib
@@ -21,7 +21,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.3.35 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/v4a v1.0.26 // indirect
 	github.com/aws/aws-sdk-go-v2/service/cloudwatch v1.26.2 // indirect
-	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.19.10 // indirect
+	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.19.11 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.9.11 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.1.29 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.7.28 // indirect
@@ -30,6 +30,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/lambda v1.36.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.35.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.19.10 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sqs v1.23.2 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sso v1.12.12 // indirect
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.14.12 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.19.2 // indirect

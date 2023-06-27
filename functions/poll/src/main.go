@@ -16,6 +16,11 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/sqs"
 )
 
+// List of environment variables:
+// TABLE_NAME
+// EMPTY_DB_ALARM_NAME
+// QUEUE_URL
+
 func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) {
 	tableName := os.Getenv("TABLE_NAME")
 	emptyDbAlarmName := os.Getenv("EMPTY_DB_ALARM_NAME")

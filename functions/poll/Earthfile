@@ -10,5 +10,5 @@ deps:
 compile:
     FROM +deps
     COPY ./src ./src
-    RUN GOOS=linux GOARCH=amd64 go build -o poll ./src
-    SAVE ARTIFACT poll
+    RUN GOOS=linux GOARCH=amd64 go build -o bin/poll ./src
+    SAVE ARTIFACT bin

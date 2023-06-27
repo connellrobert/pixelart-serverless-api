@@ -7,7 +7,7 @@ require (
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/aws/aws-sdk-go-v2 v1.18.1
 	github.com/aws/aws-sdk-go-v2/config v1.18.27
-	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.19.10
+	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.19.11
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.23.2
 )
 
@@ -35,5 +35,5 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sts v1.19.2 // indirect
 	github.com/aws/smithy-go v1.13.5 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
-	github.com/sashabaranov/go-openai v1.11.2 // indirect
+	github.com/sashabaranov/go-openai v1.12.0 // indirect
 )

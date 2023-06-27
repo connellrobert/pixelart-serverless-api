@@ -1,0 +1,39 @@
+VERSION 0.6
+
+FROM hashicorp/terraform:1.5
+
+
+plan:
+    RUN echo $AWS_ACCESS_KEY_ID
+    WORKDIR /infra
+    COPY --dir . /infra
+    COPY ../functions/oracle+compile/* /functions/oracle/bin
+    COPY ../functions/poll+compile/* /functions/poll/bin
+    COPY ../functions/result+compile/* /functions/result/bin
+    COPY ../functions/scheduler+compile/* /functions/scheduler/bin
+    # RUN ls / && echo "num num num" && ls -alR /functions
+    RUN --secret AWS_ACCESS_KEY_ID \
+    --secret AWS_SECRET_ACCESS_KEY \
+    --secret AWS_DEFAULT_REGION \
+    terraform init
+    RUN --secret AWS_ACCESS_KEY_ID \
+    --secret AWS_SECRET_ACCESS_KEY \
+    --secret AWS_DEFAULT_REGION \
+    terraform apply -auto-approve
+    SAVE ARTIFACT .terraform/ AS LOCAL .terraform/
+
+destroy:
+    WORKDIR /infra
+    COPY --dir . /infra
+    COPY ../functions/oracle+compile/* /functions/oracle/bin
+    COPY ../functions/poll+compile/* /functions/poll/bin
+    COPY ../functions/result+compile/* /functions/result/bin
+    COPY ../functions/scheduler+compile/* /functions/scheduler/bin
+    RUN --secret AWS_ACCESS_KEY_ID \
+    --secret AWS_SECRET_ACCESS_KEY \
+    --secret AWS_DEFAULT_REGION \
+    terraform init
+    RUN --secret AWS_ACCESS_KEY_ID \
+    --secret AWS_SECRET_ACCESS_KEY \
+    --secret AWS_DEFAULT_REGION \
+    terraform destroy -auto-approve

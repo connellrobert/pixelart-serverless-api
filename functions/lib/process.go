@@ -9,7 +9,6 @@ package lib
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"os"
 	"strconv"
 
@@ -19,10 +18,10 @@ import (
 	cTypes "github.com/aws/aws-sdk-go-v2/service/cloudwatch/types"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
-	"github.com/aws/aws-sdk-go-v2/service/lambda"
+	"github.com/aws/aws-sdk-go-v2/service/sqs"
 )
 
-func SendResult(record QueueRequest, response ImageResponseWrapper) string {
+func SendResult(record QueueRequest, response ImageResponseWrapper) {
 	// Create a Lambda client
 	cfg, err := config.LoadDefaultConfig(context.TODO(),
 		config.WithRegion("us-east-1"),
@@ -31,8 +30,6 @@ func SendResult(record QueueRequest, response ImageResponseWrapper) string {
 		panic(err)
 	}
 	// invoke lambda
-	lambdaArn := os.Getenv("RESULT_FUNCTION_ARN")
-	svc := lambda.NewFromConfig(cfg)
 	tmp := ResultRequest{
 		Record: record,
 		Result: response,
@@ -41,16 +38,20 @@ func SendResult(record QueueRequest, response ImageResponseWrapper) string {
 	if err != nil {
 		panic(err)
 	}
-	input := &lambda.InvokeInput{
-		FunctionName: aws.String(lambdaArn),
-		Payload:      []byte(req),
+
+	// Send req to sqs queue
+	queue := os.Getenv("RESULT_QUEUE_URL")
+	sqsClient := sqs.NewFromConfig(cfg)
+	// send item to queue
+	messageInput := &sqs.SendMessageInput{
+		MessageBody: aws.String(string(req)),
+		QueueUrl:    aws.String(queue),
 	}
-	result, err := svc.Invoke(context.Background(), input)
+	_, err = sqsClient.SendMessage(context.Background(), messageInput)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(string(result.Payload))
-	return string(result.Payload)
+
 }
 
 func SendRetrySignal(record QueueRequest) string {

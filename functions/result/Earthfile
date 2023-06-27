@@ -10,5 +10,5 @@ deps:
 compile:
     FROM +deps
     COPY ./src ./src
-    RUN GOOS=linux GOARCH=amd64 go build -o result ./src
-    SAVE ARTIFACT result
+    RUN GOOS=linux GOARCH=amd64 go build -o bin/result ./src
+    SAVE ARTIFACT bin

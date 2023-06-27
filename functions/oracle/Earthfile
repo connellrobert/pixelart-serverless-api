@@ -10,5 +10,5 @@ deps:
 compile:
     FROM +deps
     COPY ./src ./src
-    RUN GOOS=linux GOARCH=amd64 go build -o oracle ./src
-    SAVE ARTIFACT oracle
+    RUN GOOS=linux GOARCH=amd64 go build -o bin/oracle ./src
+    SAVE ARTIFACT bin

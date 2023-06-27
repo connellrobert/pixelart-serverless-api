@@ -6,11 +6,12 @@ require (
 	github.com/aws/aws-sdk-go-v2 v1.18.1
 	github.com/aws/aws-sdk-go-v2/config v1.18.27
 	github.com/aws/aws-sdk-go-v2/service/cloudwatch v1.26.2
-	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.19.10
+	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.19.11
 	github.com/aws/aws-sdk-go-v2/service/lambda v1.35.2
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.35.0
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.19.10
-	github.com/sashabaranov/go-openai v1.11.2
+	github.com/aws/aws-sdk-go-v2/service/sqs v1.23.2
+	github.com/sashabaranov/go-openai v1.12.0
 )
 
 require (

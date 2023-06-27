@@ -1,0 +1,6 @@
+.secret
+**/bin/*
+**/.terraform/**
+**/.terraform.lock.hcl
+**/terraform.tfstate
+**/*.tfvars
