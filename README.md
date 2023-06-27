@@ -5,4 +5,4 @@ todo
 - [ ] oracle should accept only b64 from openai to store image in s3. Eliminate option from request logic stream
 - [ ] oracle should delete sqs messages upon consumption
 - [ ] Create terraform plan file local save for proper caching of backend infra proposed state. 
-- [ ]state should be stored in aws, a backend should be created for it.
+- [ ] state should be stored in aws, a backend should be created for it.

@@ -1,7 +1,7 @@
 VERSION 0.6
 
 deps:
-    FROM golang:1.18-alpine
+    FROM golang:1.20-bullseye
     WORKDIR /oracle
     COPY ../lib+artifact/* /lib/
     COPY go.mod go.sum ./
@@ -11,4 +11,4 @@ compile:
     FROM +deps
     COPY ./src ./src
     RUN GOOS=linux GOARCH=amd64 go build -o bin/oracle ./src
-    SAVE ARTIFACT bin
+    SAVE ARTIFACT bin AS LOCAL ./bin

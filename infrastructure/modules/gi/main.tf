@@ -31,6 +31,7 @@ module "gi_function_policies" {
   poll_role_name   = module.gi_poll_function.function_iam_role_name
   queue_arn        = module.gi_queueing_system.queue_arn
   table_arn        = module.gi_queueing_system.queue_table_arn
+  empty_db_alarm_arn = module.gi_function_alarms.db_low_count_alarm_arn
 }
 
 module "gi_queueing_system" {

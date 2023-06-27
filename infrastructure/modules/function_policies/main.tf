@@ -82,6 +82,13 @@ resource "aws_iam_policy" "poll_policy" {
       ],
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "Action": [
+        "cloudwatch:SetAlarmState"
+      ],
+      "Effect": "Allow",
+      "Resource": "${var.empty_db_alarm_arn}"
     }
   ]
 }

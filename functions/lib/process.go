@@ -99,8 +99,9 @@ func SetAlarmState(name, status string) {
 	}
 	cloudwatchClient := cloudwatch.NewFromConfig(cfg)
 	setAlarmStateInput := &cloudwatch.SetAlarmStateInput{
-		AlarmName:  aws.String(name),
-		StateValue: cTypes.StateValue(status),
+		AlarmName:   aws.String(name),
+		StateValue:  cTypes.StateValue(status),
+		StateReason: aws.String("Cause I be balling like an OG in the club"),
 	}
 	_, err = cloudwatchClient.SetAlarmState(context.Background(), setAlarmStateInput)
 	if err != nil {

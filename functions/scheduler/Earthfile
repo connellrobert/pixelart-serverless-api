@@ -1,7 +1,7 @@
 VERSION 0.6
 
 deps:
-    FROM golang:1.18-alpine
+    FROM golang:1.20-bullseye
     WORKDIR /scheduler
     COPY ../lib+artifact/* /lib/
     COPY go.mod go.sum ./
