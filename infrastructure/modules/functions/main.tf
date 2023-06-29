@@ -25,6 +25,9 @@ resource "aws_lambda_function" "lambda_function" {
   environment {
     variables = var.lambda_environment
   }
+  tracing_config {
+    mode = "Active"
+  }
 }
 
 resource "random_string" "lambda_role_suffix" {

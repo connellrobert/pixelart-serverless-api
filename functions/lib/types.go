@@ -8,6 +8,10 @@ import (
 	openai "github.com/sashabaranov/go-openai"
 )
 
+type CommonMetadata struct {
+	TraceId string `json:"tracing_id"`
+}
+
 type ImageSize string
 
 const (
@@ -81,6 +85,7 @@ const (
 )
 
 type QueueRequest struct {
+	Metadata             CommonMetadata
 	Id                   string
 	Action               RequestAction
 	Priority             int
@@ -91,6 +96,7 @@ type QueueRequest struct {
 
 type ImageResponseWrapper struct {
 	Response openai.ImageResponse `json:"response"`
+	Success  bool                 `json:"success"`
 }
 
 type ResultRequest struct {
@@ -100,6 +106,7 @@ type ResultRequest struct {
 
 // Analytics Item
 type AnalyticsItem struct {
+	Success  bool                            `json:"success"`
 	Id       string                          `json:"id"`
 	Record   QueueRequest                    `json:"record"`
 	Attempts map[string]ImageResponseWrapper `json:"attempts"`
@@ -108,7 +115,7 @@ type AnalyticsItem struct {
 // Create dynamodb mappings for AnalyticsItem
 func (r *AnalyticsItem) ToDynamoDB() map[string]types.AttributeValue {
 	return map[string]types.AttributeValue{
-		"PK": &types.AttributeValueMemberS{
+		"id": &types.AttributeValueMemberS{
 			Value: r.Id,
 		},
 		"request": &types.AttributeValueMemberM{
@@ -121,21 +128,23 @@ func (r *AnalyticsItem) ToDynamoDB() map[string]types.AttributeValue {
 }
 
 func (r *AnalyticsItem) FromDynamoDB(item map[string]types.AttributeValue) {
-	r.Id = item["PK"].(*types.AttributeValueMemberS).Value
-	action, err := strconv.Atoi(item["request"].(*types.AttributeValueMemberM).Value["Action"].(*types.AttributeValueMemberN).Value)
+	r.Id = item["id"].(*types.AttributeValueMemberS).Value
+	request := item["Record"].(*types.AttributeValueMemberM).Value
+	record := request["request"].(*types.AttributeValueMemberM).Value
+	action, err := strconv.Atoi(record["Action"].(*types.AttributeValueMemberN).Value)
 	if err != nil {
 		panic(err)
 	}
 	r.Record.Action = RequestAction(action)
 	switch r.Record.Action {
 	case GenerateImageAction:
-		r.Record.CreateImage.FromDynamoDB(item["request"].(*types.AttributeValueMemberM).Value["CreateImage"].(*types.AttributeValueMemberM).Value)
+		r.Record.CreateImage.FromDynamoDB(record["CreateImage"].(*types.AttributeValueMemberM).Value)
 	case EditImageAction:
-		r.Record.CreateImageEdit.FromDynamoDB(item["request"].(*types.AttributeValueMemberM).Value["CreateImageEdit"].(*types.AttributeValueMemberM).Value)
+		r.Record.CreateImageEdit.FromDynamoDB(record["CreateImageEdit"].(*types.AttributeValueMemberM).Value)
 	case VariateImageAction:
-		r.Record.CreateImageVariation.FromDynamoDB(item["request"].(*types.AttributeValueMemberM).Value["CreateImageVariation"].(*types.AttributeValueMemberM).Value)
+		r.Record.CreateImageVariation.FromDynamoDB(record["CreateImageVariation"].(*types.AttributeValueMemberM).Value)
 	}
-	r.AttemptsFromDynamoDB(item["attempts"].(*types.AttributeValueMemberM).Value)
+	r.AttemptsFromDynamoDB(request["attempts"].(*types.AttributeValueMemberM).Value)
 }
 
 func (r *AnalyticsItem) AttemptsToDynamoDB() map[string]types.AttributeValue {
@@ -160,10 +169,10 @@ func (r *AnalyticsItem) AttemptsFromDynamoDB(item map[string]types.AttributeValu
 // Create dynamodb mappings for types
 func (r *QueueRequest) ToDynamoDB() map[string]types.AttributeValue {
 	return map[string]types.AttributeValue{
-		"PK": &types.AttributeValueMemberS{
+		"id": &types.AttributeValueMemberS{
 			Value: r.Id,
 		},
-		"Priority": &types.AttributeValueMemberN{
+		"priority": &types.AttributeValueMemberN{
 			Value: strconv.Itoa(r.Priority),
 		},
 		"Action": &types.AttributeValueMemberN{
@@ -182,8 +191,12 @@ func (r *QueueRequest) ToDynamoDB() map[string]types.AttributeValue {
 }
 
 func (r *QueueRequest) FromDynamoDB(item map[string]types.AttributeValue) {
-	r.Id = item["PK"].(*types.AttributeValueMemberS).Value
-	r.Priority, _ = strconv.Atoi(item["Priority"].(*types.AttributeValueMemberN).Value)
+	if item["id"] == nil {
+		r.Id = item["PK"].(*types.AttributeValueMemberS).Value
+	} else {
+		r.Id = item["id"].(*types.AttributeValueMemberS).Value
+	}
+	r.Priority, _ = strconv.Atoi(item["priority"].(*types.AttributeValueMemberN).Value)
 	action, err := strconv.Atoi(item["request"].(*types.AttributeValueMemberM).Value["Action"].(*types.AttributeValueMemberN).Value)
 	if err != nil {
 		panic(err)
@@ -356,9 +369,9 @@ func (r *ImageResponseWrapper) FromDynamoDB(item map[string]types.AttributeValue
 	tmp, _ := strconv.Atoi(item["Created"].(*types.AttributeValueMemberN).Value)
 	r.Response.Created = int64(tmp)
 	r.Response.Data = make([]openai.ImageResponseDataInner, 0)
-	for _, d := range item["Data"].(*types.AttributeValueMemberL).Value {
+	for _, d := range item["Data"].(*types.AttributeValueMemberSS).Value {
 		var data openai.ImageResponseDataInner
-		err := json.Unmarshal([]byte(d.(*types.AttributeValueMemberS).Value), &data)
+		err := json.Unmarshal([]byte(d), &data)
 		if err != nil {
 			panic(err)
 		}

@@ -22,25 +22,46 @@ import (
 // EMPTY_DB_ALARM_NAME
 
 // lambda handler
-func Handler(ctx context.Context, request events.APIGatewayProxyRequest) {
-
+/*
+{
+	"action": 0,
+	"params": {
+		"image": "https://aimless.ai/images/ai-canvas-logo.png",
+		"size": "512x512",
+		"prompt": "something simple",
+		"n": 1,
+		"responseFormat": "URL",
+		"user": "user-id"
+	}
+}
+"{\"action\":0,\"params\":{\"image\":\"https://aimless.ai/images/ai-canvas-logo.png\",\"size\":\"512x512\",\"prompt\":\"something simple\",\"n\":1,\"responseFormat\":\"URL\",\"user\":\"user-id\"}}"
+*/
+func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	traceId := request.Headers["x-amzn-trace-id"]
 	id := uuid.New().String()
 	body := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(request.Body), &body); err != nil {
 		panic(err)
 	}
 	action, err := strconv.Atoi(fmt.Sprintf("%v", body["action"]))
+	fmt.Print(action)
 	if err != nil {
 		panic(err)
 	}
 	requestAction := lib.RequestAction(action)
+	fmt.Print(requestAction)
 	record := lib.QueueRequest{
+		Metadata: lib.CommonMetadata{
+			TraceId: traceId,
+		},
 		Id:       id,
 		Action:   requestAction,
 		Priority: 0,
 	}
 	record.MapParams(requestAction, body["params"])
 	tableName := os.Getenv(lib.ActionToTableEnvMapping[requestAction])
+	fmt.Println(lib.ActionToTableEnvMapping[requestAction])
+	fmt.Println(tableName)
 	cfg, err := config.LoadDefaultConfig(context.TODO(),
 		config.WithRegion("us-east-1"),
 	)
@@ -59,7 +80,7 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) {
 	putAItemInput := &dynamodb.PutItemInput{
 		TableName: aws.String(analyticsTable),
 		Item: map[string]types.AttributeValue{
-			"PK": &types.AttributeValueMemberS{
+			"id": &types.AttributeValueMemberS{
 				Value: record.Id,
 			},
 			"Record": &types.AttributeValueMemberM{
@@ -75,10 +96,10 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) {
 	putItemInput := &dynamodb.PutItemInput{
 		TableName: aws.String(tableName),
 		Item: map[string]types.AttributeValue{
-			"PK": &types.AttributeValueMemberS{
+			"id": &types.AttributeValueMemberS{
 				Value: record.Id,
 			},
-			"Priority": &types.AttributeValueMemberN{
+			"priority": &types.AttributeValueMemberN{
 				Value: strconv.Itoa(record.Priority),
 			},
 			"request": &types.AttributeValueMemberM{
@@ -90,10 +111,22 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) {
 	if err != nil {
 		panic(err)
 	}
+	alarmName := lib.ActionToAlarmMapping[requestAction]
+	lib.SetAlarmState(alarmName, "OK")
+	lib.SubmitXRayTraceSubSegment(traceId, "Added item to "+tableName)
+	responseBody := map[string]interface{}{
+		"message": fmt.Sprintf("Successfully added %v to %v", record.Id, tableName),
+	}
+	re, err := json.Marshal(responseBody)
+	if err != nil {
+		panic(err)
+	}
 
-	lib.SetAlarmState(os.Getenv("EMPTY_DB_ALARM_NAME"), "OK")
-
-	fmt.Println(request)
+	response := events.APIGatewayProxyResponse{
+		StatusCode: 200,
+		Body:       string(re),
+	}
+	return response, nil
 }
 
 func main() {

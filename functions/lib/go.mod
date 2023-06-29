@@ -8,9 +8,11 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/cloudwatch v1.26.2
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.19.11
 	github.com/aws/aws-sdk-go-v2/service/lambda v1.35.2
-	github.com/aws/aws-sdk-go-v2/service/s3 v1.35.0
+	github.com/aws/aws-sdk-go-v2/service/s3 v1.36.0
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.19.10
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.23.2
+	github.com/aws/aws-sdk-go-v2/service/xray v1.16.13
+	github.com/google/uuid v1.3.0
 	github.com/sashabaranov/go-openai v1.12.0
 )
 

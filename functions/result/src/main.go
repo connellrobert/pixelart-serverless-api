@@ -39,7 +39,7 @@ func Handler(ctx context.Context, sqsResult events.SQSEvent) {
 		getItemInput := &dynamodb.GetItemInput{
 			TableName: aws.String(tableName),
 			Key: map[string]types.AttributeValue{
-				"PK": &types.AttributeValueMemberS{
+				"id": &types.AttributeValueMemberS{
 					Value: result.Record.Id,
 				},
 			},
@@ -53,12 +53,13 @@ func Handler(ctx context.Context, sqsResult events.SQSEvent) {
 		analyticsItem := lib.AnalyticsItem{}
 		analyticsItem.FromDynamoDB(record.Item)
 		attemptNum := len(analyticsItem.Attempts)
-		analyticsItem.Attempts[strconv.Itoa(attemptNum-1)] = result.Result
+		analyticsItem.Attempts[strconv.Itoa(attemptNum)] = result.Result
+		analyticsItem.Success = result.Result.Success
 
 		updateItemInput := &dynamodb.UpdateItemInput{
 			TableName: aws.String(tableName),
 			Key: map[string]types.AttributeValue{
-				"PK": &types.AttributeValueMemberS{
+				"id": &types.AttributeValueMemberS{
 					Value: result.Record.Id,
 				},
 			},
@@ -68,6 +69,7 @@ func Handler(ctx context.Context, sqsResult events.SQSEvent) {
 			ExpressionAttributeValues: map[string]types.AttributeValue{
 				":a": &types.AttributeValueMemberM{Value: analyticsItem.ToDynamoDB()},
 			},
+			UpdateExpression: aws.String("SET #A = :a"),
 		}
 
 		_, err = client.UpdateItem(context.Background(), updateItemInput)
@@ -75,9 +77,10 @@ func Handler(ctx context.Context, sqsResult events.SQSEvent) {
 			panic(err)
 		}
 
-		if attemptNum < 3 {
+		if attemptNum < 3 || !result.Result.Success {
 			lib.SendRetrySignal(result.Record)
 		}
+		lib.SubmitXRayTraceSubSegment(result.Record.Metadata.TraceId, "Updated analytics item")
 	}
 }
 

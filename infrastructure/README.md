@@ -9,4 +9,4 @@ todo
 - [ ] create analytics table and connect to scheduler and result
 - [X] connect result function to modules
 - [X] create iam roles for functions
-- [ ] create secret manager with openai key
+- [ ] create secret manager with openai key with secret passed in earthly

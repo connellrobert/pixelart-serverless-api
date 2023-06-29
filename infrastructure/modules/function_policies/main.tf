@@ -31,6 +31,20 @@ resource "aws_iam_policy" "oracle_policy" {
       ],
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "Action": [
+        "xray:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Action": [
+        "sqs:SendMessage"
+      ],
+      "Effect": "Allow",
+      "Resource": "${var.result_queue_arn}"
     }
   ]
 }
@@ -56,7 +70,8 @@ resource "aws_iam_policy" "poll_policy" {
         "sqs:PutMessage",
         "sqs:GetQueueUrl",
         "sqs:GetQueueAttributes",
-        "sqs:ListQueues"
+        "sqs:ListQueues",
+        "sqs:SendMessage"
       ],
       "Effect": "Allow",
       "Resource": "${var.queue_arn}"
@@ -89,6 +104,13 @@ resource "aws_iam_policy" "poll_policy" {
       ],
       "Effect": "Allow",
       "Resource": "${var.empty_db_alarm_arn}"
+    },
+    {
+      "Action": [
+        "xray:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
     }
   ]
 }

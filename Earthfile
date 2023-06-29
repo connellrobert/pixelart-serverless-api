@@ -13,3 +13,10 @@ deploy:
 destroy:
     BUILD +build-all
     BUILD ./infrastructure+destroy
+
+update-deps:
+    BUILD ./functions/lib+update
+    BUILD ./functions/oracle+update
+    BUILD ./functions/poll+update
+    BUILD ./functions/result+update
+    BUILD ./functions/scheduler+update

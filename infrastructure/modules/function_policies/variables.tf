@@ -18,3 +18,7 @@ variable "table_arn" {
 variable "empty_db_alarm_arn" {
     type = string
 }
+
+variable "result_queue_arn" {
+    type = string
+}

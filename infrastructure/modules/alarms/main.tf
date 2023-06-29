@@ -1,7 +1,7 @@
 // Create a cloudwatch alarm 
 resource "aws_cloudwatch_metric_alarm" "low_sqs_message_count_alarm" {
   alarm_name          = local.low_sqs_message_count_alarm_name
-  comparison_operator = "LessThanThreshold"
+  comparison_operator = "LessThanOrEqualToThreshold"
   metric_name         = "ApproximateNumberOfMessagesVisible"
   namespace           = "AWS/SQS"
   period              = "60"

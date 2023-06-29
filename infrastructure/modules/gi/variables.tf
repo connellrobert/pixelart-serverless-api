@@ -18,3 +18,7 @@ variable "result_queue_url" {
     type = string
     default = ""
 }
+
+variable "result_queue_arn" {
+    type = string
+}

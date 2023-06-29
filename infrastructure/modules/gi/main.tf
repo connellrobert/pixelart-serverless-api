@@ -8,6 +8,7 @@ module "gi_oracle_function" {
   lambda_environment = {
     "OPENAI_API_KEY"   = var.openai_key_name
     "RESULT_QUEUE_URL" = var.result_queue_url
+    "DEBUG_MODE"      = "true"
   }
 }
 
@@ -32,6 +33,7 @@ module "gi_function_policies" {
   queue_arn        = module.gi_queueing_system.queue_arn
   table_arn        = module.gi_queueing_system.queue_table_arn
   empty_db_alarm_arn = module.gi_function_alarms.db_low_count_alarm_arn
+  result_queue_arn = var.result_queue_arn
 }
 
 module "gi_queueing_system" {

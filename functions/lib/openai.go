@@ -44,7 +44,7 @@ func openaiConfig() openai.Client {
 	return *client
 }
 
-func GenerateImage(request GenerateImageRequest) openai.ImageResponse {
+func GenerateImage(request GenerateImageRequest) (openai.ImageResponse, error) {
 	// Create a client
 	client := openaiConfig()
 
@@ -57,15 +57,10 @@ func GenerateImage(request GenerateImageRequest) openai.ImageResponse {
 	}
 
 	// Create the completion
-	completion, err := client.CreateImage(context.Background(), imageRequest)
-	if err != nil {
-		panic(err)
-	}
-
-	return completion
+	return client.CreateImage(context.Background(), imageRequest)
 }
 
-func EditImage(request EditImageRequest) openai.ImageResponse {
+func EditImage(request EditImageRequest) (openai.ImageResponse, error) {
 	// Create a client
 	client := openaiConfig()
 	editImageRequest := openai.ImageEditRequest{
@@ -77,15 +72,10 @@ func EditImage(request EditImageRequest) openai.ImageResponse {
 		Mask:           GetImageFromS3(request.Mask),
 	}
 	// Create the completion
-	completion, err := client.CreateEditImage(context.Background(), editImageRequest)
-	if err != nil {
-		panic(err)
-	}
-
-	return completion
+	return client.CreateEditImage(context.Background(), editImageRequest)
 }
 
-func CreateImageVariation(request CreateImageVariantRequest) openai.ImageResponse {
+func CreateImageVariation(request CreateImageVariantRequest) (openai.ImageResponse, error) {
 	// Create a client
 	client := openaiConfig()
 
@@ -96,12 +86,7 @@ func CreateImageVariation(request CreateImageVariantRequest) openai.ImageRespons
 		Image:          GetImageFromS3(request.Image),
 	}
 	// Create the completion
-	completion, err := client.CreateVariImage(context.Background(), variantImageRequest)
-	if err != nil {
-		panic(err)
-	}
-
-	return completion
+	return client.CreateVariImage(context.Background(), variantImageRequest)
 }
 
 func GetImageFromS3(imageName string) *os.File {

@@ -6,3 +6,6 @@ todo
 - [ ] oracle should delete sqs messages upon consumption
 - [ ] Create terraform plan file local save for proper caching of backend infra proposed state. 
 - [ ] state should be stored in aws, a backend should be created for it.
+- [ ] Convert hardcoded mapping for scheduler to aws paramater store configured in terraform
+- [ ] Add tracing configuration to terraform and xray sampling logic to functions
+- [ ] Add status function to poll the analytics table for completed results

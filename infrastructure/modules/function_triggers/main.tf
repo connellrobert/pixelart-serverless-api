@@ -7,6 +7,14 @@ resource "aws_sns_topic_subscription" "sns_topic_subscription" {
 }
 
 
+resource "aws_lambda_permission" "poll_permission" {
+    action = "lambda:InvokeFunction"
+    function_name = var.poll_function_arn
+    principal = "sns.amazonaws.com"
+    source_arn = var.sns_topic_arn
+}
+
+
 resource "aws_lambda_event_source_mapping" "oracle_trigger" {
   event_source_arn = var.oracle_queue_arn
   function_name = var.oracle_function_arn

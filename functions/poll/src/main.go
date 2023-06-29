@@ -51,16 +51,22 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 
 	// send items to queue
 	for _, item := range result.Items {
-		j, e := json.Marshal(item)
-		if e != nil {
+		j, _ := json.Marshal(item)
+		fmt.Println(string(j))
+		var queueRequest lib.QueueRequest
+		queueRequest.FromDynamoDB(item)
+		j, err := json.Marshal(queueRequest)
+		if err != nil {
 			panic(err)
 		}
 		// send item to queue
 		sendMessageInput := &sqs.SendMessageInput{
-			MessageBody: aws.String(string(j)),
-			QueueUrl:    aws.String(queueUrl),
+			MessageBody:            aws.String(string(j)),
+			QueueUrl:               aws.String(queueUrl),
+			MessageGroupId:         aws.String("1"),
+			MessageDeduplicationId: aws.String(queueRequest.Id),
 		}
-		_, err := sqsClient.SendMessage(context.Background(), sendMessageInput)
+		_, err = sqsClient.SendMessage(context.Background(), sendMessageInput)
 		if err != nil {
 			panic(err)
 		}
@@ -68,8 +74,11 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 		deleteItemInput := &dynamodb.DeleteItemInput{
 			TableName: aws.String(tableName),
 			Key: map[string]types.AttributeValue{
-				"PK": &types.AttributeValueMemberS{
-					Value: fmt.Sprintf("%v", item["Id"]),
+				"id": &types.AttributeValueMemberS{
+					Value: queueRequest.Id,
+				},
+				"priority": &types.AttributeValueMemberN{
+					Value: fmt.Sprintf("%d", queueRequest.Priority),
 				},
 			},
 		}
@@ -77,6 +86,7 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 		if err != nil {
 			panic(err)
 		}
+		lib.SubmitXRayTraceSubSegment(queueRequest.Metadata.TraceId, "Submitted item to queue")
 
 	}
 

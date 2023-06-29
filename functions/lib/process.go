@@ -11,6 +11,8 @@ import (
 	"encoding/json"
 	"os"
 	"strconv"
+	"strings"
+	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
@@ -19,6 +21,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 	"github.com/aws/aws-sdk-go-v2/service/sqs"
+	"github.com/aws/aws-sdk-go-v2/service/xray"
+	"github.com/google/uuid"
 )
 
 func SendResult(record QueueRequest, response ImageResponseWrapper) {
@@ -38,7 +42,6 @@ func SendResult(record QueueRequest, response ImageResponseWrapper) {
 	if err != nil {
 		panic(err)
 	}
-
 	// Send req to sqs queue
 	queue := os.Getenv("RESULT_QUEUE_URL")
 	sqsClient := sqs.NewFromConfig(cfg)
@@ -114,4 +117,43 @@ var ActionToTableEnvMapping = map[RequestAction]string{
 	GenerateImageAction: "GI_TABLE_NAME",
 	EditImageAction:     "EI_TABLE_NAME",
 	VariateImageAction:  "VI_TABLE_NAME",
+}
+
+var ActionToAlarmMapping = map[RequestAction]string{
+	GenerateImageAction: "giLowDynamoDBCountAlarm",
+	EditImageAction:     "eiLowDynamoDBCountAlarm",
+	VariateImageAction:  "viLowDynamoDBCountAlarm",
+}
+
+func SubmitXRayTraceSubSegment(parentSegmentId, name string) {
+	cfg, err := config.LoadDefaultConfig(context.TODO(),
+		config.WithRegion("us-east-1"),
+	)
+	if err != nil {
+		panic(err)
+	}
+	id := strings.Replace(uuid.New().String(), "-", "", -1)[:16]
+	xrayClient := xray.NewFromConfig(cfg)
+	startTime := time.Now().UnixNano() / int64(time.Millisecond)
+	document := map[string]interface{}{
+		"trace_id":   id,
+		"id":         parentSegmentId,
+		"name":       name,
+		"start_time": startTime,
+		"end_time":   startTime + 10000,
+	}
+	documentString, err := json.Marshal(document)
+	if err != nil {
+		panic(err)
+	}
+
+	submitSubSegmentInput := &xray.PutTraceSegmentsInput{
+		TraceSegmentDocuments: []string{
+			string(documentString),
+		},
+	}
+	_, err = xrayClient.PutTraceSegments(context.Background(), submitSubSegmentInput)
+	if err != nil {
+		panic(err)
+	}
 }

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"os"
 
 	lib "github.com/aimless-it/ai-canvas/functions/lib"
 	"github.com/aws/aws-lambda-go/events"
@@ -24,19 +25,45 @@ func Handler(ctx context.Context, queueRequest events.SQSEvent) {
 	}
 
 	var response openai.ImageResponse
+	if debug := os.Getenv("DEBUG_MODE"); debug == "true" {
+		response := lib.ImageResponseWrapper{
+			Success: true,
+			Response: openai.ImageResponse{
+				Created: 45454569420,
+				Data: []openai.ImageResponseDataInner{
+					openai.ImageResponseDataInner{
+						URL: "something cool",
+					},
+				},
+			},
+		}
+
+		lib.SendResult(request, response)
+		lib.SubmitXRayTraceSubSegment(request.Metadata.TraceId, "Sent result to queue")
+		return
+	}
+	var success bool
 	switch request.Action {
 	case lib.GenerateImageAction:
-		response = lib.GenerateImage(request.CreateImage)
+		response, err = lib.GenerateImage(request.CreateImage)
 	case lib.EditImageAction:
-		response = lib.EditImage(request.CreateImageEdit)
+		response, err = lib.EditImage(request.CreateImageEdit)
 	case lib.VariateImageAction:
-		response = lib.CreateImageVariation(request.CreateImageVariation)
+		response, err = lib.CreateImageVariation(request.CreateImageVariation)
+	}
+	if err != nil {
+		success = false
+	} else {
+		success = true
 	}
 	fmt.Println(response)
 	wrapped := lib.ImageResponseWrapper{
+		Success:  success,
 		Response: response,
 	}
+
 	lib.SendResult(request, wrapped)
+	lib.SubmitXRayTraceSubSegment(request.Metadata.TraceId, "Sent result to queue")
 }
 
 func main() {

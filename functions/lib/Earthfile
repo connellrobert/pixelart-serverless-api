@@ -1,7 +1,7 @@
 VERSION 0.6
+FROM golang:1.20-bullseye
 
 deps:
-    FROM golang:1.20-bullseye
     WORKDIR /libs/hello
     COPY go.mod go.sum ./
     RUN go mod download
@@ -10,3 +10,9 @@ artifact:
     FROM +deps
     COPY *.go .
     SAVE ARTIFACT .
+
+update:
+    FROM +deps
+    RUN go get -u ./...
+    SAVE ARTIFACT go.mod AS LOCAL go.mod
+    SAVE ARTIFACT go.sum AS LOCAL go.sum
