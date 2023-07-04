@@ -6,4 +6,5 @@ use (
 	./functions/poll
 	./functions/result
 	./functions/scheduler
+	./functions/image
 )
