@@ -31,7 +31,7 @@ func Handler(ctx context.Context, queueRequest events.SQSEvent) {
 			Response: openai.ImageResponse{
 				Created: 45454569420,
 				Data: []openai.ImageResponseDataInner{
-					openai.ImageResponseDataInner{
+					{
 						URL: "something cool",
 					},
 				},
