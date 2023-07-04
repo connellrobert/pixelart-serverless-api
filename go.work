@@ -7,4 +7,5 @@ use (
 	./functions/result
 	./functions/scheduler
 	./functions/image
+	./functions/status
 )
