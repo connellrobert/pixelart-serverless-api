@@ -5,6 +5,8 @@ build-all:
     BUILD ./functions/poll+compile
     BUILD ./functions/result+compile
     BUILD ./functions/scheduler+compile
+    BUILD ./functions/image+compile
+    BUILD ./functions/status+compile
 
 deploy:
     BUILD +build-all
@@ -20,3 +22,6 @@ update-deps:
     BUILD ./functions/poll+update
     BUILD ./functions/result+update
     BUILD ./functions/scheduler+update
+    BUILD ./functions/image+update
+    BUILD ./functions/status+update
+    
