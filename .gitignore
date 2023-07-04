@@ -4,3 +4,4 @@
 **/.terraform.lock.hcl
 **/terraform.tfstate
 **/*.tfvars
+.tmp-earthly-out/**
