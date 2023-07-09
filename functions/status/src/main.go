@@ -13,6 +13,9 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 )
 
+// List of environment variables:
+// ANALYTICS_TABLE_NAME
+
 func main() {
 	lambda.Start(Handler)
 }
@@ -43,10 +46,23 @@ func Handler(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse,
 	}
 	analyticsItem := lib.AnalyticsItem{}
 	analyticsItem.FromDynamoDB(record.Item)
+	lib.SubmitXRayTraceSubSegment(analyticsItem.Record.Metadata.TraceId, "Retrieved analytics item from db")
+	attempt := analyticsItem.Attempts["0"]
+	data := attempt.Response.Data
+	// check if data is empty
+	if len(data) == 0 {
+		// return empty message
+		return events.APIGatewayProxyResponse{
+			StatusCode: 200,
+			Body:       "{\"url\": \"\"}",
+		}, nil
+	}
+	url := data[0].URL
+
 	// return analytics item
 	return events.APIGatewayProxyResponse{
 		StatusCode: 200,
-		Body:       "{\"url\": \"" + analyticsItem.Attempts["0"].Response.Data[0].URL + "\"}",
+		Body:       "{\"url\": \"" + url + "\"}",
 	}, nil
 
 }

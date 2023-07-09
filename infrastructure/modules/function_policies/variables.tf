@@ -22,3 +22,7 @@ variable "empty_db_alarm_arn" {
 variable "result_queue_arn" {
     type = string
 }
+
+variable "openai_secret_arn" {
+    type = string
+}

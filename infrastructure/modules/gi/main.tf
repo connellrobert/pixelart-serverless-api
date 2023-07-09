@@ -6,9 +6,9 @@ module "gi_oracle_function" {
   lambda_source_path     = "${var.lambda_source_path}/oracle/bin"
   deployment_bucket_name = var.deployment_bucket_name
   lambda_environment = {
-    "OPENAI_API_KEY"   = var.openai_key_name
+    "OPENAI_API_KEY_SECRET_ID"   = var.openai_secret_name
     "RESULT_QUEUE_URL" = var.result_queue_url
-    "DEBUG_MODE"      = "true"
+    "DEBUG_MODE"      = var.openai_key_name == "" ? true : false
   }
 }
 
@@ -34,6 +34,7 @@ module "gi_function_policies" {
   table_arn        = module.gi_queueing_system.queue_table_arn
   empty_db_alarm_arn = module.gi_function_alarms.db_low_count_alarm_arn
   result_queue_arn = var.result_queue_arn
+  openai_secret_arn = var.openai_secret_arn
 }
 
 module "gi_queueing_system" {

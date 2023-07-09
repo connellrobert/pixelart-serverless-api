@@ -2,9 +2,11 @@ module "gi_function_crew" {
     source = "./modules/gi"
     lambda_source_path = var.lambda_source_path
     deployment_bucket_name = aws_s3_bucket.deployment_bucket.id
-    openai_key_name = var.openai_key_name
     result_queue_url = module.core.result_queue_url
     result_queue_arn = module.core.result_queue_arn
+    openai_secret_name = module.core.openai_secret_name
+    openai_secret_arn = module.core.openai_secret_arn
+
 }
 
 module "result_function" {
@@ -88,11 +90,11 @@ resource "aws_iam_role_policy_attachment" "result_role_policy" {
 }
 module "core" {
     source = "./modules/core"
-    lambda_source_path = "${var.lambda_source_path}/scheduler/bin"
+    lambda_source_path = var.lambda_source_path
     deployment_bucket_name = aws_s3_bucket.deployment_bucket.id
     gi_empty_db_alarm_arn = module.gi_function_crew.gi_empty_db_alarm_arn
     gi_table_arn = module.gi_function_crew.gi_table_arn
-    
+    openai_api_key = var.OPENAI_API_KEY
 }
 
 

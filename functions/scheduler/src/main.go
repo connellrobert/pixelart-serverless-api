@@ -116,6 +116,7 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 	lib.SubmitXRayTraceSubSegment(traceId, "Added item to "+tableName)
 	responseBody := map[string]interface{}{
 		"message": fmt.Sprintf("Successfully added %v to %v", record.Id, tableName),
+		"id":      record.Id,
 	}
 	re, err := json.Marshal(responseBody)
 	if err != nil {

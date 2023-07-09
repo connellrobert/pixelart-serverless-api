@@ -78,10 +78,10 @@ func SendRetrySignal(record QueueRequest) string {
 	putItemInput := &dynamodb.PutItemInput{
 		TableName: aws.String(tableName),
 		Item: map[string]types.AttributeValue{
-			"PK": &types.AttributeValueMemberS{
+			"id": &types.AttributeValueMemberS{
 				Value: record.Id,
 			},
-			"Priority": &types.AttributeValueMemberN{
+			"priority": &types.AttributeValueMemberN{
 				Value: strconv.Itoa(record.Priority),
 			},
 		},

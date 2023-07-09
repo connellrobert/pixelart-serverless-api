@@ -36,10 +36,9 @@ func openaiConfig() openai.Client {
 	}
 
 	// Your OpenAI API key
-	apiKey := *result.SecretString
 
 	// Create a client
-	client := openai.NewClient(apiKey)
+	client := openai.NewClient(*result.SecretString)
 
 	return *client
 }

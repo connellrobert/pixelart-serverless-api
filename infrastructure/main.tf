@@ -45,3 +45,8 @@ variable "openai_key_name" {
     type = string
     default = "OPENAI_SECRET_KEY"
 }
+
+variable "OPENAI_API_KEY" {
+    type = string
+    default = ""
+}

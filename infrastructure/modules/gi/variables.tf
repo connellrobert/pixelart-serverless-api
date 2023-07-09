@@ -22,3 +22,11 @@ variable "result_queue_url" {
 variable "result_queue_arn" {
     type = string
 }
+
+variable "openai_secret_name" {
+    type = string
+}
+
+variable "openai_secret_arn" {
+    type = string
+}

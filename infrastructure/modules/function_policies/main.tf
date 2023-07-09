@@ -45,6 +45,13 @@ resource "aws_iam_policy" "oracle_policy" {
       ],
       "Effect": "Allow",
       "Resource": "${var.result_queue_arn}"
+    },
+    {
+      "Action": [
+        "secretsmanager:GetSecretValue"
+      ],
+      "Effect": "Allow",
+      "Resource": "${var.openai_secret_arn}"
     }
   ]
 }
