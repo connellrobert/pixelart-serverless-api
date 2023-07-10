@@ -30,3 +30,8 @@ variable "openai_secret_name" {
 variable "openai_secret_arn" {
     type = string
 }
+
+variable debug {
+    type = bool
+    default = false
+}

@@ -29,3 +29,7 @@ output "openai_secret_name" {
 output "openai_secret_arn" {
     value = aws_secretsmanager_secret.openai_secret.arn
 }
+
+output "api_gateway_url" {
+    value = aws_api_gateway_deployment.pixelart_api_deployment.invoke_url
+}

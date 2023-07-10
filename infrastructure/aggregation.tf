@@ -6,6 +6,7 @@ module "gi_function_crew" {
     result_queue_arn = module.core.result_queue_arn
     openai_secret_name = module.core.openai_secret_name
     openai_secret_arn = module.core.openai_secret_arn
+    debug = var.debug_mode
 
 }
 
@@ -95,6 +96,7 @@ module "core" {
     gi_empty_db_alarm_arn = module.gi_function_crew.gi_empty_db_alarm_arn
     gi_table_arn = module.gi_function_crew.gi_table_arn
     openai_api_key = var.OPENAI_API_KEY
+    hosted_zone_id = var.route_53_hosted_zone_id
 }
 
 

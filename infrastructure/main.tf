@@ -50,3 +50,16 @@ variable "OPENAI_API_KEY" {
     type = string
     default = ""
 }
+
+output "pixelart_api_url" {
+    value = module.core.api_gateway_url
+}
+
+variable "debug_mode" {
+    type = bool
+    default = false
+}
+
+variable "route_53_hosted_zone_id" {
+    type = string
+}

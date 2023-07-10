@@ -8,7 +8,7 @@ module "gi_oracle_function" {
   lambda_environment = {
     "OPENAI_API_KEY_SECRET_ID"   = var.openai_secret_name
     "RESULT_QUEUE_URL" = var.result_queue_url
-    "DEBUG_MODE"      = var.openai_key_name == "" ? true : false
+    "DEBUG_MODE"      = var.debug
   }
 }
 

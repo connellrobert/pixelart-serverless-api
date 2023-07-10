@@ -136,8 +136,8 @@ func SubmitXRayTraceSubSegment(parentSegmentId, name string) {
 	xrayClient := xray.NewFromConfig(cfg)
 	startTime := time.Now().UnixNano() / int64(time.Millisecond)
 	document := map[string]interface{}{
-		"trace_id":   id,
-		"id":         parentSegmentId,
+		"trace_id":   parentSegmentId,
+		"id":         id,
 		"name":       name,
 		"start_time": startTime,
 		"end_time":   startTime + 10000,

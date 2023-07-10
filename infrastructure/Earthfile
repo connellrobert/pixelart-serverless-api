@@ -18,13 +18,13 @@ plan:
     --secret AWS_SECRET_ACCESS_KEY \
     --secret AWS_DEFAULT_REGION \
     --secret TF_VAR_OPENAI_API_KEY \
-    terraform init
+    terraform init -var-file="auto.tfvars"
     RUN --no-cache \ 
     --secret AWS_ACCESS_KEY_ID \
     --secret AWS_SECRET_ACCESS_KEY \
     --secret AWS_DEFAULT_REGION \
     --secret TF_VAR_OPENAI_API_KEY \
-    terraform apply -auto-approve
+    terraform apply -auto-approve -var-file="auto.tfvars"
     SAVE ARTIFACT .terraform/ AS LOCAL .terraform/
 
 destroy:
@@ -39,8 +39,8 @@ destroy:
     RUN --secret AWS_ACCESS_KEY_ID \
     --secret AWS_SECRET_ACCESS_KEY \
     --secret AWS_DEFAULT_REGION \
-    terraform init
+    terraform init -var-file="auto.tfvars"
     RUN --secret AWS_ACCESS_KEY_ID \
     --secret AWS_SECRET_ACCESS_KEY \
     --secret AWS_DEFAULT_REGION \
-    terraform destroy -auto-approve
+    terraform destroy -auto-approve -var-file="auto.tfvars"

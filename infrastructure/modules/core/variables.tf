@@ -17,3 +17,7 @@ variable "deployment_bucket_name" {
 variable "openai_api_key" {
     type = string
 }
+
+variable "hosted_zone_id" {
+    type = string
+}
