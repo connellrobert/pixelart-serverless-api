@@ -14,6 +14,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
+	"github.com/aws/aws-sdk-go-v2/service/sqs"
 	"github.com/google/uuid"
 )
 
@@ -93,26 +94,46 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 		panic(err)
 	}
 
-	putItemInput := &dynamodb.PutItemInput{
-		TableName: aws.String(tableName),
-		Item: map[string]types.AttributeValue{
-			"id": &types.AttributeValueMemberS{
-				Value: record.Id,
-			},
-			"priority": &types.AttributeValueMemberN{
-				Value: strconv.Itoa(record.Priority),
-			},
-			"request": &types.AttributeValueMemberM{
-				Value: record.ToDynamoDB(),
-			},
-		},
-	}
-	_, err = client.PutItem(context.Background(), putItemInput)
+	// putItemInput := &dynamodb.PutItemInput{
+	// 	TableName: aws.String(tableName),
+	// 	Item: map[string]types.AttributeValue{
+	// 		"id": &types.AttributeValueMemberS{
+	// 			Value: record.Id,
+	// 		},
+	// 		"priority": &types.AttributeValueMemberN{
+	// 			Value: strconv.Itoa(record.Priority),
+	// 		},
+	// 		"request": &types.AttributeValueMemberM{
+	// 			Value: record.ToDynamoDB(),
+	// 		},
+	// 	},
+	// }
+	// _, err = client.PutItem(context.Background(), putItemInput)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// alarmName := lib.ActionToAlarmMapping[requestAction]
+	// lib.SetAlarmState(alarmName, "OK")
+
+	j, err := json.Marshal(record)
 	if err != nil {
 		panic(err)
 	}
-	alarmName := lib.ActionToAlarmMapping[requestAction]
-	lib.SetAlarmState(alarmName, "OK")
+
+	queueUrl := os.Getenv("QUEUE_URL")
+	sqsClient := sqs.NewFromConfig(cfg)
+
+	// send item to queue
+	sendMessageInput := &sqs.SendMessageInput{
+		MessageBody:            aws.String(string(j)),
+		QueueUrl:               aws.String(queueUrl),
+		MessageGroupId:         aws.String("1"),
+		MessageDeduplicationId: aws.String(record.Id),
+	}
+	_, err = sqsClient.SendMessage(context.Background(), sendMessageInput)
+	if err != nil {
+		panic(err)
+	}
 	lib.SubmitXRayTraceSubSegment(traceId, "Added item to "+tableName)
 	responseBody := map[string]interface{}{
 		"message": fmt.Sprintf("Successfully added %v to %v", record.Id, tableName),

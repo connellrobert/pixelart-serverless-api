@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'dart:async';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'PixelArt'),
     );
   }
 }
@@ -72,16 +73,44 @@ void SubmitPrompt(String prompt) {
 
 Future<String> requestId(String prompt) async {
   print(prompt);
-  var url = Uri.https("yesno.wtf","/api");
+  var url = Uri.https("api.aimless.it","/image");
   // var response = http.post(url, body: {'prompt': prompt});
-  var response = await http.get(url);
+  var reqBody = {
+    "action": 0,
+    "params": {
+      'prompt': prompt,
+      'size': '512x512',
+      'n': 1,
+      'responseFormat': 'URL',
+      'user': 'me'
+    }
+  };
+  var response = await http.post(url, body: json.encode(reqBody), headers: {'Content-Type': 'application/json'});
   print(response.statusCode);
   print(response.body);
-  var id = "1-2-3";
   Map<String, dynamic> body = jsonDecode(response.body);
+  var id = body['id'];
+  print(id);
+  if (response.statusCode != 200) {
+    throw Exception('Failed to submit prompt');
+  }
   setState(() {
-    this.url = body['image'];
     this.id = id;
+  });
+
+  Timer.periodic(new Duration(seconds: 5), (Timer timer) async {
+    print("Periodic polling for image");
+    var statusUrl = Uri.https("api.aimless.it","/status/${id}");
+    var statusResponse = await http.get(statusUrl);
+    Map<String, dynamic> statusBody = jsonDecode(statusResponse.body);
+    if (statusBody['url'] != "") {
+      print("Image is ready");
+      setState(() {
+        this.url = statusBody['url'];
+      });
+      print("The url is ${this.url}");
+      timer.cancel();
+    }
   });
   return id;
 }
@@ -118,6 +147,7 @@ Future<String> requestId(String prompt) async {
           ),
           if (this.url != "") 
             DisplayAIImage(image: this.url)
+          
         ],
       )
     );

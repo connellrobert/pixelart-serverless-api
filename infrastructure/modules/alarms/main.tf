@@ -32,6 +32,7 @@ resource "aws_cloudwatch_composite_alarm" "fill_queue_alarm" {
     aws_cloudwatch_composite_alarm.db_low_count_alarm,
     aws_cloudwatch_metric_alarm.low_sqs_message_count_alarm
   ]
+  actions_enabled = true
 }
 
 // Create a sns topic
@@ -43,3 +44,42 @@ locals {
   db_low_count_alarm_name = "${var.alarm_prefix}LowDynamoDBCountAlarm"
   fill_queue_alarm_name = "${var.alarm_prefix}FillQueueAlarm"
 }
+
+
+# resource "aws_sfn_state_machine" "poller_automation" {
+#   name    = "poller_automation"
+#   role_arn = aws_iam_role.poller_automation_role.arn
+#   definition = jsonEncode({
+#     Comment = "A state machine that polls the queue and triggers the oracle function"
+#     StartAt = "PollQueue"
+#     States = {
+#       PollQueue = {
+#         Type = "Task"
+#         Resource = module.gi_poll_function.function_arn
+#         Next = "WaitForOracle"
+#       }
+#       WaitForOracle = {
+#         Type = "Wait"
+#         Seconds = 10
+#         Next = "PollQueue"
+#       }
+#     }
+#   })
+# }
+
+# //role for the state machine
+# resource "aws_iam_role" "poller_automation_role" {
+#   name = "poller_automation_role"
+#   assume_role_policy = <<EOF
+# {
+#   "Version": "2012-10-17",
+#   "Statement": [
+#     {
+#       "Action": "states:StartExecution",
+#       "Resource": "${aws_sfn_state_machine.poller_automation.arn}",
+#       "Effect": "Allow"
+#     }
+#   ]
+# }
+# EOF
+# }

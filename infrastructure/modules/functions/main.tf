@@ -22,6 +22,7 @@ resource "aws_lambda_function" "lambda_function" {
   handler       = var.lambda_type
   runtime       = "go1.x"
   role          = aws_iam_role.lambda_role.arn
+  timeout = 60
   environment {
     variables = var.lambda_environment
   }

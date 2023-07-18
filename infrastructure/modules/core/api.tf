@@ -156,6 +156,11 @@ resource "aws_api_gateway_deployment" "pixelart_api_deployment" {
     redeployment = "testing for now, replace with something that changes in the api"
   }
 
+  depends_on = [ 
+    aws_api_gateway_integration.sheduler_integration,
+    aws_api_gateway_integration.status_integration
+   ]
+
   lifecycle {
     create_before_destroy = true
   }

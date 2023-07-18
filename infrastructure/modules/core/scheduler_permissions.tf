@@ -16,17 +16,17 @@ resource "aws_iam_policy" "scheduler_policy" {
             ],
             "Effect": "Allow",
             "Resource": [
-                "${aws_dynamodb_table.analytics_table.arn}",
-                "${var.gi_table_arn}"
+                "${aws_dynamodb_table.analytics_table.arn}"
             ]
         },
         {
             "Action": [
-                "cloudwatch:SetAlarmState"
+                "sqs:PutMessage",
+                "sqs:SendMessage"
             ],
             "Effect": "Allow",
             "Resource": [
-                "${var.gi_empty_db_alarm_arn}"
+                "${var.queue_arn}"
             ]
         },
         {

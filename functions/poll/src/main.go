@@ -53,6 +53,7 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 	for _, item := range result.Items {
 		j, _ := json.Marshal(item)
 		fmt.Println(string(j))
+		fmt.Println(item["request"].(*types.AttributeValueMemberM).Value["Action"].(*types.AttributeValueMemberN).Value)
 		var queueRequest lib.QueueRequest
 		queueRequest.FromDynamoDB(item)
 		j, err := json.Marshal(queueRequest)

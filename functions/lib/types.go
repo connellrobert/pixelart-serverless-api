@@ -203,7 +203,7 @@ func (r *QueueRequest) FromDynamoDB(item map[string]types.AttributeValue) {
 	} else {
 		r.Id = item["id"].(*types.AttributeValueMemberS).Value
 	}
-	r.Metadata.TraceId = item["Metadata"].(*types.AttributeValueMemberM).Value["TraceId"].(*types.AttributeValueMemberS).Value
+	r.Metadata.TraceId = item["request"].(*types.AttributeValueMemberM).Value["Metadata"].(*types.AttributeValueMemberM).Value["TraceId"].(*types.AttributeValueMemberS).Value
 	r.Priority, _ = strconv.Atoi(item["priority"].(*types.AttributeValueMemberN).Value)
 	action, err := strconv.Atoi(item["request"].(*types.AttributeValueMemberM).Value["Action"].(*types.AttributeValueMemberN).Value)
 	if err != nil {

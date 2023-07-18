@@ -3,6 +3,7 @@ package lib
 import (
 	"context"
 	"io"
+	"log"
 	"os"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -16,29 +17,36 @@ import (
 // OPENAI_API_KEY_SECRET_ID - The AWS Secrets Manager secret ID that contains your OpenAI API key
 
 func openaiConfig() openai.Client {
-	// Create a Secrets Manager client
-	cfg, err := config.LoadDefaultConfig(context.TODO(),
-		config.WithRegion("us-west-1"),
-	)
-	if err != nil {
-		panic(err)
-	}
-	svc := secretsmanager.NewFromConfig(cfg)
+	secretName := os.Getenv("OPENAI_API_KEY_SECRET_ID")
+	region := "us-east-1"
 
-	openaiEnvVar := os.Getenv("OPENAI_API_KEY_SECRET_ID")
-	// Get the secret value
-	input := &secretsmanager.GetSecretValueInput{
-		SecretId: aws.String(openaiEnvVar),
+	config, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion(region))
+	if err != nil {
+		log.Fatal(err)
 	}
+
+	// Create Secrets Manager client
+	svc := secretsmanager.NewFromConfig(config)
+
+	input := &secretsmanager.GetSecretValueInput{
+		SecretId:     aws.String(secretName),
+		VersionStage: aws.String("AWSCURRENT"), // VersionStage defaults to AWSCURRENT if unspecified
+	}
+
 	result, err := svc.GetSecretValue(context.TODO(), input)
 	if err != nil {
-		panic(err)
+		// For a list of exceptions thrown, see
+		// https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+		log.Fatal(err.Error())
 	}
+
+	// Decrypts secret using the associated KMS key.
+	var secretString string = *result.SecretString
 
 	// Your OpenAI API key
 
 	// Create a client
-	client := openai.NewClient(*result.SecretString)
+	client := openai.NewClient(secretString)
 
 	return *client
 }

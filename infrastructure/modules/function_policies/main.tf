@@ -85,32 +85,12 @@ resource "aws_iam_policy" "poll_policy" {
     },
     {
       "Action": [
-        "dynamodb:DeleteItem",
-        "dynamodb:GetItem",
-        "dynamodb:Scan",
-        "dynamodb:Query",
-        "dynamodb:DescribeTable",
-        "dynamodb:BatchGetItem",
-        "dynamodb:ListTables"
-      ],
-      "Effect": "Allow",
-      "Resource": "${var.table_arn}"
-    },
-    {
-      "Action": [
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
         "logs:PutLogEvents"
       ],
       "Effect": "Allow",
       "Resource": "*"
-    },
-    {
-      "Action": [
-        "cloudwatch:SetAlarmState"
-      ],
-      "Effect": "Allow",
-      "Resource": "${var.empty_db_alarm_arn}"
     },
     {
       "Action": [

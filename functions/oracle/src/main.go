@@ -19,6 +19,7 @@ import (
 // TODO: Retrieve images from s3 prior to calling openai requests
 func Handler(ctx context.Context, queueRequest events.SQSEvent) {
 	var request lib.QueueRequest
+	fmt.Println(queueRequest)
 	err := json.Unmarshal([]byte(queueRequest.Records[0].Body), &request)
 	if err != nil {
 		panic(err)
@@ -26,6 +27,7 @@ func Handler(ctx context.Context, queueRequest events.SQSEvent) {
 
 	var response openai.ImageResponse
 	if debug := os.Getenv("DEBUG_MODE"); debug == "true" {
+		fmt.Println("DEBUG MODE IS ACTIVE")
 		response := lib.ImageResponseWrapper{
 			Success: true,
 			Response: openai.ImageResponse{
@@ -43,17 +45,25 @@ func Handler(ctx context.Context, queueRequest events.SQSEvent) {
 		return
 	}
 	var success bool
+	fmt.Println(request)
 	switch request.Action {
 	case lib.GenerateImageAction:
+		fmt.Println("Generating image")
 		response, err = lib.GenerateImage(request.CreateImage)
 	case lib.EditImageAction:
+		fmt.Println("Editing image")
 		response, err = lib.EditImage(request.CreateImageEdit)
 	case lib.VariateImageAction:
+		fmt.Println("Varying image")
 		response, err = lib.CreateImageVariation(request.CreateImageVariation)
+	default:
+		fmt.Println("Invalid action")
 	}
 	if err != nil {
+		fmt.Println(err)
 		success = false
 	} else {
+		fmt.Println("Success!")
 		success = true
 	}
 	fmt.Println(response)

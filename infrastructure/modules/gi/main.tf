@@ -30,25 +30,25 @@ module "gi_function_policies" {
   source           = "../function_policies"
   oracle_role_name = module.gi_oracle_function.function_iam_role_name
   poll_role_name   = module.gi_poll_function.function_iam_role_name
-  queue_arn        = module.gi_queueing_system.queue_arn
-  table_arn        = module.gi_queueing_system.queue_table_arn
-  empty_db_alarm_arn = module.gi_function_alarms.db_low_count_alarm_arn
+  queue_arn        = var.queue_arn
+  # table_arn        = module.gi_queueing_system.queue_table_arn
+  # empty_db_alarm_arn = module.gi_function_alarms.db_low_count_alarm_arn
   result_queue_arn = var.result_queue_arn
   openai_secret_arn = var.openai_secret_arn
 }
 
-module "gi_queueing_system" {
-  source     = "../queuing_system"
-  queue_name = local.queue_name
-  table_name = local.table_name
-}
+# module "gi_queueing_system" {
+#   source     = "../queuing_system"
+#   queue_name = local.queue_name
+#   table_name = local.table_name
+# }
 
-module "gi_function_alarms" {
-  source         = "../alarms"
-  sns_topic_name = "gi_alarm_topic"
-  queue_name     = local.queue_name
-  alarm_prefix   = "gi"
-}
+# module "gi_function_alarms" {
+#   source         = "../alarms"
+#   sns_topic_name = "gi_alarm_topic"
+#   queue_name     = local.queue_name
+#   alarm_prefix   = "gi"
+# }
 
 
 

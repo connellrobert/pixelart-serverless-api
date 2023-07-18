@@ -13,6 +13,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
+	"github.com/aws/aws-sdk-go-v2/service/sqs"
 )
 
 // List of environment variables:
@@ -77,8 +78,26 @@ func Handler(ctx context.Context, sqsResult events.SQSEvent) {
 			panic(err)
 		}
 
-		if attemptNum < 3 || !result.Result.Success {
-			lib.SendRetrySignal(result.Record)
+		if attemptNum < 3 && !result.Result.Success {
+			j, err := json.Marshal(result.Record)
+			if err != nil {
+				panic(err)
+			}
+
+			queueUrl := os.Getenv("QUEUE_URL")
+			sqsClient := sqs.NewFromConfig(cfg)
+
+			// send item to queue
+			sendMessageInput := &sqs.SendMessageInput{
+				MessageBody:            aws.String(string(j)),
+				QueueUrl:               aws.String(queueUrl),
+				MessageGroupId:         aws.String("1"),
+				MessageDeduplicationId: aws.String(result.Record.Id),
+			}
+			_, err = sqsClient.SendMessage(context.Background(), sendMessageInput)
+			if err != nil {
+				panic(err)
+			}
 		}
 		lib.SubmitXRayTraceSubSegment(result.Record.Metadata.TraceId, "Updated analytics item")
 	}

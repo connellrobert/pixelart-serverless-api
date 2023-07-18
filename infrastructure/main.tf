@@ -41,15 +41,6 @@ variable "lambda_source_path" {
     default = "/functions"
 }
 
-variable "openai_key_name" {
-    type = string
-    default = "OPENAI_SECRET_KEY"
-}
-
-variable "OPENAI_API_KEY" {
-    type = string
-    default = ""
-}
 
 output "pixelart_api_url" {
     value = module.core.api_gateway_url
@@ -61,5 +52,9 @@ variable "debug_mode" {
 }
 
 variable "route_53_hosted_zone_id" {
+    type = string
+}
+
+variable "OPENAI_API_KEY" {
     type = string
 }

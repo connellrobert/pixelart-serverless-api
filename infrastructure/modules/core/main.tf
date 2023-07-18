@@ -13,4 +13,5 @@ resource "aws_dynamodb_table" "analytics_table" {
 // Create a sqs queue for lambda function results
 resource "aws_sqs_queue" "results_queue" {
     name = "results_queue"
+    visibility_timeout_seconds = 66
 }

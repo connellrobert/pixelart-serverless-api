@@ -9,3 +9,7 @@ todo
 - [ ] Convert hardcoded mapping for scheduler to aws paramater store configured in terraform
 - [ ] Add tracing configuration to terraform and xray sampling logic to functions
 - [ ] Add status function to poll the analytics table for completed results
+
+bugs
+- [ ] status errors when there are no attempts and only pulls the first. It should check for nil values and find the latest entry in the attempts
+- [ ] Poller still sends an sqs message even when erroring out. It's causing the result function to overwrite the db object and cause the entire request to be nil.

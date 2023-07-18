@@ -19,6 +19,7 @@ module "scheduler_function" {
     deployment_bucket_name = var.deployment_bucket_name
     lambda_environment = {
         "ANALYTICS_TABLE_NAME" = aws_dynamodb_table.analytics_table.name
-        "GI_TABLE_NAME" = "gi_table"
+        # "GI_TABLE_NAME" = "gi_table"
+        "QUEUE_URL" = var.queue_url
     }
 }

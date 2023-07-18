@@ -22,13 +22,13 @@ output "result_queue_arn" {
     value = aws_sqs_queue.results_queue.arn
 }
 
-output "openai_secret_name" {
-    value = aws_secretsmanager_secret.openai_secret.name
-}
+# output "openai_secret_name" {
+#     value = aws_secretsmanager_secret.openai_secret.name
+# }
 
-output "openai_secret_arn" {
-    value = aws_secretsmanager_secret.openai_secret.arn
-}
+# output "openai_secret_arn" {
+#     value = aws_secretsmanager_secret.openai_secret.arn
+# }
 
 output "api_gateway_url" {
     value = aws_api_gateway_deployment.pixelart_api_deployment.invoke_url

@@ -11,13 +11,13 @@ variable "queue_arn" {
     type = string
 }
 
-variable "table_arn" {
-    type = string
-}
+# variable "table_arn" {
+#     type = string
+# }
 
-variable "empty_db_alarm_arn" {
-    type = string
-}
+# variable "empty_db_alarm_arn" {
+#     type = string
+# }
 
 variable "result_queue_arn" {
     type = string
