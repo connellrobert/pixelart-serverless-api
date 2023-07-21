@@ -6,10 +6,9 @@ require (
 	github.com/aimless-it/ai-canvas/functions/lib v0.0.0
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/sashabaranov/go-openai v1.14.1
-) 
+)
 
 replace github.com/aimless-it/ai-canvas/functions/lib => ../lib
-
 
 require (
 	github.com/aws/aws-sdk-go-v2 v1.19.0 // indirect

@@ -22,6 +22,7 @@
 		"source=C:\\Users\\rober\\.aws,target=/home/vscode/.aws,type=bind,consistency=cached"
 	],
 	"containerEnv": {
-		"GOPRIVATE": "github.com/aimless-it"
+		"GOPRIVATE": "github.com/aimless-it",
+		"GO111MODULE": "on"
 	}
 }

@@ -34,7 +34,7 @@ require (
 	github.com/aws/smithy-go v1.13.5 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
-	github.com/sashabaranov/go-openai v1.14.0 // indirect
+	github.com/sashabaranov/go-openai v1.14.1 // indirect
 )
 
 replace github.com/aimless-it/ai-canvas/functions/lib v0.0.0 => ../lib
