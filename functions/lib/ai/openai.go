@@ -1,4 +1,4 @@
-package lib
+package ai
 
 import (
 	"context"
@@ -6,6 +6,8 @@ import (
 	"log"
 	"os"
 
+	. "github.com/aimless-it/ai-canvas/functions/lib/process"
+	. "github.com/aimless-it/ai-canvas/functions/lib/types"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
@@ -18,7 +20,7 @@ import (
 
 func openaiConfig() openai.Client {
 	secretName := os.Getenv("OPENAI_API_KEY_SECRET_ID")
-	region := "us-east-1"
+	region := Region()
 
 	config, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion(region))
 	if err != nil {
@@ -59,7 +61,7 @@ func GenerateImage(request GenerateImageRequest) (openai.ImageResponse, error) {
 		Prompt:         request.Prompt,
 		N:              request.N,
 		Size:           request.Size.OpenaiImageSize(),
-		ResponseFormat: request.ResponseFormat.openaiResponseFormat(),
+		ResponseFormat: request.ResponseFormat.OpenaiResponseFormat(),
 		User:           request.User,
 	}
 
@@ -74,7 +76,7 @@ func EditImage(request EditImageRequest) (openai.ImageResponse, error) {
 		Prompt:         request.Prompt,
 		N:              request.N,
 		Size:           request.Size.OpenaiImageSize(),
-		ResponseFormat: request.ResponseFormat.openaiResponseFormat(),
+		ResponseFormat: request.ResponseFormat.OpenaiResponseFormat(),
 		Image:          GetImageFromS3(request.Image),
 		Mask:           GetImageFromS3(request.Mask),
 	}
@@ -89,7 +91,7 @@ func CreateImageVariation(request CreateImageVariantRequest) (openai.ImageRespon
 	variantImageRequest := openai.ImageVariRequest{
 		N:              request.N,
 		Size:           request.Size.OpenaiImageSize(),
-		ResponseFormat: request.ResponseFormat.openaiResponseFormat(),
+		ResponseFormat: request.ResponseFormat.OpenaiResponseFormat(),
 		Image:          GetImageFromS3(request.Image),
 	}
 	// Create the completion
@@ -97,10 +99,10 @@ func CreateImageVariation(request CreateImageVariantRequest) (openai.ImageRespon
 }
 
 func GetImageFromS3(imageName string) *os.File {
-
+	region := Region()
 	// create s3 client
 	config, _ := config.LoadDefaultConfig(context.TODO(),
-		config.WithRegion("us-east-1"),
+		config.WithRegion(region),
 	)
 	svc := s3.NewFromConfig(config)
 	obj := &s3.GetObjectInput{

@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/aimless-it/ai-canvas/functions/lib"
+	"github.com/aimless-it/ai-canvas/functions/lib/process"
+	aiTypes "github.com/aimless-it/ai-canvas/functions/lib/types"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	aws "github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 	"github.com/aws/aws-sdk-go-v2/service/sqs"
@@ -26,12 +26,7 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 	emptyDbAlarmName := os.Getenv("EMPTY_DB_ALARM_NAME")
 	queueUrl := os.Getenv("QUEUE_URL")
 	// get item from dynamodb
-	cfg, err := config.LoadDefaultConfig(context.TODO(),
-		config.WithRegion("us-east-1"),
-	)
-	if err != nil {
-		panic(err)
-	}
+	cfg := process.GetAWSConfig()
 	dbClient := dynamodb.NewFromConfig(cfg)
 	//scan dynamodb table for top 10 items
 	scanInput := &dynamodb.ScanInput{
@@ -43,7 +38,7 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 		panic(err)
 	}
 	if len(result.Items) == 0 {
-		lib.SetAlarmState(emptyDbAlarmName, "ALARM")
+		process.SetAlarmState(emptyDbAlarmName, "ALARM")
 		return request, nil
 	}
 
@@ -54,7 +49,7 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 		j, _ := json.Marshal(item)
 		fmt.Println(string(j))
 		fmt.Println(item["request"].(*types.AttributeValueMemberM).Value["Action"].(*types.AttributeValueMemberN).Value)
-		var queueRequest lib.QueueRequest
+		var queueRequest aiTypes.QueueRequest
 		queueRequest.FromDynamoDB(item)
 		j, err := json.Marshal(queueRequest)
 		if err != nil {
@@ -87,7 +82,7 @@ func Handler(ctx context.Context, request events.SNSEvent) (interface{}, error) 
 		if err != nil {
 			panic(err)
 		}
-		lib.SubmitXRayTraceSubSegment(queueRequest.Metadata.TraceId, "Submitted item to queue")
+		process.SubmitXRayTraceSubSegment(queueRequest.Metadata.TraceId, "Submitted item to queue")
 
 	}
 

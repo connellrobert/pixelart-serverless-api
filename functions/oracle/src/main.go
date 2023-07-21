@@ -6,7 +6,9 @@ import (
 	"fmt"
 	"os"
 
-	lib "github.com/aimless-it/ai-canvas/functions/lib"
+	"github.com/aimless-it/ai-canvas/functions/lib/ai"
+	"github.com/aimless-it/ai-canvas/functions/lib/process"
+	"github.com/aimless-it/ai-canvas/functions/lib/types"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	openai "github.com/sashabaranov/go-openai"
@@ -18,8 +20,7 @@ import (
 // lambda handler
 // TODO: Retrieve images from s3 prior to calling openai requests
 func Handler(ctx context.Context, queueRequest events.SQSEvent) {
-	var request lib.QueueRequest
-	fmt.Println(queueRequest)
+	var request types.QueueRequest
 	err := json.Unmarshal([]byte(queueRequest.Records[0].Body), &request)
 	if err != nil {
 		panic(err)
@@ -28,7 +29,7 @@ func Handler(ctx context.Context, queueRequest events.SQSEvent) {
 	var response openai.ImageResponse
 	if debug := os.Getenv("DEBUG_MODE"); debug == "true" {
 		fmt.Println("DEBUG MODE IS ACTIVE")
-		response := lib.ImageResponseWrapper{
+		response := types.ImageResponseWrapper{
 			Success: true,
 			Response: openai.ImageResponse{
 				Created: 45454569420,
@@ -40,22 +41,21 @@ func Handler(ctx context.Context, queueRequest events.SQSEvent) {
 			},
 		}
 
-		lib.SendResult(request, response)
-		lib.SubmitXRayTraceSubSegment(request.Metadata.TraceId, "Sent result to queue")
+		process.SendResult(request, response)
+		process.SubmitXRayTraceSubSegment(request.Metadata.TraceId, "Sent result to queue")
 		return
 	}
 	var success bool
-	fmt.Println(request)
 	switch request.Action {
-	case lib.GenerateImageAction:
+	case types.GenerateImageAction:
 		fmt.Println("Generating image")
-		response, err = lib.GenerateImage(request.CreateImage)
-	case lib.EditImageAction:
+		response, err = ai.GenerateImage(request.CreateImage)
+	case types.EditImageAction:
 		fmt.Println("Editing image")
-		response, err = lib.EditImage(request.CreateImageEdit)
-	case lib.VariateImageAction:
+		response, err = ai.EditImage(request.CreateImageEdit)
+	case types.VariateImageAction:
 		fmt.Println("Varying image")
-		response, err = lib.CreateImageVariation(request.CreateImageVariation)
+		response, err = ai.CreateImageVariation(request.CreateImageVariation)
 	default:
 		fmt.Println("Invalid action")
 	}
@@ -66,14 +66,13 @@ func Handler(ctx context.Context, queueRequest events.SQSEvent) {
 		fmt.Println("Success!")
 		success = true
 	}
-	fmt.Println(response)
-	wrapped := lib.ImageResponseWrapper{
+	wrapped := types.ImageResponseWrapper{
 		Success:  success,
 		Response: response,
 	}
 
-	lib.SendResult(request, wrapped)
-	lib.SubmitXRayTraceSubSegment(request.Metadata.TraceId, "Sent result to queue")
+	process.SendResult(request, wrapped)
+	process.SubmitXRayTraceSubSegment(request.Metadata.TraceId, "Sent result to queue")
 }
 
 func main() {

@@ -41,7 +41,7 @@ destroy:
     --secret AWS_DEFAULT_REGION \
     --secret TF_VAR_OPENAI_API_KEY \
     terraform init -var-file="auto.tfvars"
-    RUN --secret AWS_ACCESS_KEY_ID \
+    RUN --no-cache --secret AWS_ACCESS_KEY_ID \
     --secret AWS_SECRET_ACCESS_KEY \
     --secret AWS_DEFAULT_REGION \
     --secret TF_VAR_OPENAI_API_KEY \

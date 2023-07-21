@@ -7,14 +7,13 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/aimless-it/ai-canvas/functions/lib"
+	"github.com/aimless-it/ai-canvas/functions/lib/process"
+	aiTypes "github.com/aimless-it/ai-canvas/functions/lib/types"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	aws "github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
-	"github.com/aws/aws-sdk-go-v2/service/sqs"
 	"github.com/google/uuid"
 )
 
@@ -45,14 +44,13 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 		panic(err)
 	}
 	action, err := strconv.Atoi(fmt.Sprintf("%v", body["action"]))
-	fmt.Print(action)
 	if err != nil {
 		panic(err)
 	}
-	requestAction := lib.RequestAction(action)
+	requestAction := aiTypes.RequestAction(action)
 	fmt.Print(requestAction)
-	record := lib.QueueRequest{
-		Metadata: lib.CommonMetadata{
+	record := aiTypes.QueueRequest{
+		Metadata: aiTypes.CommonMetadata{
 			TraceId: traceId,
 		},
 		Id:       id,
@@ -60,21 +58,13 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 		Priority: 0,
 	}
 	record.MapParams(requestAction, body["params"])
-	tableName := os.Getenv(lib.ActionToTableEnvMapping[requestAction])
-	fmt.Println(lib.ActionToTableEnvMapping[requestAction])
-	fmt.Println(tableName)
-	cfg, err := config.LoadDefaultConfig(context.TODO(),
-		config.WithRegion("us-east-1"),
-	)
-	if err != nil {
-		panic(err)
-	}
+	cfg := process.GetAWSConfig()
 	client := dynamodb.NewFromConfig(cfg)
 	// Create Analytics Item
-	analyticsItem := lib.AnalyticsItem{
+	analyticsItem := aiTypes.AnalyticsItem{
 		Id:       record.Id,
 		Record:   record,
-		Attempts: make(map[string]lib.ImageResponseWrapper),
+		Attempts: make(map[string]aiTypes.ImageResponseWrapper),
 	}
 	// Store Analytics Item
 	analyticsTable := os.Getenv("ANALYTICS_TABLE_NAME")
@@ -84,7 +74,7 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 			"id": &types.AttributeValueMemberS{
 				Value: record.Id,
 			},
-			"Record": &types.AttributeValueMemberM{
+			"record": &types.AttributeValueMemberM{
 				Value: analyticsItem.ToDynamoDB(),
 			},
 		},
@@ -93,50 +83,10 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 	if err != nil {
 		panic(err)
 	}
-
-	// putItemInput := &dynamodb.PutItemInput{
-	// 	TableName: aws.String(tableName),
-	// 	Item: map[string]types.AttributeValue{
-	// 		"id": &types.AttributeValueMemberS{
-	// 			Value: record.Id,
-	// 		},
-	// 		"priority": &types.AttributeValueMemberN{
-	// 			Value: strconv.Itoa(record.Priority),
-	// 		},
-	// 		"request": &types.AttributeValueMemberM{
-	// 			Value: record.ToDynamoDB(),
-	// 		},
-	// 	},
-	// }
-	// _, err = client.PutItem(context.Background(), putItemInput)
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// alarmName := lib.ActionToAlarmMapping[requestAction]
-	// lib.SetAlarmState(alarmName, "OK")
-
-	j, err := json.Marshal(record)
-	if err != nil {
-		panic(err)
-	}
-
-	queueUrl := os.Getenv("QUEUE_URL")
-	sqsClient := sqs.NewFromConfig(cfg)
-
-	// send item to queue
-	sendMessageInput := &sqs.SendMessageInput{
-		MessageBody:            aws.String(string(j)),
-		QueueUrl:               aws.String(queueUrl),
-		MessageGroupId:         aws.String("1"),
-		MessageDeduplicationId: aws.String(record.Id),
-	}
-	_, err = sqsClient.SendMessage(context.Background(), sendMessageInput)
-	if err != nil {
-		panic(err)
-	}
-	lib.SubmitXRayTraceSubSegment(traceId, "Added item to "+tableName)
+	process.SendRequestToQueue(record)
+	process.SubmitXRayTraceSubSegment(traceId, "Added item "+record.Id+" to queue")
 	responseBody := map[string]interface{}{
-		"message": fmt.Sprintf("Successfully added %v to %v", record.Id, tableName),
+		"message": fmt.Sprintf("Successfully added %v", record.Id),
 		"id":      record.Id,
 	}
 	re, err := json.Marshal(responseBody)

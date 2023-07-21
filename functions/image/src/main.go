@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"github.com/aimless-it/ai-canvas/functions/lib/process"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	aws "github.com/aws/aws-sdk-go-v2/aws"
@@ -16,9 +17,10 @@ func main() {
 }
 
 func Handler() (events.APIGatewayProxyResponse, error) {
+	region := process.Region()
 	// Create a presigned url for s3
 	svc := s3.New(s3.Options{
-		Region: "us-east-1",
+		Region: region,
 	})
 	presign := s3.NewPresignClient(svc)
 	req, er := presign.PresignPutObject(context.TODO(), &s3.PutObjectInput{

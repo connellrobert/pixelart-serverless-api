@@ -98,10 +98,14 @@ Future<String> requestId(String prompt) async {
     this.id = id;
   });
 
-  Timer.periodic(new Duration(seconds: 5), (Timer timer) async {
+  Timer.periodic(new Duration(seconds: 3), (Timer timer) async {
     print("Periodic polling for image");
     var statusUrl = Uri.https("api.aimless.it","/status/${id}");
     var statusResponse = await http.get(statusUrl);
+    if (statusResponse.statusCode == 204) {
+      print("Image is not ready");
+      return;
+    }
     Map<String, dynamic> statusBody = jsonDecode(statusResponse.body);
     if (statusBody['url'] != "") {
       print("Image is ready");
