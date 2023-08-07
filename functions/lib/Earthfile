@@ -1,10 +1,19 @@
 VERSION 0.6
 FROM golang:1.20.6
 ENV GO111MODULE=on
+
 deps:
     WORKDIR /libs
     COPY go.mod go.sum ./
     RUN go mod download
+
+test:
+    FROM +deps
+    COPY --dir * .
+    RUN mkdir -p reports
+    RUN go test ./... -coverprofile="coverage.out" -covermode="count" -json > reports/report.json
+    RUN go tool cover -html="coverage.out" -o reports/coverage.html
+    SAVE ARTIFACT reports/** AS LOCAL reports/
 
 artifact:
     FROM +deps

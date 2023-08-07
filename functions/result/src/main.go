@@ -73,7 +73,7 @@ func Handler(ctx context.Context, sqsResult events.SQSEvent) {
 		}
 
 		if attemptNum < 3 && !result.Result.Success {
-			process.SendRetrySignalV2(result.Record)
+			process.SendRequestToQueue(result.Record)
 		}
 		process.SubmitXRayTraceSubSegment(result.Record.Metadata.TraceId, "Updated analytics item")
 	}

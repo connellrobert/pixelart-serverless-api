@@ -14,7 +14,8 @@
 				"github.copilot",
 				"hashicorp.terraform",
 				"golang.go",
-				"earthly.earthfile-syntax-highlighting"
+				"earthly.earthfile-syntax-highlighting",
+				"sonarsource.sonarlint-vscode"
 			]
 		}
 	},
@@ -24,5 +25,6 @@
 	"containerEnv": {
 		"GOPRIVATE": "github.com/aimless-it",
 		"GO111MODULE": "on"
-	}
+	},
+	"onCreateCommand": "go install github.com/go-gremlins/gremlins/cmd/gremlins@v0.4.0"
 }
