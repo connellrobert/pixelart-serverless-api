@@ -2,17 +2,46 @@ package main
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
 	"os"
 
-	"github.com/aimless-it/ai-canvas/functions/lib/ai"
 	"github.com/aimless-it/ai-canvas/functions/lib/process"
 	"github.com/aimless-it/ai-canvas/functions/lib/types"
+	"github.com/aimless-it/ai-canvas/functions/oracle/internal"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
-	openai "github.com/sashabaranov/go-openai"
 )
+
+type subprocess interface {
+	DeserializeSQSRequest(queueRequest events.SQSEvent) types.QueueRequest
+	TestMode() types.ImageResponseWrapper
+	AIImageController(request types.QueueRequest) types.ImageResponseWrapper
+	SendResult(request types.QueueRequest, wrapped types.ImageResponseWrapper)
+	SubmitXRayTraceSubSegment(traceId string, name string)
+}
+
+type subproc struct{}
+
+func (s subproc) DeserializeSQSRequest(queueRequest events.SQSEvent) types.QueueRequest {
+	return internal.DeserializeSQSRequest(queueRequest)
+}
+
+func (s subproc) TestMode() types.ImageResponseWrapper {
+	return internal.TestMode()
+}
+
+func (s subproc) AIImageController(request types.QueueRequest) types.ImageResponseWrapper {
+	return internal.AIImageController(request)
+}
+
+func (s subproc) SendResult(request types.QueueRequest, wrapped types.ImageResponseWrapper) {
+	process.SendResult(request, wrapped)
+}
+
+func (s subproc) SubmitXRayTraceSubSegment(traceId string, name string) {
+	process.SubmitXRayTraceSubSegment(traceId, name)
+}
+
+var subprocessor subprocess = subproc{}
 
 // List of environment variables:
 // OPENAI_API_KEY
@@ -20,59 +49,15 @@ import (
 // lambda handler
 // TODO: Retrieve images from s3 prior to calling openai requests
 func Handler(ctx context.Context, queueRequest events.SQSEvent) {
-	var request types.QueueRequest
-	err := json.Unmarshal([]byte(queueRequest.Records[0].Body), &request)
-	if err != nil {
-		panic(err)
-	}
-
-	var response openai.ImageResponse
-	if debug := os.Getenv("DEBUG_MODE"); debug == "true" {
-		fmt.Println("DEBUG MODE IS ACTIVE")
-		response := types.ImageResponseWrapper{
-			Success: true,
-			Response: openai.ImageResponse{
-				Created: 45454569420,
-				Data: []openai.ImageResponseDataInner{
-					{
-						URL: "something cool",
-					},
-				},
-			},
-		}
-
-		process.SendResult(request, response)
-		process.SubmitXRayTraceSubSegment(request.Metadata.TraceId, "Sent result to queue")
-		return
-	}
-	var success bool
-	switch request.Action {
-	case types.GenerateImageAction:
-		fmt.Println("Generating image")
-		response, err = ai.GenerateImage(request.CreateImage)
-	case types.EditImageAction:
-		fmt.Println("Editing image")
-		response, err = ai.EditImage(request.CreateImageEdit)
-	case types.VariateImageAction:
-		fmt.Println("Varying image")
-		response, err = ai.CreateImageVariation(request.CreateImageVariation)
-	default:
-		fmt.Println("Invalid action")
-	}
-	if err != nil {
-		fmt.Println(err)
-		success = false
+	request := subprocessor.DeserializeSQSRequest(queueRequest)
+	var wrapped types.ImageResponseWrapper
+	if debug := os.Getenv("MODE"); debug == "test" {
+		wrapped = subprocessor.TestMode()
 	} else {
-		fmt.Println("Success!")
-		success = true
+		wrapped = subprocessor.AIImageController(request)
 	}
-	wrapped := types.ImageResponseWrapper{
-		Success:  success,
-		Response: response,
-	}
-
-	process.SendResult(request, wrapped)
-	process.SubmitXRayTraceSubSegment(request.Metadata.TraceId, "Sent result to queue")
+	subprocessor.SendResult(request, wrapped)
+	subprocessor.SubmitXRayTraceSubSegment(request.Metadata.TraceId, "Sent result to queue")
 }
 
 func main() {
