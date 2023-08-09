@@ -2,18 +2,64 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"os"
 	"strconv"
 
 	"github.com/aimless-it/ai-canvas/functions/lib/process"
 	aiTypes "github.com/aimless-it/ai-canvas/functions/lib/types"
+	"github.com/aimless-it/ai-canvas/functions/result/internal"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	aws "github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
-	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 )
+
+type subProcess interface {
+	ParseSQSEvent(message events.SQSMessage) aiTypes.ResultRequest
+	GetAWSConfig() aws.Config
+	GetAnalyticsItemInputStruct(id, tableName string) *dynamodb.GetItemInput
+	GetDBItem(client *dynamodb.Client, ctx context.Context, getItemInput *dynamodb.GetItemInput) (*dynamodb.GetItemOutput, error)
+	GetUpdateAnalyticsItemInput(analyticsItem aiTypes.AnalyticsItem, tableName string) *dynamodb.UpdateItemInput
+	UpdateDBItem(client *dynamodb.Client, ctx context.Context, updateItemInput *dynamodb.UpdateItemInput) (*dynamodb.UpdateItemOutput, error)
+	SendRequestToQueue(record aiTypes.QueueRequest)
+	SubmitXRayTraceSubSegment(traceId, name string)
+}
+
+type subproc struct{}
+
+func (s subproc) ParseSQSEvent(message events.SQSMessage) aiTypes.ResultRequest {
+	return internal.ParseSQSEvent(message)
+}
+
+func (s subproc) GetAWSConfig() aws.Config {
+	return process.GetAWSConfig()
+}
+
+func (s subproc) GetAnalyticsItemInputStruct(id, tableName string) *dynamodb.GetItemInput {
+	return internal.GetAnalyticsItemInputStruct(id, tableName)
+}
+
+func (s subproc) GetDBItem(client *dynamodb.Client, ctx context.Context, getItemInput *dynamodb.GetItemInput) (*dynamodb.GetItemOutput, error) {
+	return client.GetItem(ctx, getItemInput)
+}
+
+func (s subproc) GetUpdateAnalyticsItemInput(analyticsItem aiTypes.AnalyticsItem, tableName string) *dynamodb.UpdateItemInput {
+	return internal.GetUpdateAnalyticsItemInput(analyticsItem, tableName)
+}
+
+func (s subproc) UpdateDBItem(client *dynamodb.Client, ctx context.Context, updateItemInput *dynamodb.UpdateItemInput) (*dynamodb.UpdateItemOutput, error) {
+	return client.UpdateItem(ctx, updateItemInput)
+}
+
+func (s subproc) SendRequestToQueue(record aiTypes.QueueRequest) {
+	process.SendRequestToQueue(record)
+}
+
+func (s subproc) SubmitXRayTraceSubSegment(traceId, name string) {
+	process.SubmitXRayTraceSubSegment(traceId, name)
+}
+
+var subc subProcess = subproc{}
 
 // List of environment variables:
 // ANALYTICS_TABLE_NAME
@@ -21,27 +67,14 @@ import (
 func Handler(ctx context.Context, sqsResult events.SQSEvent) {
 
 	for _, message := range sqsResult.Records {
-		var result aiTypes.ResultRequest
-		err := json.Unmarshal([]byte(message.Body), &result)
-		if err != nil {
-			panic(err)
-		}
-
-		cfg := process.GetAWSConfig()
+		result := subc.ParseSQSEvent(message)
+		cfg := subc.GetAWSConfig()
 
 		tableName := os.Getenv("ANALYTICS_TABLE_NAME")
-
-		getItemInput := &dynamodb.GetItemInput{
-			TableName: aws.String(tableName),
-			Key: map[string]types.AttributeValue{
-				"id": &types.AttributeValueMemberS{
-					Value: result.Record.Id,
-				},
-			},
-		}
+		getItemInput := subc.GetAnalyticsItemInputStruct(result.Record.Id, tableName)
 
 		client := dynamodb.NewFromConfig(cfg)
-		record, err := client.GetItem(context.Background(), getItemInput)
+		record, err := subc.GetDBItem(client, context.Background(), getItemInput)
 		if err != nil {
 			panic(err)
 		}
@@ -51,31 +84,18 @@ func Handler(ctx context.Context, sqsResult events.SQSEvent) {
 		analyticsItem.Attempts[strconv.Itoa(attemptNum)] = result.Result
 		analyticsItem.Success = result.Result.Success
 
-		updateItemInput := &dynamodb.UpdateItemInput{
-			TableName: aws.String(tableName),
-			Key: map[string]types.AttributeValue{
-				"id": &types.AttributeValueMemberS{
-					Value: result.Record.Id,
-				},
-			},
-			ExpressionAttributeNames: map[string]string{
-				"#A": "record",
-			},
-			ExpressionAttributeValues: map[string]types.AttributeValue{
-				":a": &types.AttributeValueMemberM{Value: analyticsItem.ToDynamoDB()},
-			},
-			UpdateExpression: aws.String("SET #A = :a"),
-		}
+		updateItemInput := subc.GetUpdateAnalyticsItemInput(analyticsItem, tableName)
 
-		_, err = client.UpdateItem(context.Background(), updateItemInput)
+		_, err = subc.UpdateDBItem(client, context.Background(), updateItemInput)
+
 		if err != nil {
 			panic(err)
 		}
 
 		if attemptNum < 3 && !result.Result.Success {
-			process.SendRequestToQueue(result.Record)
+			subc.SendRequestToQueue(result.Record)
 		}
-		process.SubmitXRayTraceSubSegment(result.Record.Metadata.TraceId, "Updated analytics item")
+		subc.SubmitXRayTraceSubSegment(result.Record.Metadata.TraceId, "Updated analytics item")
 	}
 }
 
