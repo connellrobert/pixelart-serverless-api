@@ -67,11 +67,11 @@ var subc subProcess = subproc{}
 func Handler(ctx context.Context, sqsResult events.SQSEvent) {
 
 	for _, message := range sqsResult.Records {
-		result := subc.ParseSQSEvent(message)
+		rr := subc.ParseSQSEvent(message)
 		cfg := subc.GetAWSConfig()
 
 		tableName := os.Getenv("ANALYTICS_TABLE_NAME")
-		getItemInput := subc.GetAnalyticsItemInputStruct(result.Record.Id, tableName)
+		getItemInput := subc.GetAnalyticsItemInputStruct(rr.Record.Id, tableName)
 
 		client := dynamodb.NewFromConfig(cfg)
 		record, err := subc.GetDBItem(client, context.Background(), getItemInput)
@@ -81,8 +81,8 @@ func Handler(ctx context.Context, sqsResult events.SQSEvent) {
 		analyticsItem := aiTypes.AnalyticsItem{}
 		analyticsItem.FromDynamoDB(record.Item)
 		attemptNum := len(analyticsItem.Attempts)
-		analyticsItem.Attempts[strconv.Itoa(attemptNum)] = result.Result
-		analyticsItem.Success = result.Result.Success
+		analyticsItem.Attempts[strconv.Itoa(attemptNum)] = rr.Result
+		analyticsItem.Success = rr.Result.Success
 
 		updateItemInput := subc.GetUpdateAnalyticsItemInput(analyticsItem, tableName)
 
@@ -92,10 +92,10 @@ func Handler(ctx context.Context, sqsResult events.SQSEvent) {
 			panic(err)
 		}
 
-		if attemptNum < 3 && !result.Result.Success {
-			subc.SendRequestToQueue(result.Record)
+		if attemptNum < 3 && !rr.Result.Success {
+			subc.SendRequestToQueue(rr.Record)
 		}
-		subc.SubmitXRayTraceSubSegment(result.Record.Metadata.TraceId, "Updated analytics item")
+		subc.SubmitXRayTraceSubSegment(rr.Record.Metadata.TraceId, "Updated analytics item")
 	}
 }
 
