@@ -5,7 +5,6 @@ go 1.20
 require (
 	github.com/aws/aws-sdk-go-v2 v1.19.0
 	github.com/aws/aws-sdk-go-v2/config v1.18.28
-	github.com/aws/aws-sdk-go-v2/service/cloudwatch v1.26.3
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.20.1
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.37.0
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.19.11
@@ -13,6 +12,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/xray v1.16.14
 	github.com/google/uuid v1.3.0
 	github.com/sashabaranov/go-openai v1.14.1
+	github.com/stretchr/testify v1.8.4
 )
 
 require (
@@ -36,6 +36,5 @@ require (
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.5.0 // indirect
-	github.com/stretchr/testify v1.8.4 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

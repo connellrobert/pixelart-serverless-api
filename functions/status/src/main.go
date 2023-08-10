@@ -1,11 +1,11 @@
 package main
 
 import (
-	"context"
 	"os"
 
 	"github.com/aimless-it/ai-canvas/functions/lib/process"
 	aiTypes "github.com/aimless-it/ai-canvas/functions/lib/types"
+	"github.com/aimless-it/ai-canvas/functions/status/internal"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -16,56 +16,65 @@ import (
 // List of environment variables:
 // ANALYTICS_TABLE_NAME
 
-func main() {
-	lambda.Start(Handler)
+type subprocess interface {
+	GetAWSConfig() aws.Config
+	SubmitXRayTraceSubSegment(traceId string, name string)
+	GetAnalyticsItem(id, tableName string, client *dynamodb.Client) map[string]types.AttributeValue
+	FromDynamoDB(record map[string]types.AttributeValue, obj interface {
+		FromDynamoDB(record map[string]types.AttributeValue)
+	})
+	GetAnalyticsItemAttemptsUrls(attempts map[string]aiTypes.ImageResponseWrapper) []string
+	CreateResponse(urls []string, ai aiTypes.AnalyticsItem) (events.APIGatewayProxyResponse, error)
 }
+
+type sub struct{}
+
+func (s sub) GetAWSConfig() aws.Config {
+	return process.GetAWSConfig()
+}
+
+func (s sub) SubmitXRayTraceSubSegment(traceId string, name string) {
+	process.SubmitXRayTraceSubSegment(traceId, name)
+}
+
+func (s sub) GetAnalyticsItem(id, tableName string, client *dynamodb.Client) map[string]types.AttributeValue {
+	return internal.GetAnalyticsItem(id, tableName, client)
+}
+
+func (s sub) FromDynamoDB(record map[string]types.AttributeValue, obj interface {
+	FromDynamoDB(record map[string]types.AttributeValue)
+}) {
+	obj.FromDynamoDB(record)
+}
+
+func (s sub) GetAnalyticsItemAttemptsUrls(attempts map[string]aiTypes.ImageResponseWrapper) []string {
+	return internal.GetAnalyticsItemAttemptsUrls(attempts)
+}
+
+func (s sub) CreateResponse(urls []string, ai aiTypes.AnalyticsItem) (events.APIGatewayProxyResponse, error) {
+	return internal.CreateResponse(urls, ai)
+}
+
+var subc subprocess = sub{}
 
 func Handler(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	// get id from request path
 	id := req.PathParameters["id"]
 	tableName := os.Getenv("ANALYTICS_TABLE_NAME")
-	// check analytics db for id
-	cfg := process.GetAWSConfig()
-	client := dynamodb.NewFromConfig(cfg)
-	getItemInput := &dynamodb.GetItemInput{
-		TableName: aws.String(tableName),
-		Key: map[string]types.AttributeValue{
-			"id": &types.AttributeValueMemberS{
-				Value: id,
-			},
-		},
-	}
-	record, err := client.GetItem(context.Background(), getItemInput)
-	if err != nil {
-		panic(err)
-	}
-	analyticsItem := aiTypes.AnalyticsItem{}
-	analyticsItem.FromDynamoDB(record.Item)
-	process.SubmitXRayTraceSubSegment(analyticsItem.Record.Metadata.TraceId, "Retrieved analytics item from db")
-	var url string
-	for _, attempt := range analyticsItem.Attempts {
-		if attempt.Success {
-			url = attempt.Response.Data[0].URL
-			break
-		}
-	}
-	// check if data is empty
-	if len(url) == 0 {
-		if len(analyticsItem.Attempts) >= 3 {
-			return events.APIGatewayProxyResponse{
-				StatusCode: 500,
-				Body:       "{\"message\": \"No successful attempts\"}",
-			}, nil
-		}
-		// return empty message
-		return events.APIGatewayProxyResponse{
-			StatusCode: 204,
-		}, nil
-	}
-	// return analytics item
-	return events.APIGatewayProxyResponse{
-		StatusCode: 200,
-		Body:       "{\"url\": \"" + url + "\"}",
-	}, nil
 
+	// check analytics db for id
+	cfg := subc.GetAWSConfig()
+	client := dynamodb.NewFromConfig(cfg)
+	record := subc.GetAnalyticsItem(id, tableName, client)
+
+	analyticsItem := aiTypes.AnalyticsItem{}
+	subc.FromDynamoDB(record, &analyticsItem)
+	subc.SubmitXRayTraceSubSegment(analyticsItem.Record.Metadata.TraceId, "Retrieved analytics item from db")
+
+	urls := subc.GetAnalyticsItemAttemptsUrls(analyticsItem.Attempts)
+	return subc.CreateResponse(urls, analyticsItem)
+}
+
+func main() {
+	lambda.Start(Handler)
 }
