@@ -8,6 +8,7 @@ package process
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"os"
 	"strings"
@@ -105,11 +106,12 @@ func SendResult(record QueueRequest, response ImageResponseWrapper) {
 		Record: record,
 		Result: response,
 	}
+	fmt.Printf("Sending ResultRequest: %v\n", tmp)
 	// Send req to sqs queue
 	queue := os.Getenv("RESULT_QUEUE_URL")
 	// send item to queue
 	messageInput := &sqs.SendMessageInput{
-		MessageBody: aws.String(string(tmp.Record.ToString())),
+		MessageBody: aws.String(string(tmp.ToString())),
 		QueueUrl:    aws.String(queue),
 	}
 	sendSqsMessage(*messageInput)

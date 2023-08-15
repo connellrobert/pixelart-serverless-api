@@ -70,33 +70,33 @@ func (r *QueueRequest) FromDynamoDB(item map[string]types.AttributeValue) {
 	}
 }
 
-func (q *QueueRequest) MapParams(action RequestAction, params interface{}) {
+func (q *QueueRequest) MapParams(action RequestAction, params map[string]interface{}) {
 	switch action {
 	case GenerateImageAction:
 		q.CreateImage = GenerateImageRequest{
-			Prompt:         params.(map[string]interface{})["prompt"].(string),
-			N:              int(params.(map[string]interface{})["n"].(float64)),
-			Size:           ImageSize(params.(map[string]interface{})["size"].(string)),
-			ResponseFormat: ResponseFormat(params.(map[string]interface{})["responseFormat"].(string)),
-			User:           params.(map[string]interface{})["user"].(string),
+			Prompt:         params["Prompt"].(string),
+			N:              int(params["N"].(int)),
+			Size:           ImageSize(params["Size"].(string)),
+			ResponseFormat: ResponseFormat(params["ResponseFormat"].(string)),
+			User:           params["User"].(string),
 		}
 	case EditImageAction:
 		q.CreateImageEdit = EditImageRequest{
-			Prompt:         params.(map[string]interface{})["prompt"].(string),
-			N:              int(params.(map[string]interface{})["n"].(float64)),
-			Size:           ImageSize(params.(map[string]interface{})["size"].(string)),
-			ResponseFormat: ResponseFormat(params.(map[string]interface{})["responseFormat"].(string)),
-			User:           params.(map[string]interface{})["user"].(string),
-			Image:          params.(map[string]interface{})["image"].(string),
-			Mask:           params.(map[string]interface{})["mask"].(string),
+			Prompt:         params["Prompt"].(string),
+			N:              int(params["N"].(int)),
+			Size:           ImageSize(params["Size"].(string)),
+			ResponseFormat: ResponseFormat(params["ResponseFormat"].(string)),
+			User:           params["User"].(string),
+			Image:          params["Image"].(string),
+			Mask:           params["Mask"].(string),
 		}
 	case VariateImageAction:
 		q.CreateImageVariation = CreateImageVariantRequest{
-			N:              int(params.(map[string]interface{})["n"].(float64)),
-			Size:           ImageSize(params.(map[string]interface{})["size"].(string)),
-			ResponseFormat: ResponseFormat(params.(map[string]interface{})["responseFormat"].(string)),
-			User:           params.(map[string]interface{})["user"].(string),
-			Image:          params.(map[string]interface{})["image"].(string),
+			N:              int(params["N"].(int)),
+			Size:           ImageSize(params["Size"].(string)),
+			ResponseFormat: ResponseFormat(params["ResponseFormat"].(string)),
+			User:           params["User"].(string),
+			Image:          params["Image"].(string),
 		}
 	}
 }

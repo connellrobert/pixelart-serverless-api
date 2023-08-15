@@ -14,7 +14,7 @@ import (
 )
 
 type subprocess interface {
-	MapParams(qr aiTypes.QueueRequest, args aiTypes.RequestAction, params interface{})
+	MapParams(qr *aiTypes.QueueRequest, args aiTypes.RequestAction, params map[string]interface{})
 	ToDynamoDB(obj interface {
 		ToDynamoDB() map[string]types.AttributeValue
 	}) map[string]types.AttributeValue
@@ -22,7 +22,7 @@ type subprocess interface {
 
 type sub struct{}
 
-func (s sub) MapParams(qr aiTypes.QueueRequest, args aiTypes.RequestAction, params interface{}) {
+func (s sub) MapParams(qr *aiTypes.QueueRequest, args aiTypes.RequestAction, params map[string]interface{}) {
 	qr.MapParams(args, params)
 }
 
@@ -53,15 +53,32 @@ func ParseRequestAction(body map[string]interface{}) aiTypes.RequestAction {
 
 }
 
+func ConvertFloatToInt(value interface{}) int {
+	switch value.(type) {
+	case float64:
+		return int(value.(float64))
+	case int:
+		return value.(int)
+	case string:
+		i, err := strconv.Atoi(value.(string))
+		if err != nil {
+			panic(err)
+		}
+		return i
+	default:
+		panic("Invalid type")
+	}
+}
+
 type QueueRequestArgs struct {
 	Id      string
 	Action  aiTypes.RequestAction
-	Params  interface{}
+	Params  map[string]interface{}
 	TraceId string
 }
 
 func ConstructQueueRequest(args QueueRequestArgs) aiTypes.QueueRequest {
-
+	fmt.Printf("Constructing queue request: %+v\n", args)
 	record := aiTypes.QueueRequest{
 		Metadata: aiTypes.CommonMetadata{
 			TraceId: args.TraceId,
@@ -70,7 +87,8 @@ func ConstructQueueRequest(args QueueRequestArgs) aiTypes.QueueRequest {
 		Action:   args.Action,
 		Priority: 0,
 	}
-	subc.MapParams(record, args.Action, args.Params)
+	subc.MapParams(&record, args.Action, args.Params)
+	fmt.Printf("Constructed queue request: %+v\n", record)
 	return record
 }
 

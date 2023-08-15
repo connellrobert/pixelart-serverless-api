@@ -10,7 +10,7 @@ require (
 )
 
 replace github.com/aimless-it/ai-canvas/functions/lib => ../lib
-
+replace github.com/aimless-it/ai-canvas/functions/oracle/internal => ./internal
 require (
 	github.com/aws/aws-sdk-go-v2 v1.20.1 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.12 // indirect

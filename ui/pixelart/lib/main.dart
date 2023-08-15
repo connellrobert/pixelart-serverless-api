@@ -7,6 +7,34 @@ import 'dart:async';
 void main() {
   runApp(const MyApp());
 }
+class RequestBodyParams {
+  RequestBodyParams({this.prompt="", this.size="256x256", this.n=1, this.responseFormat="URL", this.user="1"});
+  String prompt;
+  String size;
+  int n;
+  String responseFormat;
+  String user;
+  Map<String, dynamic> toJson() {
+    return {
+      'Prompt': prompt,
+      'Size': size,
+      'N': n,
+      'ResponseFormat': responseFormat,
+      'User': user
+    };
+  }
+}
+class RequestBody {
+  RequestBody({this.action=0, required this.params});
+  int action;
+  RequestBodyParams params;
+  Map<String, dynamic> toJson() {
+    return {
+      'action': action,
+      'params': params.toJson()
+    };
+  }
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -59,6 +87,9 @@ class GenerateImageForm extends StatefulWidget {
   State<StatefulWidget> createState() => _GenerateImageState();
 }
 
+// class PAResponse {
+//   urls: List<String>;
+// }
 
 class _GenerateImageState extends State<GenerateImageForm> {
   String url = "";
@@ -75,17 +106,12 @@ Future<String> requestId(String prompt) async {
   print(prompt);
   var url = Uri.https("api.aimless.it","/image");
   // var response = http.post(url, body: {'prompt': prompt});
-  var reqBody = {
-    "action": 0,
-    "params": {
-      'prompt': prompt,
-      'size': '512x512',
-      'n': 1,
-      'responseFormat': 'URL',
-      'user': 'me'
-    }
-  };
-  var response = await http.post(url, body: json.encode(reqBody), headers: {'Content-Type': 'application/json'});
+  RequestBody rb = RequestBody(action: 0, params: RequestBodyParams(prompt: prompt, size: '512x512', n:  1,responseFormat:  'URL', user: 'me'));
+  // trying to submit an integer
+  // reqBody["params"]["N"] = 1;
+  var rbody = json.encode(rb.toJson());
+  print(rbody);
+  var response = await http.post(url, body: json.encode(rb.toJson()), headers: {'Content-Type': 'application/json'});
   print(response.statusCode);
   print(response.body);
   Map<String, dynamic> body = jsonDecode(response.body);
@@ -106,11 +132,17 @@ Future<String> requestId(String prompt) async {
       print("Image is not ready");
       return;
     }
+    // PAResponse statusBody = jsonDecode(statusResponse.body);
+    if (statusResponse.statusCode == 204) {
+      return;
+    }
     Map<String, dynamic> statusBody = jsonDecode(statusResponse.body);
-    if (statusBody['url'] != "") {
+    print(statusBody);
+    var l = statusBody["urls"] as List<String>;
+    if (l != null && l.length > 0) {
       print("Image is ready");
       setState(() {
-        this.url = statusBody['url'];
+        this.url = l.first;
       });
       print("The url is ${this.url}");
       timer.cancel();

@@ -1,16 +1,15 @@
 VERSION 0.6
-FROM golang:1.20.6
+FROM golang:1.20.7-alpine
 ENV GO111MODULE=on
 
 deps:
     WORKDIR /scheduler
     COPY ../lib+artifact/* /lib/
-    COPY go.mod go.sum ./
+    COPY --dir * .
     RUN go mod download
 
 compile:
     FROM +deps
-    COPY ./src ./src
     RUN GOOS=linux GOARCH=amd64 go build -o bin/scheduler ./src
     SAVE ARTIFACT bin
 

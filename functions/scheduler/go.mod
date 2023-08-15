@@ -11,7 +11,7 @@ require (
 )
 
 replace github.com/aimless-it/ai-canvas/functions/lib v0.0.0 => ../lib
-
+replace github.com/aimless-it/ai-canvas/functions/scheduler/internal v0.0.0 => ./internal
 require (
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.18.28 // indirect

@@ -43,6 +43,7 @@ type subprocess interface {
 	GetAWSConfig() aws.Config
 	SendRequestToQueue(record aiTypes.QueueRequest)
 	ApiResponse(ai aiTypes.AnalyticsItem) (events.APIGatewayProxyResponse, error)
+	ConvertFloatToInt(value interface{}) int
 }
 
 type sub struct{}
@@ -79,21 +80,24 @@ func (s sub) ApiResponse(ai aiTypes.AnalyticsItem) (events.APIGatewayProxyRespon
 	return internal.ApiResponse(ai)
 }
 
+func (s sub) ConvertFloatToInt(value interface{}) int {
+	return internal.ConvertFloatToInt(value)
+}
+
 var subProcess subprocess = sub{}
 
 func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	traceId := request.Headers["x-amzn-trace-id"]
+	traceId := request.Headers["X-Amzn-Trace-Id"]
 	id := uuid.New().String()
 	body := subProcess.ParseApiRequest(request)
 	requestAction := subProcess.ParseRequestAction(body)
-
+	body["params"].(map[string]interface{})["N"] = internal.ConvertFloatToInt(body["params"].(map[string]interface{})["N"])
 	record := subProcess.ConstructQueueRequest(internal.QueueRequestArgs{
 		Id:      id,
 		Action:  requestAction,
-		Params:  body["params"],
+		Params:  body["params"].(map[string]interface{}),
 		TraceId: traceId,
 	})
-
 	cfg := subProcess.GetAWSConfig()
 	client := dynamodb.NewFromConfig(cfg)
 	// Create Analytics Item
@@ -101,6 +105,7 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 		Id:       record.Id,
 		Record:   record,
 		Attempts: make(map[string]aiTypes.ImageResponseWrapper),
+		Success:  false,
 	}
 	// Store Analytics Item
 	analyticsTable := os.Getenv("ANALYTICS_TABLE_NAME")

@@ -1,6 +1,7 @@
 package types
 
 import (
+	"encoding/json"
 	"strconv"
 
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
@@ -47,4 +48,12 @@ func (r *ResultRequest) FromDynamoDB(item map[string]types.AttributeValue) {
 		r.Record.CreateImageVariation.FromDynamoDB(item["request"].(*types.AttributeValueMemberM).Value["createImageVariation"].(*types.AttributeValueMemberM).Value)
 	}
 	r.Result.FromDynamoDB(item["result"].(*types.AttributeValueMemberM).Value)
+}
+
+func (r *ResultRequest) ToString() string {
+	s, err := json.Marshal(r)
+	if err != nil {
+		panic(err)
+	}
+	return string(s)
 }

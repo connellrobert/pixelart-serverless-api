@@ -9,7 +9,7 @@ build-all:
 
 deploy:
     BUILD +build-all
-    BUILD ./infrastructure+plan
+    BUILD ./infrastructure+apply
 
 destroy:
     BUILD +build-all

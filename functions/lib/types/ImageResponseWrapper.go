@@ -1,6 +1,7 @@
 package types
 
 import (
+	"encoding/json"
 	"strconv"
 
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
@@ -76,4 +77,12 @@ func (r *ImageResponseWrapper) FromDynamoDB(item map[string]types.AttributeValue
 	c, _ := strconv.Atoi(item["response"].(*types.AttributeValueMemberM).Value["created"].(*types.AttributeValueMemberN).Value)
 	r.Response.Created = int64(c)
 	r.Response.Data = r.MapDynamoDBToDataInner(item["response"].(*types.AttributeValueMemberM).Value["data"].(*types.AttributeValueMemberL).Value)
+}
+
+func (r *ImageResponseWrapper) ToString() string {
+	s, err := json.Marshal(r)
+	if err != nil {
+		panic(err)
+	}
+	return string(s)
 }

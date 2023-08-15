@@ -169,13 +169,13 @@ func TestQueueRequestFromDynamoDB(t *testing.T) {
 func TestMapParams(t *testing.T) {
 	cases := []RequestAction{GenerateImageAction, EditImageAction, VariateImageAction}
 	params := map[string]interface{}{
-		"prompt":         "This is a test prompt",
-		"n":              1.0,
-		"size":           "256x256",
-		"responseFormat": "URL",
-		"user":           "1234",
-		"image":          "test",
-		"mask":           "test",
+		"Prompt":         "This is a test prompt",
+		"N":              1,
+		"Size":           "256x256",
+		"ResponseFormat": "URL",
+		"User":           "1234",
+		"Image":          "test",
+		"Mask":           "test",
 	}
 	for _, c := range cases {
 		qr := QueueRequest{}

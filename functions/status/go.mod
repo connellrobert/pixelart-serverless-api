@@ -3,7 +3,7 @@ module github.com/aimless-it/ai-canvas/functions/status
 go 1.20
 
 replace github.com/aimless-it/ai-canvas/functions/lib v0.0.0 => ../lib
-
+replace github.com/aimless-it/ai-canvas/functions/status/internal v0.0.0 => ./internal
 require (
 	github.com/aimless-it/ai-canvas/functions/lib v0.0.0
 	github.com/aws/aws-lambda-go v1.41.0

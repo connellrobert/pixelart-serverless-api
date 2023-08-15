@@ -66,7 +66,6 @@ func Handler(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse,
 	cfg := subc.GetAWSConfig()
 	client := dynamodb.NewFromConfig(cfg)
 	record := subc.GetAnalyticsItem(id, tableName, client)
-
 	analyticsItem := aiTypes.AnalyticsItem{}
 	subc.FromDynamoDB(record, &analyticsItem)
 	subc.SubmitXRayTraceSubSegment(analyticsItem.Record.Metadata.TraceId, "Retrieved analytics item from db")
