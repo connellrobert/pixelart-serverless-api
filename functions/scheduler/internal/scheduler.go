@@ -96,14 +96,7 @@ func PutAnalyticsItem(ai aiTypes.AnalyticsItem, tableName string, dbClient *dyna
 
 	putAItemInput := &dynamodb.PutItemInput{
 		TableName: aws.String(tableName),
-		Item: map[string]types.AttributeValue{
-			"id": &types.AttributeValueMemberS{
-				Value: ai.Id,
-			},
-			"record": &types.AttributeValueMemberM{
-				Value: subc.ToDynamoDB(&ai),
-			},
-		},
+		Item:      subc.ToDynamoDB(&ai),
 	}
 	_, err := dbClient.PutItem(context.Background(), putAItemInput)
 	if err != nil {

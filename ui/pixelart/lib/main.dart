@@ -138,11 +138,11 @@ Future<String> requestId(String prompt) async {
     }
     Map<String, dynamic> statusBody = jsonDecode(statusResponse.body);
     print(statusBody);
-    var l = statusBody["urls"] as List<String>;
+    var l = statusBody["urls"] as List<dynamic>;
     if (l != null && l.length > 0) {
       print("Image is ready");
       setState(() {
-        this.url = l.first;
+        this.url = l.first.toString();
       });
       print("The url is ${this.url}");
       timer.cancel();

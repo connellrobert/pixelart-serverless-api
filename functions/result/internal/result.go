@@ -58,12 +58,16 @@ func GetUpdateAnalyticsItemInput(analyticsItem aiTypes.AnalyticsItem, tableName 
 			},
 		},
 		ExpressionAttributeNames: map[string]string{
+			"#S": "success",
 			"#A": "record",
+			"#T": "attempts",
 		},
 		ExpressionAttributeValues: map[string]types.AttributeValue{
-			":a": &types.AttributeValueMemberM{Value: subc.ToDynamoDB(&analyticsItem)},
+			":a": &types.AttributeValueMemberM{Value: subc.ToDynamoDB(&analyticsItem.Record)},
+			":s": &types.AttributeValueMemberBOOL{Value: analyticsItem.Success},
+			":t": &types.AttributeValueMemberM{Value: analyticsItem.AttemptsToDynamoDB()},
 		},
-		UpdateExpression: aws.String("SET #A = :a"),
+		UpdateExpression: aws.String("SET #S = :s, #A = :a, #T = :t"),
 	}
 
 }

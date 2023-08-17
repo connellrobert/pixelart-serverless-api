@@ -28,6 +28,7 @@ apply:
     SAVE ARTIFACT .terraform/ AS LOCAL .terraform/
 
 destroy:
+    FROM +deps
     RUN --secret AWS_ACCESS_KEY_ID \
     --secret AWS_SECRET_ACCESS_KEY \
     --secret AWS_DEFAULT_REGION \

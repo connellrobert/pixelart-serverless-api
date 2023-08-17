@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	aiTypes "github.com/aimless-it/ai-canvas/functions/lib/types"
 	"github.com/aws/aws-lambda-go/events"
@@ -39,6 +40,7 @@ func GetAnalyticsItemAttemptsUrls(attempts map[string]aiTypes.ImageResponseWrapp
 }
 
 func CreateResponse(urls []string, ai aiTypes.AnalyticsItem) (events.APIGatewayProxyResponse, error) {
+	fmt.Printf("urls: %v\n", urls)
 	if len(urls) == 0 {
 		if len(ai.Attempts) >= 3 {
 			return events.APIGatewayProxyResponse{
@@ -51,14 +53,17 @@ func CreateResponse(urls []string, ai aiTypes.AnalyticsItem) (events.APIGatewayP
 			StatusCode: 204,
 		}, nil
 	}
-	jUrl, err := json.Marshal(urls)
+	b := new(strings.Builder)
+	encoder := json.NewEncoder(b)
+	encoder.SetEscapeHTML(false)
+	err := encoder.Encode(urls)
 	if err != nil {
 		panic(err)
 	}
 	// return analytics item
 	return events.APIGatewayProxyResponse{
 		StatusCode: 200,
-		Body:       fmt.Sprintf("{\"urls\": \" %s \"}", jUrl),
+		Body:       fmt.Sprintf("{\"urls\": %s}", b.String()),
 	}, nil
 
 }

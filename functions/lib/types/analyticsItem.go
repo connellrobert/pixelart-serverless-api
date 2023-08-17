@@ -32,8 +32,8 @@ func (r *AnalyticsItem) ToDynamoDB() map[string]types.AttributeValue {
 }
 
 func (r *AnalyticsItem) FromDynamoDB(item map[string]types.AttributeValue) {
-	r.Id = item["id"].(*types.AttributeValueMemberS).Value
 	record := item["record"].(*types.AttributeValueMemberM).Value
+	r.Id = item["id"].(*types.AttributeValueMemberS).Value
 	r.Success = item["success"].(*types.AttributeValueMemberBOOL).Value
 	// record := request["request"].(*types.AttributeValueMemberM).Value
 	action, err := strconv.Atoi(record["action"].(*types.AttributeValueMemberN).Value)
