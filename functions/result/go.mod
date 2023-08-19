@@ -7,10 +7,13 @@ require (
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/aws/aws-sdk-go-v2 v1.19.0
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.20.1
+	github.com/stretchr/testify v1.8.4
 )
 
 replace github.com/aimless-it/ai-canvas/functions/lib v0.0.0 => ../lib
+
 replace gitub.com/aimless-it/ai-canvas/functions/result/internal v0.0.0 => ./internal
+
 require (
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.18.28 // indirect
@@ -33,7 +36,11 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sts v1.19.3 // indirect
 	github.com/aws/aws-sdk-go-v2/service/xray v1.16.14 // indirect
 	github.com/aws/smithy-go v1.13.5 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/sashabaranov/go-openai v1.14.1 // indirect
+	github.com/stretchr/objx v0.5.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

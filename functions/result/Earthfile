@@ -13,6 +13,13 @@ compile:
     RUN GOOS=linux GOARCH=amd64 go build -o bin/result ./src
     SAVE ARTIFACT bin
 
+test:
+    FROM +deps
+    RUN mkdir -p reports
+    RUN go test ./... -coverprofile="coverage.out" -covermode="count" -json > reports/report.json
+    RUN go tool cover -html="coverage.out" -o reports/coverage.html
+    SAVE ARTIFACT reports/** AS LOCAL reports/
+
     
 update:
     FROM +deps

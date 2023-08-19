@@ -1,9 +1,12 @@
 package internal
 
 import (
+	"encoding/json"
 	"testing"
 
 	aiTypes "github.com/aimless-it/ai-canvas/functions/lib/types"
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/sashabaranov/go-openai"
 )
 
 func TestConstructQueueRequest(t *testing.T) {
@@ -45,4 +48,112 @@ func TestConstructQueueRequest(t *testing.T) {
 		t.Fatalf("User should be 1234 but got %s", queueRequest.CreateImage.User)
 	}
 
+}
+
+func TestParseApiRequest(t *testing.T) {
+	reqBody := map[string]interface{}{
+		"action": 0,
+		"params": map[string]interface{}{
+			"image":          "https://aimless.ai/images/ai-canvas-logo.png",
+			"size":           "512x512",
+			"prompt":         "something simple",
+			"n":              1,
+			"responseFormat": "URL",
+			"user":           "user-id",
+		},
+	}
+	v, err := json.Marshal(reqBody)
+	if err != nil {
+		t.Fatalf("error marshalling body: %s", err)
+	}
+	request := events.APIGatewayProxyRequest{
+		Body: string(v),
+	}
+	body := ParseApiRequest(request)
+	if body["action"] != float64(0) {
+		t.Fatalf("action should be 0 but got %d", body["action"])
+	}
+	if body["params"].(map[string]interface{})["image"] != "https://aimless.ai/images/ai-canvas-logo.png" {
+		t.Fatalf("image should be https://aimless.ai/images/ai-canvas-logo.png but got %s", body["params"].(map[string]interface{})["image"])
+	}
+	if body["params"].(map[string]interface{})["size"] != "512x512" {
+		t.Fatalf("size should be 512x512 but got %s", body["params"].(map[string]interface{})["size"])
+	}
+	if body["params"].(map[string]interface{})["prompt"] != "something simple" {
+		t.Fatalf("prompt should be something simple but got %s", body["params"].(map[string]interface{})["prompt"])
+	}
+	if body["params"].(map[string]interface{})["n"] != float64(1) {
+		t.Fatalf("n should be 1 but got %d", body["params"].(map[string]interface{})["n"])
+	}
+	if body["params"].(map[string]interface{})["responseFormat"] != "URL" {
+		t.Fatalf("responseFormat should be URL but got %s", body["params"].(map[string]interface{})["responseFormat"])
+	}
+	if body["params"].(map[string]interface{})["user"] != "user-id" {
+		t.Fatalf("user should be user-id but got %s", body["params"].(map[string]interface{})["user"])
+	}
+}
+
+func TestParseRequestAction(t *testing.T) {
+	body := map[string]interface{}{
+		"action": 0,
+		"params": map[string]interface{}{
+			"image":          "https://aimless.ai/images/ai-canvas-logo.png",
+			"size":           "512x512",
+			"prompt":         "something simple",
+			"n":              1,
+			"responseFormat": "URL",
+			"user":           "user-id",
+		},
+	}
+	action := ParseRequestAction(body)
+	if action != aiTypes.GenerateImageAction {
+		t.Fatalf("action should be GenerateImageAction but got %d", action)
+	}
+}
+
+func TestConvertFloatToInt(t *testing.T) {
+	i := ConvertFloatToInt(float64(1))
+	if i != 1 {
+		t.Fatalf("i should be 1 but got %d", i)
+	}
+	i = ConvertFloatToInt(1)
+	if i != 1 {
+		t.Fatalf("i should be 1 but got %d", i)
+	}
+	i = ConvertFloatToInt("1")
+	if i != 1 {
+		t.Fatalf("i should be 1 but got %d", i)
+	}
+}
+
+func TestApiResponse(t *testing.T) {
+	ai := aiTypes.AnalyticsItem{
+		Id:      "1234",
+		Success: true,
+		Record: aiTypes.QueueRequest{
+			Id: "1234",
+		},
+		Attempts: map[string]aiTypes.ImageResponseWrapper{
+			"1": {
+				Response: openai.ImageResponse{
+					Created: 1234,
+					Data: []openai.ImageResponseDataInner{
+						{
+							URL: "https://aimless.ai/images/ai-canvas-logo.png",
+						},
+					},
+				},
+			},
+		},
+	}
+	response, err := ApiResponse(ai)
+	if err != nil {
+		t.Fatalf("error should be nil but got %s", err)
+	}
+	if response.StatusCode != 200 {
+		t.Fatalf("status code should be 200 but got %d", response.StatusCode)
+	}
+	if response.Body != "{\"id\":\"1234\",\"message\":\"Successfully added 1234\"}" {
+		t.Fatalf("body should be {\"id\":\"1234\",\"message\":\"Successfully added 1234\"} but got %s", response.Body)
+	}
 }

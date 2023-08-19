@@ -1,0 +1,5 @@
+global:
+  buildkit_additional_args:
+    - --network
+    - host
+    

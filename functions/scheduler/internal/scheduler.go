@@ -35,7 +35,7 @@ func (s sub) ToDynamoDB(obj interface {
 var subc subprocess = sub{}
 
 func ParseApiRequest(request events.APIGatewayProxyRequest) map[string]interface{} {
-
+	fmt.Printf("Parsing API request: %+v\n", request)
 	body := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(request.Body), &body); err != nil {
 		panic(err)

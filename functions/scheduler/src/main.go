@@ -91,7 +91,7 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 	id := uuid.New().String()
 	body := subProcess.ParseApiRequest(request)
 	requestAction := subProcess.ParseRequestAction(body)
-	body["params"].(map[string]interface{})["N"] = internal.ConvertFloatToInt(body["params"].(map[string]interface{})["N"])
+	body["params"].(map[string]interface{})["N"] = subProcess.ConvertFloatToInt(body["params"].(map[string]interface{})["N"])
 	record := subProcess.ConstructQueueRequest(internal.QueueRequestArgs{
 		Id:      id,
 		Action:  requestAction,

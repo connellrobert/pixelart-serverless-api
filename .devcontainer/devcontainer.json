@@ -24,7 +24,12 @@
 	],
 	"containerEnv": {
 		"GOPRIVATE": "github.com/aimless-it",
-		"GO111MODULE": "on"
+		"GO111MODULE": "on",
+		"EARTHLY_CONFIG": "/workspaces/pixelart/earthly.config.yaml"
 	},
-	"onCreateCommand": "go install github.com/go-gremlins/gremlins/cmd/gremlins@v0.4.0"
+	"remoteEnv": {
+		"PATH": "${containerEnv:PATH}:/usr/lib/sonar/bin"
+	},
+	"onCreateCommand": "go install github.com/go-gremlins/gremlins/cmd/gremlins@v0.4.0 && curl -o /tmp/sonar.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip && sudo unzip -d /usr/lib/sonar /tmp/sonar.zip && sudo mv /usr/lib/sonar/*/* /usr/lib/sonar",
+	"runArgs": ["--network", "host"]
 }

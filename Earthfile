@@ -7,6 +7,32 @@ build-all:
     BUILD ./functions/image+compile
     BUILD ./functions/status+compile
 
+test:
+    BUILD ./functions/oracle+test
+    BUILD ./functions/result+test
+    BUILD ./functions/scheduler+test
+    # BUILD ./functions/image+test
+    # BUILD ./functions/status+test
+    BUILD ./functions/lib+test
+    LOCALLY
+    RUN cat /dev/null > report.json
+    RUN cat \
+    ./functions/oracle/reports/report.json \
+    ./functions/result/reports/report.json \
+    ./functions/scheduler/reports/report.json \
+    ./functions/lib/reports/report.json \
+    > report.json
+
+sonar:
+    FROM sonarsource/sonar-scanner-cli:latest
+    BUILD +test
+    COPY --dir . /app
+    RUN --secret SONAR_TOKEN \
+    sonar-scanner \
+    -Dsonar.projectKey=pixelart \
+    -Dsonar.sources=/app \
+    -Dsonar.host.url=http://localhost:9000
+    
 deploy:
     BUILD +build-all
     BUILD ./infrastructure+apply
@@ -23,3 +49,6 @@ update-deps:
     BUILD ./functions/image+update
     BUILD ./functions/status+update
     
+debug:
+    FROM sonarsource/sonar-scanner-cli:latest
+    RUN curl http://localhost:9000
