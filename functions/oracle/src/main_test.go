@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"os"
 	"testing"
 
@@ -83,6 +84,15 @@ func (m mockSubprocess) SubmitXRayTraceSubSegment(traceId string, name string) {
 	m.Called(traceId, name)
 }
 
+func (m mockSubprocess) SaveImage(base64 string, fileName string) {
+	m.Called(base64, fileName)
+}
+
+func (m mockSubprocess) GetPresignedUrl(key string) string {
+	args := m.Called(key)
+	return args.String(0)
+}
+
 func init() {
 	subprocessor = &mockSubprocess{}
 }
@@ -98,7 +108,7 @@ func TestHandler(t *testing.T) {
 	subprocessor.(*mockSubprocess).On("TestMode").Return(sampleImageResponse)
 	subprocessor.(*mockSubprocess).On("SendResult", sampleQueueRequest, sampleImageResponse)
 	subprocessor.(*mockSubprocess).On("SubmitXRayTraceSubSegment", sampleQueueRequest.Metadata.TraceId, "Sent result to queue")
-	Handler(nil, queueRequest)
+	Handler(context.Background(), queueRequest)
 }
 
 func TestHandlerProd(t *testing.T) {

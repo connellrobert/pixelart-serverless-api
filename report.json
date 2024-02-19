@@ -1,318 +1,318 @@
-{"Time":"2023-08-18T15:34:52.095021443Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal"}
-{"Time":"2023-08-18T15:34:52.11379088Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestDeserializeSQSRequest"}
-{"Time":"2023-08-18T15:34:52.113903959Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestDeserializeSQSRequest","Output":"=== RUN   TestDeserializeSQSRequest\n"}
-{"Time":"2023-08-18T15:34:52.114022248Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestDeserializeSQSRequest","Output":"--- PASS: TestDeserializeSQSRequest (0.00s)\n"}
-{"Time":"2023-08-18T15:34:52.114042297Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestDeserializeSQSRequest","Elapsed":0}
-{"Time":"2023-08-18T15:34:52.114055823Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestTestMode"}
-{"Time":"2023-08-18T15:34:52.114063238Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestTestMode","Output":"=== RUN   TestTestMode\n"}
-{"Time":"2023-08-18T15:34:52.114080151Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestTestMode","Output":"TEST MODE IS ACTIVE\n"}
-{"Time":"2023-08-18T15:34:52.114092124Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestTestMode","Output":"--- PASS: TestTestMode (0.00s)\n"}
-{"Time":"2023-08-18T15:34:52.114173517Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestTestMode","Elapsed":0}
-{"Time":"2023-08-18T15:34:52.11420123Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestGenerateImage"}
-{"Time":"2023-08-18T15:34:52.114213534Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestGenerateImage","Output":"=== RUN   TestGenerateImage\n"}
-{"Time":"2023-08-18T15:34:52.114359948Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestGenerateImage","Output":"--- PASS: TestGenerateImage (0.00s)\n"}
-{"Time":"2023-08-18T15:34:52.114384265Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestGenerateImage","Elapsed":0}
-{"Time":"2023-08-18T15:34:52.114398653Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestEditImage"}
-{"Time":"2023-08-18T15:34:52.114405777Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestEditImage","Output":"=== RUN   TestEditImage\n"}
-{"Time":"2023-08-18T15:34:52.1145261Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestEditImage","Output":"--- PASS: TestEditImage (0.00s)\n"}
-{"Time":"2023-08-18T15:34:52.114545467Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestEditImage","Elapsed":0}
-{"Time":"2023-08-18T15:34:52.114558943Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestCreateImageVariation"}
-{"Time":"2023-08-18T15:34:52.114569464Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestCreateImageVariation","Output":"=== RUN   TestCreateImageVariation\n"}
-{"Time":"2023-08-18T15:34:52.114649348Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestCreateImageVariation","Output":"--- PASS: TestCreateImageVariation (0.00s)\n"}
-{"Time":"2023-08-18T15:34:52.114665089Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestCreateImageVariation","Elapsed":0}
-{"Time":"2023-08-18T15:34:52.114673064Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage"}
-{"Time":"2023-08-18T15:34:52.114694887Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Output":"=== RUN   TestAIImageControllerGenerateImage\n"}
-{"Time":"2023-08-18T15:34:52.114781615Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Output":"Generating image\n"}
-{"Time":"2023-08-18T15:34:52.114870421Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Output":"Editing image\n"}
-{"Time":"2023-08-18T15:34:52.11489569Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Output":"Varying image\n"}
-{"Time":"2023-08-18T15:34:52.114994096Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Output":"--- PASS: TestAIImageControllerGenerateImage (0.00s)\n"}
-{"Time":"2023-08-18T15:34:52.115011289Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Elapsed":0}
-{"Time":"2023-08-18T15:34:52.115021419Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Output":"PASS\n"}
-{"Time":"2023-08-18T15:34:52.116099708Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Output":"\tgithub.com/aimless-it/ai-canvas/functions/oracle/internal\tcoverage: 64.9% of statements\n"}
-{"Time":"2023-08-18T15:34:52.118316662Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/oracle/internal\t0.009s\tcoverage: 64.9% of statements\n"}
-{"Time":"2023-08-18T15:34:52.118362321Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Elapsed":0.024}
-{"Time":"2023-08-18T15:34:52.232709764Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src"}
-{"Time":"2023-08-18T15:34:52.236801555Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandler"}
-{"Time":"2023-08-18T15:34:52.236868975Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandler","Output":"=== RUN   TestHandler\n"}
-{"Time":"2023-08-18T15:34:52.237013185Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandler","Output":"--- PASS: TestHandler (0.00s)\n"}
-{"Time":"2023-08-18T15:34:52.237031821Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandler","Elapsed":0}
-{"Time":"2023-08-18T15:34:52.237048794Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProd"}
-{"Time":"2023-08-18T15:34:52.23705693Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProd","Output":"=== RUN   TestHandlerProd\n"}
-{"Time":"2023-08-18T15:34:52.237161831Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProd","Output":"--- PASS: TestHandlerProd (0.00s)\n"}
-{"Time":"2023-08-18T15:34:52.237173092Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProd","Elapsed":0}
-{"Time":"2023-08-18T15:34:52.237178944Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProdError"}
-{"Time":"2023-08-18T15:34:52.23718238Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProdError","Output":"=== RUN   TestHandlerProdError\n"}
-{"Time":"2023-08-18T15:34:52.237311302Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProdError","Output":"--- PASS: TestHandlerProdError (0.00s)\n"}
-{"Time":"2023-08-18T15:34:52.237334207Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProdError","Elapsed":0}
-{"Time":"2023-08-18T15:34:52.237341882Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Output":"PASS\n"}
-{"Time":"2023-08-18T15:34:52.237965029Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Output":"\tgithub.com/aimless-it/ai-canvas/functions/oracle/src\tcoverage: 53.8% of statements\n"}
-{"Time":"2023-08-18T15:34:52.238956439Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/oracle/src\t0.006s\tcoverage: 53.8% of statements\n"}
-{"Time":"2023-08-18T15:34:52.238974925Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Elapsed":0.006}
-{"Time":"2023-08-18T15:34:48.065611059Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/result/internal"}
-{"Time":"2023-08-18T15:34:48.073237839Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestParseSQSEvent"}
-{"Time":"2023-08-18T15:34:48.073301489Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestParseSQSEvent","Output":"=== RUN   TestParseSQSEvent\n"}
-{"Time":"2023-08-18T15:34:48.073741348Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestParseSQSEvent","Output":"Result: {Record:{Metadata:{TraceId:1-5f9b0b9b-1} Id:1234 Action:0 Priority:0 CreateImage:{Prompt:A painting of a cat N:1 Size:512x512 ResponseFormat:URL User:1234} CreateImageEdit:{Prompt: N:0 Size: ResponseFormat: User: Image: Mask:} CreateImageVariation:{N:0 Size: ResponseFormat: User: Image:}} Result:{Response:{Created:0 Data:[]} Success:false}}\n"}
-{"Time":"2023-08-18T15:34:48.073780308Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestParseSQSEvent","Output":"--- PASS: TestParseSQSEvent (0.00s)\n"}
-{"Time":"2023-08-18T15:34:48.073791831Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestParseSQSEvent","Elapsed":0}
-{"Time":"2023-08-18T15:34:48.073804226Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestGetAnalyticsItemInputStruct"}
-{"Time":"2023-08-18T15:34:48.073812964Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestGetAnalyticsItemInputStruct","Output":"=== RUN   TestGetAnalyticsItemInputStruct\n"}
-{"Time":"2023-08-18T15:34:48.07383062Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestGetAnalyticsItemInputStruct","Output":"--- PASS: TestGetAnalyticsItemInputStruct (0.00s)\n"}
-{"Time":"2023-08-18T15:34:48.073840901Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestGetAnalyticsItemInputStruct","Elapsed":0}
-{"Time":"2023-08-18T15:34:48.073852194Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Output":"PASS\n"}
-{"Time":"2023-08-18T15:34:48.076521319Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Output":"\tgithub.com/aimless-it/ai-canvas/functions/result/internal\tcoverage: 62.5% of statements\n"}
-{"Time":"2023-08-18T15:34:48.078542173Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/result/internal\t0.011s\tcoverage: 62.5% of statements\n"}
-{"Time":"2023-08-18T15:34:48.078579589Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Elapsed":0.013}
-{"Time":"2023-08-18T15:34:50.971398916Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/result/src"}
-{"Time":"2023-08-18T15:34:50.971446133Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/src","Output":"?   \tgithub.com/aimless-it/ai-canvas/functions/result/src\t[no test files]\n"}
-{"Time":"2023-08-18T15:34:50.971460292Z","Action":"skip","Package":"github.com/aimless-it/ai-canvas/functions/result/src","Elapsed":0}
-{"Time":"2023-08-18T15:34:46.944771249Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal"}
-{"Time":"2023-08-18T15:34:46.950562704Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest"}
-{"Time":"2023-08-18T15:34:46.950636936Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest","Output":"=== RUN   TestConstructQueueRequest\n"}
-{"Time":"2023-08-18T15:34:46.950656406Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest","Output":"Constructing queue request: {Id:1234 Action:0 Params:map[N:1 Prompt:A painting of a cat ResponseFormat:URL Size:512x512 User:1234] TraceId:1-5f9b0b9b-1}\n"}
-{"Time":"2023-08-18T15:34:46.950668911Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest","Output":"Constructed queue request: {Metadata:{TraceId:1-5f9b0b9b-1} Id:1234 Action:0 Priority:0 CreateImage:{Prompt:A painting of a cat N:1 Size:512x512 ResponseFormat:URL User:1234} CreateImageEdit:{Prompt: N:0 Size: ResponseFormat: User: Image: Mask:} CreateImageVariation:{N:0 Size: ResponseFormat: User: Image:}}\n"}
-{"Time":"2023-08-18T15:34:46.950684774Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest","Output":"--- PASS: TestConstructQueueRequest (0.00s)\n"}
-{"Time":"2023-08-18T15:34:46.95069762Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest","Elapsed":0}
-{"Time":"2023-08-18T15:34:46.950709344Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseApiRequest"}
-{"Time":"2023-08-18T15:34:46.950717861Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseApiRequest","Output":"=== RUN   TestParseApiRequest\n"}
-{"Time":"2023-08-18T15:34:46.950734475Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseApiRequest","Output":"Parsing API request: {Resource: Path: HTTPMethod: Headers:map[] MultiValueHeaders:map[] QueryStringParameters:map[] MultiValueQueryStringParameters:map[] PathParameters:map[] StageVariables:map[] RequestContext:{AccountID: ResourceID: OperationName: Stage: DomainName: DomainPrefix: RequestID: ExtendedRequestID: Protocol: Identity:{CognitoIdentityPoolID: AccountID: CognitoIdentityID: Caller: APIKey: APIKeyID: AccessKey: SourceIP: CognitoAuthenticationType: CognitoAuthenticationProvider: UserArn: UserAgent: User:} ResourcePath: Path: Authorizer:map[] HTTPMethod: RequestTime: RequestTimeEpoch:0 APIID:} Body:{\"action\":0,\"params\":{\"image\":\"https://aimless.ai/images/ai-canvas-logo.png\",\"n\":1,\"prompt\":\"something simple\",\"responseFormat\":\"URL\",\"size\":\"512x512\",\"user\":\"user-id\"}} IsBase64Encoded:false}\n"}
-{"Time":"2023-08-18T15:34:46.950785279Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseApiRequest","Output":"--- PASS: TestParseApiRequest (0.00s)\n"}
-{"Time":"2023-08-18T15:34:46.950817365Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseApiRequest","Elapsed":0}
-{"Time":"2023-08-18T15:34:46.950830913Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseRequestAction"}
-{"Time":"2023-08-18T15:34:46.9508397Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseRequestAction","Output":"=== RUN   TestParseRequestAction\n"}
-{"Time":"2023-08-18T15:34:46.950864471Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseRequestAction","Output":"--- PASS: TestParseRequestAction (0.00s)\n"}
-{"Time":"2023-08-18T15:34:46.950872768Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseRequestAction","Elapsed":0}
-{"Time":"2023-08-18T15:34:46.950896106Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConvertFloatToInt"}
-{"Time":"2023-08-18T15:34:46.950910385Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConvertFloatToInt","Output":"=== RUN   TestConvertFloatToInt\n"}
-{"Time":"2023-08-18T15:34:46.9509229Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConvertFloatToInt","Output":"--- PASS: TestConvertFloatToInt (0.00s)\n"}
-{"Time":"2023-08-18T15:34:46.950931618Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConvertFloatToInt","Elapsed":0}
-{"Time":"2023-08-18T15:34:46.950940246Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestApiResponse"}
-{"Time":"2023-08-18T15:34:46.95094731Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestApiResponse","Output":"=== RUN   TestApiResponse\n"}
-{"Time":"2023-08-18T15:34:46.950955607Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestApiResponse","Output":"--- PASS: TestApiResponse (0.00s)\n"}
-{"Time":"2023-08-18T15:34:46.950963343Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestApiResponse","Elapsed":0}
-{"Time":"2023-08-18T15:34:46.950970548Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Output":"PASS\n"}
-{"Time":"2023-08-18T15:34:46.951963767Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Output":"\tgithub.com/aimless-it/ai-canvas/functions/scheduler/internal\tcoverage: 70.6% of statements\n"}
-{"Time":"2023-08-18T15:34:46.954123087Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/scheduler/internal\t0.007s\tcoverage: 70.6% of statements\n"}
-{"Time":"2023-08-18T15:34:46.954164883Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Elapsed":0.009}
-{"Time":"2023-08-18T15:34:49.868706203Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/src"}
-{"Time":"2023-08-18T15:34:49.868736004Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/src","Output":"?   \tgithub.com/aimless-it/ai-canvas/functions/scheduler/src\t[no test files]\n"}
-{"Time":"2023-08-18T15:34:49.868744611Z","Action":"skip","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/src","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.201648635Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai"}
-{"Time":"2023-08-18T15:34:35.275842903Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage"}
-{"Time":"2023-08-18T15:34:35.27591992Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage","Output":"=== RUN   TestGenerateImage\n"}
-{"Time":"2023-08-18T15:34:35.276278432Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage","Output":"    openai_test.go:67: PASS:\tGetSecretValue(string)\n"}
-{"Time":"2023-08-18T15:34:35.276358565Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage","Output":"    openai_test.go:67: PASS:\tGenerateImage(string,string)\n"}
-{"Time":"2023-08-18T15:34:35.276440511Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage","Output":"--- PASS: TestGenerateImage (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.276822979Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.27725423Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage"}
-{"Time":"2023-08-18T15:34:35.277277495Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"=== RUN   TestEditImage\n"}
-{"Time":"2023-08-18T15:34:35.278530751Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"    openai_test.go:92: PASS:\tGetSecretValue(string)\n"}
-{"Time":"2023-08-18T15:34:35.27861976Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"    openai_test.go:92: PASS:\tGetImageFromS3(string)\n"}
-{"Time":"2023-08-18T15:34:35.278688561Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"    openai_test.go:92: PASS:\tSaveFile(string,string)\n"}
-{"Time":"2023-08-18T15:34:35.278745279Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"    openai_test.go:92: PASS:\tEditImage(string,string)\n"}
-{"Time":"2023-08-18T15:34:35.278823669Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"--- PASS: TestEditImage (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.278896337Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.278960158Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation"}
-{"Time":"2023-08-18T15:34:35.278974556Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"=== RUN   TestCreateImageVariation\n"}
-{"Time":"2023-08-18T15:34:35.279400487Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"    openai_test.go:115: PASS:\tGetSecretValue(string)\n"}
-{"Time":"2023-08-18T15:34:35.279476682Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"    openai_test.go:115: PASS:\tGetImageFromS3(string)\n"}
-{"Time":"2023-08-18T15:34:35.279987524Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"    openai_test.go:115: PASS:\tSaveFile(string,string)\n"}
-{"Time":"2023-08-18T15:34:35.280057157Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"    openai_test.go:115: PASS:\tCreateImageVariation(string,string)\n"}
-{"Time":"2023-08-18T15:34:35.280123834Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"--- PASS: TestCreateImageVariation (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.280201451Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.280248431Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Output":"PASS\n"}
-{"Time":"2023-08-18T15:34:35.283227393Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Output":"\tgithub.com/aimless-it/ai-canvas/functions/lib/ai\tcoverage: 72.7% of statements\n"}
-{"Time":"2023-08-18T15:34:35.301895115Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/lib/ai\t0.087s\tcoverage: 72.7% of statements\n"}
-{"Time":"2023-08-18T15:34:35.301978374Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Elapsed":0.1}
-{"Time":"2023-08-18T15:34:35.835864714Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/lib/process"}
-{"Time":"2023-08-18T15:34:35.836541092Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/lib/types"}
-{"Time":"2023-08-18T15:34:35.855575989Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItem"}
-{"Time":"2023-08-18T15:34:35.855669887Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItem","Output":"=== RUN   TestAnalyticsItem\n"}
-{"Time":"2023-08-18T15:34:35.855976772Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItem","Output":"--- PASS: TestAnalyticsItem (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.856075279Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItem","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.856177814Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemToDynamoDB"}
-{"Time":"2023-08-18T15:34:35.856195618Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemToDynamoDB","Output":"=== RUN   TestAnalyticsItemToDynamoDB\n"}
-{"Time":"2023-08-18T15:34:35.856305457Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemToDynamoDB","Output":"--- PASS: TestAnalyticsItemToDynamoDB (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.856373948Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemToDynamoDB","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.856445925Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemFromDynamoDB"}
-{"Time":"2023-08-18T15:34:35.856462156Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemFromDynamoDB","Output":"=== RUN   TestAnalyticsItemFromDynamoDB\n"}
-{"Time":"2023-08-18T15:34:35.856579199Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemFromDynamoDB","Output":"--- PASS: TestAnalyticsItemFromDynamoDB (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.856668504Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemFromDynamoDB","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.856700004Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsToDB"}
-{"Time":"2023-08-18T15:34:35.856710995Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsToDB","Output":"=== RUN   TestAnalyticsAttemptsToDB\n"}
-{"Time":"2023-08-18T15:34:35.856708695Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAWSConfig"}
-{"Time":"2023-08-18T15:34:35.856730537Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAWSConfig","Output":"=== RUN   TestGetAWSConfig\n"}
-{"Time":"2023-08-18T15:34:35.856826239Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsToDB","Output":"--- PASS: TestAnalyticsAttemptsToDB (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.856887556Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsToDB","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.856942591Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsFromDB"}
-{"Time":"2023-08-18T15:34:35.856953812Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsFromDB","Output":"=== RUN   TestAnalyticsAttemptsFromDB\n"}
-{"Time":"2023-08-18T15:34:35.857025909Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsFromDB","Output":"--- PASS: TestAnalyticsAttemptsFromDB (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857074722Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsFromDB","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.857112023Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGIRequestAction"}
-{"Time":"2023-08-18T15:34:35.857131069Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGIRequestAction","Output":"=== RUN   TestGIRequestAction\n"}
-{"Time":"2023-08-18T15:34:35.857151027Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAWSConfig","Output":"--- PASS: TestGetAWSConfig (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857158642Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAWSConfig","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.857169803Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAwsConfigError"}
-{"Time":"2023-08-18T15:34:35.857175985Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAwsConfigError","Output":"=== RUN   TestGetAwsConfigError\n"}
-{"Time":"2023-08-18T15:34:35.857248423Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGIRequestAction","Output":"--- PASS: TestGIRequestAction (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857319884Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGIRequestAction","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.857352777Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImageAction"}
-{"Time":"2023-08-18T15:34:35.857364279Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImageAction","Output":"=== RUN   TestEditImageAction\n"}
-{"Time":"2023-08-18T15:34:35.857324738Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAwsConfigError","Output":"--- PASS: TestGetAwsConfigError (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857435775Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImageAction","Output":"--- PASS: TestEditImageAction (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857455783Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImageAction","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.857481667Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestVariateImageAction"}
-{"Time":"2023-08-18T15:34:35.857494752Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestVariateImageAction","Output":"=== RUN   TestVariateImageAction\n"}
-{"Time":"2023-08-18T15:34:35.857575796Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestVariateImageAction","Output":"--- PASS: TestVariateImageAction (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857621503Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAwsConfigError","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.857633205Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegion"}
-{"Time":"2023-08-18T15:34:35.857644116Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegion","Output":"=== RUN   TestRegion\n"}
-{"Time":"2023-08-18T15:34:35.857698475Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegion","Output":"--- PASS: TestRegion (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857728612Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestVariateImageAction","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.857741427Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestUrlResponseFormat"}
-{"Time":"2023-08-18T15:34:35.857751676Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestUrlResponseFormat","Output":"=== RUN   TestUrlResponseFormat\n"}
-{"Time":"2023-08-18T15:34:35.857761946Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestUrlResponseFormat","Output":"--- PASS: TestUrlResponseFormat (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857772927Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestUrlResponseFormat","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.857782635Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestB64ResponseFormat"}
-{"Time":"2023-08-18T15:34:35.857790791Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestB64ResponseFormat","Output":"=== RUN   TestB64ResponseFormat\n"}
-{"Time":"2023-08-18T15:34:35.857802523Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestB64ResponseFormat","Output":"--- PASS: TestB64ResponseFormat (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857811059Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestB64ResponseFormat","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.857821098Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestSmallImageSize"}
-{"Time":"2023-08-18T15:34:35.857829604Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestSmallImageSize","Output":"=== RUN   TestSmallImageSize\n"}
-{"Time":"2023-08-18T15:34:35.857839794Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestSmallImageSize","Output":"--- PASS: TestSmallImageSize (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857851927Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestSmallImageSize","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.857862427Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMediumImageSize"}
-{"Time":"2023-08-18T15:34:35.857873298Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMediumImageSize","Output":"=== RUN   TestMediumImageSize\n"}
-{"Time":"2023-08-18T15:34:35.857884289Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMediumImageSize","Output":"--- PASS: TestMediumImageSize (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857899528Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMediumImageSize","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.857909056Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestLargeImageSize"}
-{"Time":"2023-08-18T15:34:35.857917802Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestLargeImageSize","Output":"=== RUN   TestLargeImageSize\n"}
-{"Time":"2023-08-18T15:34:35.857945355Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestLargeImageSize","Output":"--- PASS: TestLargeImageSize (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857955264Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestLargeImageSize","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.857964391Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestInvalidImageSize"}
-{"Time":"2023-08-18T15:34:35.857971835Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestInvalidImageSize","Output":"=== RUN   TestInvalidImageSize\n"}
-{"Time":"2023-08-18T15:34:35.857984469Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestInvalidImageSize","Output":"--- PASS: TestInvalidImageSize (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.857993136Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestInvalidImageSize","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.858001672Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestImageResponseWrapper"}
-{"Time":"2023-08-18T15:34:35.858008906Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestImageResponseWrapper","Output":"=== RUN   TestImageResponseWrapper\n"}
-{"Time":"2023-08-18T15:34:35.858021279Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestImageResponseWrapper","Output":"--- PASS: TestImageResponseWrapper (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.858086373Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestImageResponseWrapper","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.858098847Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestQueueRequestFromDynamoDB"}
-{"Time":"2023-08-18T15:34:35.858106962Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestQueueRequestFromDynamoDB","Output":"=== RUN   TestQueueRequestFromDynamoDB\n"}
-{"Time":"2023-08-18T15:34:35.858119156Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestQueueRequestFromDynamoDB","Output":"--- PASS: TestQueueRequestFromDynamoDB (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.858130597Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestQueueRequestFromDynamoDB","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.858141178Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMapParams"}
-{"Time":"2023-08-18T15:34:35.858150235Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMapParams","Output":"=== RUN   TestMapParams\n"}
-{"Time":"2023-08-18T15:34:35.858162929Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMapParams","Output":"--- PASS: TestMapParams (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.858171686Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMapParams","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.858180983Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructure"}
-{"Time":"2023-08-18T15:34:35.85818959Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructure","Output":"=== RUN   TestGenerateImageStructure\n"}
-{"Time":"2023-08-18T15:34:35.858269046Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructure","Output":"--- PASS: TestGenerateImageStructure (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.858298813Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegion","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.858310515Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegionDefault"}
-{"Time":"2023-08-18T15:34:35.85833437Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegionDefault","Output":"=== RUN   TestRegionDefault\n"}
-{"Time":"2023-08-18T15:34:35.85835014Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegionDefault","Output":"--- PASS: TestRegionDefault (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.858359939Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegionDefault","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.858369597Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult"}
-{"Time":"2023-08-18T15:34:35.858377292Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"=== RUN   TestSendResult\n"}
-{"Time":"2023-08-18T15:34:35.877814092Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"Sending ResultRequest: {{{}  0 0 { 0   } { 0     } {0    }} {{0 []} false}}\n"}
-{"Time":"2023-08-18T15:34:35.877954479Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructure","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.877974668Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructureWithDefaults"}
-{"Time":"2023-08-18T15:34:35.877985629Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructureWithDefaults","Output":"=== RUN   TestGenerateImageStructureWithDefaults\n"}
-{"Time":"2023-08-18T15:34:35.878000266Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructureWithDefaults","Output":"--- PASS: TestGenerateImageStructureWithDefaults (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.87801252Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructureWithDefaults","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.878022288Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImage"}
-{"Time":"2023-08-18T15:34:35.878030895Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImage","Output":"=== RUN   TestEditImage\n"}
-{"Time":"2023-08-18T15:34:35.878041846Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImage","Output":"--- PASS: TestEditImage (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.878053257Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImage","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.878065621Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestCreateImageVariantRequest"}
-{"Time":"2023-08-18T15:34:35.878074658Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestCreateImageVariantRequest","Output":"=== RUN   TestCreateImageVariantRequest\n"}
-{"Time":"2023-08-18T15:34:35.878086751Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestCreateImageVariantRequest","Output":"--- PASS: TestCreateImageVariantRequest (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.878150222Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestCreateImageVariantRequest","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.878161764Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequest"}
-{"Time":"2023-08-18T15:34:35.878169889Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequest","Output":"=== RUN   TestResultRequest\n"}
-{"Time":"2023-08-18T15:34:35.878179438Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequest","Output":"--- PASS: TestResultRequest (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.878211288Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequest","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.878224814Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestToDynamoDB"}
-{"Time":"2023-08-18T15:34:35.87823311Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestToDynamoDB","Output":"=== RUN   TestResultRequestToDynamoDB\n"}
-{"Time":"2023-08-18T15:34:35.878244612Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestToDynamoDB","Output":"--- PASS: TestResultRequestToDynamoDB (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.878255422Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestToDynamoDB","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.878357965Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestFromDynamoDB"}
-{"Time":"2023-08-18T15:34:35.878369808Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestFromDynamoDB","Output":"=== RUN   TestResultRequestFromDynamoDB\n"}
-{"Time":"2023-08-18T15:34:35.878382662Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestFromDynamoDB","Output":"--- PASS: TestResultRequestFromDynamoDB (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.878393102Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestFromDynamoDB","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.878402741Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Output":"PASS\n"}
-{"Time":"2023-08-18T15:34:35.87841289Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Output":"\tgithub.com/aimless-it/ai-canvas/functions/lib/types\tcoverage: 84.9% of statements\n"}
-{"Time":"2023-08-18T15:34:35.880034588Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"    process_test.go:77: PASS:\tWithRegion(string)\n"}
-{"Time":"2023-08-18T15:34:35.880165457Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"    process_test.go:77: PASS:\tLoadDefaultConfig(string,string)\n"}
-{"Time":"2023-08-18T15:34:35.8802566Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"    process_test.go:77: PASS:\tSendMessage(string,string,string,string)\n"}
-{"Time":"2023-08-18T15:34:35.880388191Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"--- PASS: TestSendResult (0.02s)\n"}
-{"Time":"2023-08-18T15:34:35.880488001Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Elapsed":0.02}
-{"Time":"2023-08-18T15:34:35.880575858Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResultError"}
-{"Time":"2023-08-18T15:34:35.880590726Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResultError","Output":"=== RUN   TestSendResultError\n"}
-{"Time":"2023-08-18T15:34:35.880814793Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResultError","Output":"Sending ResultRequest: {{{}  0 0 { 0   } { 0     } {0    }} {{0 []} false}}\n"}
-{"Time":"2023-08-18T15:34:35.882741331Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResultError","Output":"--- PASS: TestSendResultError (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.882911475Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResultError","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.883501328Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue"}
-{"Time":"2023-08-18T15:34:35.883526185Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Output":"=== RUN   TestSendRequestToQueue\n"}
-{"Time":"2023-08-18T15:34:35.884874384Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/lib/types\t0.047s\tcoverage: 84.9% of statements\n"}
-{"Time":"2023-08-18T15:34:35.884911265Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Elapsed":0.048}
-{"Time":"2023-08-18T15:34:35.885425482Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Output":"    process_test.go:116: PASS:\tWithRegion(string)\n"}
-{"Time":"2023-08-18T15:34:35.885542034Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Output":"    process_test.go:116: PASS:\tLoadDefaultConfig(string,string)\n"}
-{"Time":"2023-08-18T15:34:35.885777281Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Output":"    process_test.go:116: PASS:\tSendMessage(string,string,string,string)\n"}
-{"Time":"2023-08-18T15:34:35.885874026Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Output":"--- PASS: TestSendRequestToQueue (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.886071912Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.886156043Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueueError"}
-{"Time":"2023-08-18T15:34:35.886169939Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueueError","Output":"=== RUN   TestSendRequestToQueueError\n"}
-{"Time":"2023-08-18T15:34:35.886600649Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueueError","Output":"--- PASS: TestSendRequestToQueueError (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.886673438Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueueError","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.886752077Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetTraceId"}
-{"Time":"2023-08-18T15:34:35.886767497Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetTraceId","Output":"=== RUN   TestGetTraceId\n"}
-{"Time":"2023-08-18T15:34:35.887322453Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetTraceId","Output":"--- PASS: TestGetTraceId (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.89565231Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetTraceId","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.895737963Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegment"}
-{"Time":"2023-08-18T15:34:35.895759564Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegment","Output":"=== RUN   TestSubmitXRayTraceSubSegment\n"}
-{"Time":"2023-08-18T15:34:35.895779863Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegment","Output":"--- PASS: TestSubmitXRayTraceSubSegment (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.895791285Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegment","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.895820861Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegmentError"}
-{"Time":"2023-08-18T15:34:35.895829648Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegmentError","Output":"=== RUN   TestSubmitXRayTraceSubSegmentError\n"}
-{"Time":"2023-08-18T15:34:35.89584166Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegmentError","Output":"--- PASS: TestSubmitXRayTraceSubSegmentError (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.895850718Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegmentError","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.895865606Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem"}
-{"Time":"2023-08-18T15:34:35.895876156Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Output":"=== RUN   TestStoreAnalyticsItem\n"}
-{"Time":"2023-08-18T15:34:35.895886977Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Output":"    process_test.go:198: PASS:\tWithRegion(string)\n"}
-{"Time":"2023-08-18T15:34:35.895895894Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Output":"    process_test.go:198: PASS:\tLoadDefaultConfig(string,string)\n"}
-{"Time":"2023-08-18T15:34:35.895905242Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Output":"    process_test.go:198: PASS:\tPutItem(string,string,string,string)\n"}
-{"Time":"2023-08-18T15:34:35.895916413Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Output":"--- PASS: TestStoreAnalyticsItem (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.895926171Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.895935118Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItemError"}
-{"Time":"2023-08-18T15:34:35.895942713Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItemError","Output":"=== RUN   TestStoreAnalyticsItemError\n"}
-{"Time":"2023-08-18T15:34:35.895953012Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItemError","Output":"--- PASS: TestStoreAnalyticsItemError (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.89596229Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItemError","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.895971017Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValue"}
-{"Time":"2023-08-18T15:34:35.895979092Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValue","Output":"=== RUN   TestGetSecretValue\n"}
-{"Time":"2023-08-18T15:34:35.895988881Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValue","Output":"--- PASS: TestGetSecretValue (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.895998148Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValue","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.896006835Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValueError"}
-{"Time":"2023-08-18T15:34:35.896019208Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValueError","Output":"=== RUN   TestGetSecretValueError\n"}
-{"Time":"2023-08-18T15:34:35.896036742Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValueError","Output":"--- PASS: TestGetSecretValueError (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.896045959Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValueError","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.896054866Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3"}
-{"Time":"2023-08-18T15:34:35.896062651Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3","Output":"=== RUN   TestGetImageFromS3\n"}
-{"Time":"2023-08-18T15:34:35.896072079Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3","Output":"--- PASS: TestGetImageFromS3 (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.896080665Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.896092007Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3Error"}
-{"Time":"2023-08-18T15:34:35.896099531Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3Error","Output":"=== RUN   TestGetImageFromS3Error\n"}
-{"Time":"2023-08-18T15:34:35.89610939Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3Error","Output":"--- PASS: TestGetImageFromS3Error (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.896117546Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3Error","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.896125912Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFile"}
-{"Time":"2023-08-18T15:34:35.896138546Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFile","Output":"=== RUN   TestSaveFile\n"}
-{"Time":"2023-08-18T15:34:35.896182319Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFile","Output":"--- PASS: TestSaveFile (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.896191977Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFile","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.896200794Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFileError"}
-{"Time":"2023-08-18T15:34:35.89620924Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFileError","Output":"=== RUN   TestSaveFileError\n"}
-{"Time":"2023-08-18T15:34:35.896220792Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFileError","Output":"--- PASS: TestSaveFileError (0.00s)\n"}
-{"Time":"2023-08-18T15:34:35.896228938Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFileError","Elapsed":0}
-{"Time":"2023-08-18T15:34:35.896237143Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Output":"PASS\n"}
-{"Time":"2023-08-18T15:34:35.896246Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Output":"\tgithub.com/aimless-it/ai-canvas/functions/lib/process\tcoverage: 81.5% of statements\n"}
-{"Time":"2023-08-18T15:34:35.897511305Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/lib/process\t0.060s\tcoverage: 81.5% of statements\n"}
-{"Time":"2023-08-18T15:34:35.897552443Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Elapsed":0.062}
+{"Time":"2023-08-21T19:38:58.411648431Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal"}
+{"Time":"2023-08-21T19:38:58.41730663Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestDeserializeSQSRequest"}
+{"Time":"2023-08-21T19:38:58.417402637Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestDeserializeSQSRequest","Output":"=== RUN   TestDeserializeSQSRequest\n"}
+{"Time":"2023-08-21T19:38:58.417841873Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestDeserializeSQSRequest","Output":"--- PASS: TestDeserializeSQSRequest (0.00s)\n"}
+{"Time":"2023-08-21T19:38:58.417855419Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestDeserializeSQSRequest","Elapsed":0}
+{"Time":"2023-08-21T19:38:58.417864808Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestTestMode"}
+{"Time":"2023-08-21T19:38:58.417869867Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestTestMode","Output":"=== RUN   TestTestMode\n"}
+{"Time":"2023-08-21T19:38:58.417877963Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestTestMode","Output":"TEST MODE IS ACTIVE\n"}
+{"Time":"2023-08-21T19:38:58.417885037Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestTestMode","Output":"--- PASS: TestTestMode (0.00s)\n"}
+{"Time":"2023-08-21T19:38:58.417896159Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestTestMode","Elapsed":0}
+{"Time":"2023-08-21T19:38:58.417901239Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestGenerateImage"}
+{"Time":"2023-08-21T19:38:58.417906018Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestGenerateImage","Output":"=== RUN   TestGenerateImage\n"}
+{"Time":"2023-08-21T19:38:58.417911889Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestGenerateImage","Output":"--- PASS: TestGenerateImage (0.00s)\n"}
+{"Time":"2023-08-21T19:38:58.41791714Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestGenerateImage","Elapsed":0}
+{"Time":"2023-08-21T19:38:58.41792271Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestEditImage"}
+{"Time":"2023-08-21T19:38:58.417926828Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestEditImage","Output":"=== RUN   TestEditImage\n"}
+{"Time":"2023-08-21T19:38:58.417932049Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestEditImage","Output":"--- PASS: TestEditImage (0.00s)\n"}
+{"Time":"2023-08-21T19:38:58.417936978Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestEditImage","Elapsed":0}
+{"Time":"2023-08-21T19:38:58.417941417Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestCreateImageVariation"}
+{"Time":"2023-08-21T19:38:58.417946487Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestCreateImageVariation","Output":"=== RUN   TestCreateImageVariation\n"}
+{"Time":"2023-08-21T19:38:58.417955214Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestCreateImageVariation","Output":"--- PASS: TestCreateImageVariation (0.00s)\n"}
+{"Time":"2023-08-21T19:38:58.417959813Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestCreateImageVariation","Elapsed":0}
+{"Time":"2023-08-21T19:38:58.417964422Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage"}
+{"Time":"2023-08-21T19:38:58.41798379Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Output":"=== RUN   TestAIImageControllerGenerateImage\n"}
+{"Time":"2023-08-21T19:38:58.41798916Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Output":"Generating image\n"}
+{"Time":"2023-08-21T19:38:58.41799421Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Output":"Editing image\n"}
+{"Time":"2023-08-21T19:38:58.417999901Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Output":"Varying image\n"}
+{"Time":"2023-08-21T19:38:58.418010281Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Output":"--- PASS: TestAIImageControllerGenerateImage (0.00s)\n"}
+{"Time":"2023-08-21T19:38:58.418016694Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Test":"TestAIImageControllerGenerateImage","Elapsed":0}
+{"Time":"2023-08-21T19:38:58.418021884Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Output":"PASS\n"}
+{"Time":"2023-08-21T19:38:58.419060799Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Output":"\tgithub.com/aimless-it/ai-canvas/functions/oracle/internal\tcoverage: 64.9% of statements\n"}
+{"Time":"2023-08-21T19:38:58.420263253Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/oracle/internal\t0.007s\tcoverage: 64.9% of statements\n"}
+{"Time":"2023-08-21T19:38:58.420280496Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/internal","Elapsed":0.009}
+{"Time":"2023-08-21T19:38:58.540164524Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src"}
+{"Time":"2023-08-21T19:38:58.543920566Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandler"}
+{"Time":"2023-08-21T19:38:58.543960424Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandler","Output":"=== RUN   TestHandler\n"}
+{"Time":"2023-08-21T19:38:58.544154382Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandler","Output":"--- PASS: TestHandler (0.00s)\n"}
+{"Time":"2023-08-21T19:38:58.544167166Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandler","Elapsed":0}
+{"Time":"2023-08-21T19:38:58.544173829Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProd"}
+{"Time":"2023-08-21T19:38:58.544176795Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProd","Output":"=== RUN   TestHandlerProd\n"}
+{"Time":"2023-08-21T19:38:58.544243324Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProd","Output":"--- PASS: TestHandlerProd (0.00s)\n"}
+{"Time":"2023-08-21T19:38:58.544281488Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProd","Elapsed":0}
+{"Time":"2023-08-21T19:38:58.544290847Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProdError"}
+{"Time":"2023-08-21T19:38:58.544296207Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProdError","Output":"=== RUN   TestHandlerProdError\n"}
+{"Time":"2023-08-21T19:38:58.544361986Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProdError","Output":"--- PASS: TestHandlerProdError (0.00s)\n"}
+{"Time":"2023-08-21T19:38:58.544381815Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Test":"TestHandlerProdError","Elapsed":0}
+{"Time":"2023-08-21T19:38:58.544386203Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Output":"PASS\n"}
+{"Time":"2023-08-21T19:38:58.54478995Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Output":"\tgithub.com/aimless-it/ai-canvas/functions/oracle/src\tcoverage: 53.8% of statements\n"}
+{"Time":"2023-08-21T19:38:58.545673663Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/oracle/src\t0.005s\tcoverage: 53.8% of statements\n"}
+{"Time":"2023-08-21T19:38:58.545683673Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/oracle/src","Elapsed":0.006}
+{"Time":"2023-08-21T19:38:54.033247522Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/result/internal"}
+{"Time":"2023-08-21T19:38:54.040243419Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestParseSQSEvent"}
+{"Time":"2023-08-21T19:38:54.040589334Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestParseSQSEvent","Output":"=== RUN   TestParseSQSEvent\n"}
+{"Time":"2023-08-21T19:38:54.040620501Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestParseSQSEvent","Output":"Result: {Record:{Metadata:{TraceId:1-5f9b0b9b-1} Id:1234 Action:0 Priority:0 CreateImage:{Prompt:A painting of a cat N:1 Size:512x512 ResponseFormat:URL User:1234} CreateImageEdit:{Prompt: N:0 Size: ResponseFormat: User: Image: Mask:} CreateImageVariation:{N:0 Size: ResponseFormat: User: Image:}} Result:{Response:{Created:0 Data:[]} Success:false}}\n"}
+{"Time":"2023-08-21T19:38:54.040641831Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestParseSQSEvent","Output":"--- PASS: TestParseSQSEvent (0.00s)\n"}
+{"Time":"2023-08-21T19:38:54.040650435Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestParseSQSEvent","Elapsed":0}
+{"Time":"2023-08-21T19:38:54.040661165Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestGetAnalyticsItemInputStruct"}
+{"Time":"2023-08-21T19:38:54.040667984Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestGetAnalyticsItemInputStruct","Output":"=== RUN   TestGetAnalyticsItemInputStruct\n"}
+{"Time":"2023-08-21T19:38:54.04067725Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestGetAnalyticsItemInputStruct","Output":"--- PASS: TestGetAnalyticsItemInputStruct (0.00s)\n"}
+{"Time":"2023-08-21T19:38:54.040683657Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Test":"TestGetAnalyticsItemInputStruct","Elapsed":0}
+{"Time":"2023-08-21T19:38:54.04069172Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Output":"PASS\n"}
+{"Time":"2023-08-21T19:38:54.041440471Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Output":"\tgithub.com/aimless-it/ai-canvas/functions/result/internal\tcoverage: 62.5% of statements\n"}
+{"Time":"2023-08-21T19:38:54.049987145Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/result/internal\t0.013s\tcoverage: 62.5% of statements\n"}
+{"Time":"2023-08-21T19:38:54.050034527Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/result/internal","Elapsed":0.017}
+{"Time":"2023-08-21T19:38:56.534785098Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/result/src"}
+{"Time":"2023-08-21T19:38:56.534821419Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/result/src","Output":"?   \tgithub.com/aimless-it/ai-canvas/functions/result/src\t[no test files]\n"}
+{"Time":"2023-08-21T19:38:56.534830367Z","Action":"skip","Package":"github.com/aimless-it/ai-canvas/functions/result/src","Elapsed":0}
+{"Time":"2023-08-21T19:38:54.117225389Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal"}
+{"Time":"2023-08-21T19:38:54.122701389Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest"}
+{"Time":"2023-08-21T19:38:54.122794157Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest","Output":"=== RUN   TestConstructQueueRequest\n"}
+{"Time":"2023-08-21T19:38:54.122813993Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest","Output":"Constructing queue request: {Id:1234 Action:0 Params:map[N:1 Prompt:A painting of a cat ResponseFormat:URL Size:512x512 User:1234] TraceId:1-5f9b0b9b-1}\n"}
+{"Time":"2023-08-21T19:38:54.122825104Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest","Output":"Constructed queue request: {Metadata:{TraceId:1-5f9b0b9b-1} Id:1234 Action:0 Priority:0 CreateImage:{Prompt:A painting of a cat N:1 Size:512x512 ResponseFormat:URL User:1234} CreateImageEdit:{Prompt: N:0 Size: ResponseFormat: User: Image: Mask:} CreateImageVariation:{N:0 Size: ResponseFormat: User: Image:}}\n"}
+{"Time":"2023-08-21T19:38:54.122838291Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest","Output":"--- PASS: TestConstructQueueRequest (0.00s)\n"}
+{"Time":"2023-08-21T19:38:54.122856521Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConstructQueueRequest","Elapsed":0}
+{"Time":"2023-08-21T19:38:54.122868495Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseApiRequest"}
+{"Time":"2023-08-21T19:38:54.122875214Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseApiRequest","Output":"=== RUN   TestParseApiRequest\n"}
+{"Time":"2023-08-21T19:38:54.122915767Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseApiRequest","Output":"Parsing API request: {Resource: Path: HTTPMethod: Headers:map[] MultiValueHeaders:map[] QueryStringParameters:map[] MultiValueQueryStringParameters:map[] PathParameters:map[] StageVariables:map[] RequestContext:{AccountID: ResourceID: OperationName: Stage: DomainName: DomainPrefix: RequestID: ExtendedRequestID: Protocol: Identity:{CognitoIdentityPoolID: AccountID: CognitoIdentityID: Caller: APIKey: APIKeyID: AccessKey: SourceIP: CognitoAuthenticationType: CognitoAuthenticationProvider: UserArn: UserAgent: User:} ResourcePath: Path: Authorizer:map[] HTTPMethod: RequestTime: RequestTimeEpoch:0 APIID:} Body:{\"action\":0,\"params\":{\"image\":\"https://aimless.ai/images/ai-canvas-logo.png\",\"n\":1,\"prompt\":\"something simple\",\"responseFormat\":\"URL\",\"size\":\"512x512\",\"user\":\"user-id\"}} IsBase64Encoded:false}\n"}
+{"Time":"2023-08-21T19:38:54.123007009Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseApiRequest","Output":"--- PASS: TestParseApiRequest (0.00s)\n"}
+{"Time":"2023-08-21T19:38:54.123033362Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseApiRequest","Elapsed":0}
+{"Time":"2023-08-21T19:38:54.123042658Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseRequestAction"}
+{"Time":"2023-08-21T19:38:54.123048735Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseRequestAction","Output":"=== RUN   TestParseRequestAction\n"}
+{"Time":"2023-08-21T19:38:54.123057791Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseRequestAction","Output":"--- PASS: TestParseRequestAction (0.00s)\n"}
+{"Time":"2023-08-21T19:38:54.12306822Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestParseRequestAction","Elapsed":0}
+{"Time":"2023-08-21T19:38:54.123094824Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConvertFloatToInt"}
+{"Time":"2023-08-21T19:38:54.123103829Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConvertFloatToInt","Output":"=== RUN   TestConvertFloatToInt\n"}
+{"Time":"2023-08-21T19:38:54.12311154Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConvertFloatToInt","Output":"--- PASS: TestConvertFloatToInt (0.00s)\n"}
+{"Time":"2023-08-21T19:38:54.12311847Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestConvertFloatToInt","Elapsed":0}
+{"Time":"2023-08-21T19:38:54.123125469Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestApiResponse"}
+{"Time":"2023-08-21T19:38:54.123130975Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestApiResponse","Output":"=== RUN   TestApiResponse\n"}
+{"Time":"2023-08-21T19:38:54.123194141Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestApiResponse","Output":"--- PASS: TestApiResponse (0.00s)\n"}
+{"Time":"2023-08-21T19:38:54.123203978Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Test":"TestApiResponse","Elapsed":0}
+{"Time":"2023-08-21T19:38:54.123210296Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Output":"PASS\n"}
+{"Time":"2023-08-21T19:38:54.123891396Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Output":"\tgithub.com/aimless-it/ai-canvas/functions/scheduler/internal\tcoverage: 70.6% of statements\n"}
+{"Time":"2023-08-21T19:38:54.128277339Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/scheduler/internal\t0.007s\tcoverage: 70.6% of statements\n"}
+{"Time":"2023-08-21T19:38:54.128340094Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/internal","Elapsed":0.011}
+{"Time":"2023-08-21T19:38:56.511444382Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/src"}
+{"Time":"2023-08-21T19:38:56.511482135Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/src","Output":"?   \tgithub.com/aimless-it/ai-canvas/functions/scheduler/src\t[no test files]\n"}
+{"Time":"2023-08-21T19:38:56.511491854Z","Action":"skip","Package":"github.com/aimless-it/ai-canvas/functions/scheduler/src","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.464124798Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai"}
+{"Time":"2023-08-21T19:38:48.468220701Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/lib/process"}
+{"Time":"2023-08-21T19:38:48.468661285Z","Action":"start","Package":"github.com/aimless-it/ai-canvas/functions/lib/types"}
+{"Time":"2023-08-21T19:38:48.499222581Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage"}
+{"Time":"2023-08-21T19:38:48.500037711Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage","Output":"=== RUN   TestGenerateImage\n"}
+{"Time":"2023-08-21T19:38:48.500083142Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage","Output":"    openai_test.go:67: PASS:\tGetSecretValue(string)\n"}
+{"Time":"2023-08-21T19:38:48.50012684Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage","Output":"    openai_test.go:67: PASS:\tGenerateImage(string,string)\n"}
+{"Time":"2023-08-21T19:38:48.500147832Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage","Output":"--- PASS: TestGenerateImage (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.500157812Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestGenerateImage","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.5001916Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage"}
+{"Time":"2023-08-21T19:38:48.500198554Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"=== RUN   TestEditImage\n"}
+{"Time":"2023-08-21T19:38:48.50038062Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"    openai_test.go:92: PASS:\tGetSecretValue(string)\n"}
+{"Time":"2023-08-21T19:38:48.500471433Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"    openai_test.go:92: PASS:\tGetImageFromS3(string)\n"}
+{"Time":"2023-08-21T19:38:48.500481192Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"    openai_test.go:92: PASS:\tSaveFile(string,string)\n"}
+{"Time":"2023-08-21T19:38:48.500488176Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"    openai_test.go:92: PASS:\tEditImage(string,string)\n"}
+{"Time":"2023-08-21T19:38:48.500497435Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Output":"--- PASS: TestEditImage (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.500504239Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestEditImage","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.500512295Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation"}
+{"Time":"2023-08-21T19:38:48.500520141Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"=== RUN   TestCreateImageVariation\n"}
+{"Time":"2023-08-21T19:38:48.500531914Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"    openai_test.go:115: PASS:\tGetSecretValue(string)\n"}
+{"Time":"2023-08-21T19:38:48.500538437Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"    openai_test.go:115: PASS:\tGetImageFromS3(string)\n"}
+{"Time":"2023-08-21T19:38:48.500543818Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"    openai_test.go:115: PASS:\tSaveFile(string,string)\n"}
+{"Time":"2023-08-21T19:38:48.500550041Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"    openai_test.go:115: PASS:\tCreateImageVariation(string,string)\n"}
+{"Time":"2023-08-21T19:38:48.500583588Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Output":"--- PASS: TestCreateImageVariation (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.50058969Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Test":"TestCreateImageVariation","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.500596043Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Output":"PASS\n"}
+{"Time":"2023-08-21T19:38:48.506083883Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Output":"\tgithub.com/aimless-it/ai-canvas/functions/lib/ai\tcoverage: 72.7% of statements\n"}
+{"Time":"2023-08-21T19:38:48.512484475Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAWSConfig"}
+{"Time":"2023-08-21T19:38:48.512549225Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAWSConfig","Output":"=== RUN   TestGetAWSConfig\n"}
+{"Time":"2023-08-21T19:38:48.512570638Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAWSConfig","Output":"--- PASS: TestGetAWSConfig (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.512662092Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItem"}
+{"Time":"2023-08-21T19:38:48.512736661Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItem","Output":"=== RUN   TestAnalyticsItem\n"}
+{"Time":"2023-08-21T19:38:48.512754588Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItem","Output":"--- PASS: TestAnalyticsItem (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.512763375Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItem","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.512775219Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemToDynamoDB"}
+{"Time":"2023-08-21T19:38:48.512780279Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemToDynamoDB","Output":"=== RUN   TestAnalyticsItemToDynamoDB\n"}
+{"Time":"2023-08-21T19:38:48.512790239Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemToDynamoDB","Output":"--- PASS: TestAnalyticsItemToDynamoDB (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.51279563Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemToDynamoDB","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.512807063Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemFromDynamoDB"}
+{"Time":"2023-08-21T19:38:48.512812314Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemFromDynamoDB","Output":"=== RUN   TestAnalyticsItemFromDynamoDB\n"}
+{"Time":"2023-08-21T19:38:48.513377542Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemFromDynamoDB","Output":"--- PASS: TestAnalyticsItemFromDynamoDB (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.51340625Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsItemFromDynamoDB","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.51341636Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsToDB"}
+{"Time":"2023-08-21T19:38:48.513423304Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsToDB","Output":"=== RUN   TestAnalyticsAttemptsToDB\n"}
+{"Time":"2023-08-21T19:38:48.513431611Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsToDB","Output":"--- PASS: TestAnalyticsAttemptsToDB (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.51345597Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsToDB","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513462473Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsFromDB"}
+{"Time":"2023-08-21T19:38:48.513468415Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsFromDB","Output":"=== RUN   TestAnalyticsAttemptsFromDB\n"}
+{"Time":"2023-08-21T19:38:48.513475078Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsFromDB","Output":"--- PASS: TestAnalyticsAttemptsFromDB (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513480178Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestAnalyticsAttemptsFromDB","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.51348611Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGIRequestAction"}
+{"Time":"2023-08-21T19:38:48.513491741Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGIRequestAction","Output":"=== RUN   TestGIRequestAction\n"}
+{"Time":"2023-08-21T19:38:48.513497613Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGIRequestAction","Output":"--- PASS: TestGIRequestAction (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513503275Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGIRequestAction","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513508766Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImageAction"}
+{"Time":"2023-08-21T19:38:48.513513335Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImageAction","Output":"=== RUN   TestEditImageAction\n"}
+{"Time":"2023-08-21T19:38:48.513519517Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImageAction","Output":"--- PASS: TestEditImageAction (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513524888Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImageAction","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513530389Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestVariateImageAction"}
+{"Time":"2023-08-21T19:38:48.513535399Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestVariateImageAction","Output":"=== RUN   TestVariateImageAction\n"}
+{"Time":"2023-08-21T19:38:48.513542022Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestVariateImageAction","Output":"--- PASS: TestVariateImageAction (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513547614Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestVariateImageAction","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513553145Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestUrlResponseFormat"}
+{"Time":"2023-08-21T19:38:48.513557934Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestUrlResponseFormat","Output":"=== RUN   TestUrlResponseFormat\n"}
+{"Time":"2023-08-21T19:38:48.513564438Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestUrlResponseFormat","Output":"--- PASS: TestUrlResponseFormat (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513569478Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestUrlResponseFormat","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513575009Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestB64ResponseFormat"}
+{"Time":"2023-08-21T19:38:48.513585189Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestB64ResponseFormat","Output":"=== RUN   TestB64ResponseFormat\n"}
+{"Time":"2023-08-21T19:38:48.513591953Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestB64ResponseFormat","Output":"--- PASS: TestB64ResponseFormat (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513597524Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestB64ResponseFormat","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513603165Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestSmallImageSize"}
+{"Time":"2023-08-21T19:38:48.513608696Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestSmallImageSize","Output":"=== RUN   TestSmallImageSize\n"}
+{"Time":"2023-08-21T19:38:48.513614729Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestSmallImageSize","Output":"--- PASS: TestSmallImageSize (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513622825Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestSmallImageSize","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513629598Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMediumImageSize"}
+{"Time":"2023-08-21T19:38:48.513635671Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMediumImageSize","Output":"=== RUN   TestMediumImageSize\n"}
+{"Time":"2023-08-21T19:38:48.513642585Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMediumImageSize","Output":"--- PASS: TestMediumImageSize (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513648106Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMediumImageSize","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513654168Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestLargeImageSize"}
+{"Time":"2023-08-21T19:38:48.513659208Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestLargeImageSize","Output":"=== RUN   TestLargeImageSize\n"}
+{"Time":"2023-08-21T19:38:48.513665631Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestLargeImageSize","Output":"--- PASS: TestLargeImageSize (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513670811Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestLargeImageSize","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513676533Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestInvalidImageSize"}
+{"Time":"2023-08-21T19:38:48.513684138Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestInvalidImageSize","Output":"=== RUN   TestInvalidImageSize\n"}
+{"Time":"2023-08-21T19:38:48.513690922Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestInvalidImageSize","Output":"--- PASS: TestInvalidImageSize (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513697355Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestInvalidImageSize","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513703186Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestImageResponseWrapper"}
+{"Time":"2023-08-21T19:38:48.513708186Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestImageResponseWrapper","Output":"=== RUN   TestImageResponseWrapper\n"}
+{"Time":"2023-08-21T19:38:48.51371499Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestImageResponseWrapper","Output":"--- PASS: TestImageResponseWrapper (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513720401Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestImageResponseWrapper","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513734299Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestQueueRequestFromDynamoDB"}
+{"Time":"2023-08-21T19:38:48.513739419Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestQueueRequestFromDynamoDB","Output":"=== RUN   TestQueueRequestFromDynamoDB\n"}
+{"Time":"2023-08-21T19:38:48.513746493Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestQueueRequestFromDynamoDB","Output":"--- PASS: TestQueueRequestFromDynamoDB (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513751914Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestQueueRequestFromDynamoDB","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513758047Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMapParams"}
+{"Time":"2023-08-21T19:38:48.513770502Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMapParams","Output":"=== RUN   TestMapParams\n"}
+{"Time":"2023-08-21T19:38:48.513778748Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMapParams","Output":"--- PASS: TestMapParams (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.51378435Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestMapParams","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513790382Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructure"}
+{"Time":"2023-08-21T19:38:48.513795582Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructure","Output":"=== RUN   TestGenerateImageStructure\n"}
+{"Time":"2023-08-21T19:38:48.513802195Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructure","Output":"--- PASS: TestGenerateImageStructure (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513807987Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructure","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513813338Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructureWithDefaults"}
+{"Time":"2023-08-21T19:38:48.513818378Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructureWithDefaults","Output":"=== RUN   TestGenerateImageStructureWithDefaults\n"}
+{"Time":"2023-08-21T19:38:48.513826775Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructureWithDefaults","Output":"--- PASS: TestGenerateImageStructureWithDefaults (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513833047Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestGenerateImageStructureWithDefaults","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513838538Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImage"}
+{"Time":"2023-08-21T19:38:48.513843498Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImage","Output":"=== RUN   TestEditImage\n"}
+{"Time":"2023-08-21T19:38:48.513850593Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImage","Output":"--- PASS: TestEditImage (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513856835Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestEditImage","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.51386398Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestCreateImageVariantRequest"}
+{"Time":"2023-08-21T19:38:48.513868889Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestCreateImageVariantRequest","Output":"=== RUN   TestCreateImageVariantRequest\n"}
+{"Time":"2023-08-21T19:38:48.513883188Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestCreateImageVariantRequest","Output":"--- PASS: TestCreateImageVariantRequest (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.51388888Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestCreateImageVariantRequest","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513894751Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequest"}
+{"Time":"2023-08-21T19:38:48.513899792Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequest","Output":"=== RUN   TestResultRequest\n"}
+{"Time":"2023-08-21T19:38:48.513906685Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequest","Output":"--- PASS: TestResultRequest (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513911695Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequest","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513918549Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestToDynamoDB"}
+{"Time":"2023-08-21T19:38:48.513923559Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestToDynamoDB","Output":"=== RUN   TestResultRequestToDynamoDB\n"}
+{"Time":"2023-08-21T19:38:48.513930223Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestToDynamoDB","Output":"--- PASS: TestResultRequestToDynamoDB (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513936054Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestToDynamoDB","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513941565Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestFromDynamoDB"}
+{"Time":"2023-08-21T19:38:48.513947487Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestFromDynamoDB","Output":"=== RUN   TestResultRequestFromDynamoDB\n"}
+{"Time":"2023-08-21T19:38:48.513954231Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestFromDynamoDB","Output":"--- PASS: TestResultRequestFromDynamoDB (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.513961275Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Test":"TestResultRequestFromDynamoDB","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.513966395Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Output":"PASS\n"}
+{"Time":"2023-08-21T19:38:48.513972007Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Output":"\tgithub.com/aimless-it/ai-canvas/functions/lib/types\tcoverage: 84.9% of statements\n"}
+{"Time":"2023-08-21T19:38:48.514992747Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAWSConfig","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.515054191Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAwsConfigError"}
+{"Time":"2023-08-21T19:38:48.515062467Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAwsConfigError","Output":"=== RUN   TestGetAwsConfigError\n"}
+{"Time":"2023-08-21T19:38:48.515074952Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAwsConfigError","Output":"--- PASS: TestGetAwsConfigError (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.515082938Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetAwsConfigError","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.515089953Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegion"}
+{"Time":"2023-08-21T19:38:48.515096586Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegion","Output":"=== RUN   TestRegion\n"}
+{"Time":"2023-08-21T19:38:48.515116065Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegion","Output":"--- PASS: TestRegion (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.515121837Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegion","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.515126526Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegionDefault"}
+{"Time":"2023-08-21T19:38:48.515131646Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegionDefault","Output":"=== RUN   TestRegionDefault\n"}
+{"Time":"2023-08-21T19:38:48.515137839Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegionDefault","Output":"--- PASS: TestRegionDefault (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.515142939Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestRegionDefault","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.515147709Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult"}
+{"Time":"2023-08-21T19:38:48.515153069Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"=== RUN   TestSendResult\n"}
+{"Time":"2023-08-21T19:38:48.51515832Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"Sending ResultRequest: {{{}  0 0 { 0   } { 0     } {0    }} {{0 []} false}}\n"}
+{"Time":"2023-08-21T19:38:48.515164693Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"    process_test.go:77: PASS:\tWithRegion(string)\n"}
+{"Time":"2023-08-21T19:38:48.515170094Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"    process_test.go:77: PASS:\tLoadDefaultConfig(string,string)\n"}
+{"Time":"2023-08-21T19:38:48.515175975Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"    process_test.go:77: PASS:\tSendMessage(string,string,string,string)\n"}
+{"Time":"2023-08-21T19:38:48.515183811Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Output":"--- PASS: TestSendResult (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.515189803Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResult","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.515196216Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResultError"}
+{"Time":"2023-08-21T19:38:48.515201296Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResultError","Output":"=== RUN   TestSendResultError\n"}
+{"Time":"2023-08-21T19:38:48.515207429Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResultError","Output":"Sending ResultRequest: {{{}  0 0 { 0   } { 0     } {0    }} {{0 []} false}}\n"}
+{"Time":"2023-08-21T19:38:48.515214383Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResultError","Output":"--- PASS: TestSendResultError (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.515220004Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendResultError","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.515225335Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue"}
+{"Time":"2023-08-21T19:38:48.515229713Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Output":"=== RUN   TestSendRequestToQueue\n"}
+{"Time":"2023-08-21T19:38:48.515239874Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Output":"    process_test.go:116: PASS:\tWithRegion(string)\n"}
+{"Time":"2023-08-21T19:38:48.515245134Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Output":"    process_test.go:116: PASS:\tLoadDefaultConfig(string,string)\n"}
+{"Time":"2023-08-21T19:38:48.515262559Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Output":"    process_test.go:116: PASS:\tSendMessage(string,string,string,string)\n"}
+{"Time":"2023-08-21T19:38:48.515270696Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Output":"--- PASS: TestSendRequestToQueue (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.515276327Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueue","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.515282459Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueueError"}
+{"Time":"2023-08-21T19:38:48.515287039Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueueError","Output":"=== RUN   TestSendRequestToQueueError\n"}
+{"Time":"2023-08-21T19:38:48.5152927Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueueError","Output":"--- PASS: TestSendRequestToQueueError (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.515299023Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSendRequestToQueueError","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.515305015Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetTraceId"}
+{"Time":"2023-08-21T19:38:48.515310846Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetTraceId","Output":"=== RUN   TestGetTraceId\n"}
+{"Time":"2023-08-21T19:38:48.515316368Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetTraceId","Output":"--- PASS: TestGetTraceId (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.515321428Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetTraceId","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.5153274Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegment"}
+{"Time":"2023-08-21T19:38:48.515332961Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegment","Output":"=== RUN   TestSubmitXRayTraceSubSegment\n"}
+{"Time":"2023-08-21T19:38:48.515339324Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegment","Output":"--- PASS: TestSubmitXRayTraceSubSegment (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.515344815Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegment","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.515350105Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegmentError"}
+{"Time":"2023-08-21T19:38:48.515354815Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegmentError","Output":"=== RUN   TestSubmitXRayTraceSubSegmentError\n"}
+{"Time":"2023-08-21T19:38:48.515361578Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegmentError","Output":"--- PASS: TestSubmitXRayTraceSubSegmentError (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.51536745Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSubmitXRayTraceSubSegmentError","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.515378432Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem"}
+{"Time":"2023-08-21T19:38:48.515382901Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Output":"=== RUN   TestStoreAnalyticsItem\n"}
+{"Time":"2023-08-21T19:38:48.515388442Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Output":"    process_test.go:198: PASS:\tWithRegion(string)\n"}
+{"Time":"2023-08-21T19:38:48.515393633Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Output":"    process_test.go:198: PASS:\tLoadDefaultConfig(string,string)\n"}
+{"Time":"2023-08-21T19:38:48.515398883Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Output":"    process_test.go:198: PASS:\tPutItem(string,string,string,string)\n"}
+{"Time":"2023-08-21T19:38:48.515405146Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Output":"--- PASS: TestStoreAnalyticsItem (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.515411429Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItem","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.5154169Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItemError"}
+{"Time":"2023-08-21T19:38:48.515421729Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItemError","Output":"=== RUN   TestStoreAnalyticsItemError\n"}
+{"Time":"2023-08-21T19:38:48.515427381Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItemError","Output":"--- PASS: TestStoreAnalyticsItemError (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.51543206Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestStoreAnalyticsItemError","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.515437772Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValue"}
+{"Time":"2023-08-21T19:38:48.515442241Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValue","Output":"=== RUN   TestGetSecretValue\n"}
+{"Time":"2023-08-21T19:38:48.515447461Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValue","Output":"--- PASS: TestGetSecretValue (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.515456008Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValue","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.516125444Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValueError"}
+{"Time":"2023-08-21T19:38:48.516144432Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValueError","Output":"=== RUN   TestGetSecretValueError\n"}
+{"Time":"2023-08-21T19:38:48.516155484Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValueError","Output":"--- PASS: TestGetSecretValueError (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.516170214Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetSecretValueError","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.516177218Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3"}
+{"Time":"2023-08-21T19:38:48.516185544Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3","Output":"=== RUN   TestGetImageFromS3\n"}
+{"Time":"2023-08-21T19:38:48.516202519Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3","Output":"--- PASS: TestGetImageFromS3 (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.51620846Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.516213821Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3Error"}
+{"Time":"2023-08-21T19:38:48.516219473Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3Error","Output":"=== RUN   TestGetImageFromS3Error\n"}
+{"Time":"2023-08-21T19:38:48.516226527Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3Error","Output":"--- PASS: TestGetImageFromS3Error (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.516232579Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestGetImageFromS3Error","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.516238451Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFile"}
+{"Time":"2023-08-21T19:38:48.516245966Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFile","Output":"=== RUN   TestSaveFile\n"}
+{"Time":"2023-08-21T19:38:48.51625321Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFile","Output":"--- PASS: TestSaveFile (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.516259283Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFile","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.516264864Z","Action":"run","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFileError"}
+{"Time":"2023-08-21T19:38:48.516269964Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFileError","Output":"=== RUN   TestSaveFileError\n"}
+{"Time":"2023-08-21T19:38:48.516300095Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFileError","Output":"--- PASS: TestSaveFileError (0.00s)\n"}
+{"Time":"2023-08-21T19:38:48.516306738Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Test":"TestSaveFileError","Elapsed":0}
+{"Time":"2023-08-21T19:38:48.516314193Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Output":"PASS\n"}
+{"Time":"2023-08-21T19:38:48.516319213Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Output":"\tgithub.com/aimless-it/ai-canvas/functions/lib/process\tcoverage: 81.5% of statements\n"}
+{"Time":"2023-08-21T19:38:48.528289403Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/lib/ai\t0.038s\tcoverage: 72.7% of statements\n"}
+{"Time":"2023-08-21T19:38:48.528384864Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/ai","Elapsed":0.065}
+{"Time":"2023-08-21T19:38:48.532338772Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/lib/process\t0.055s\tcoverage: 81.5% of statements\n"}
+{"Time":"2023-08-21T19:38:48.53240789Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/process","Elapsed":0.064}
+{"Time":"2023-08-21T19:38:48.532982356Z","Action":"output","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Output":"ok  \tgithub.com/aimless-it/ai-canvas/functions/lib/types\t0.054s\tcoverage: 84.9% of statements\n"}
+{"Time":"2023-08-21T19:38:48.533015954Z","Action":"pass","Package":"github.com/aimless-it/ai-canvas/functions/lib/types","Elapsed":0.064}

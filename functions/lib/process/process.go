@@ -7,8 +7,11 @@ package process
 // VARIATE_IMAGE_TABLE_NAME - the name of the variate image table
 
 import (
+	"bytes"
 	"context"
+	"encoding/base64"
 	"fmt"
+	"image/png"
 	"io"
 	"os"
 	"strings"
@@ -206,9 +209,10 @@ func GetSecretValue(envVar string) string {
 func GetImageFromS3(imageName string) io.ReadCloser {
 	// create s3 client
 	config := GetAWSConfig()
+	imageBucket := os.Getenv("IMAGE_BUCKET")
 	svc := *s3.NewFromConfig(config)
 	obj := &s3.GetObjectInput{
-		Bucket: aws.String("openai-image-storage"),
+		Bucket: aws.String(imageBucket),
 		Key:    aws.String(imageName),
 	}
 	result, err := p.GetS3Object(svc, context.Background(), obj)
@@ -218,11 +222,49 @@ func GetImageFromS3(imageName string) io.ReadCloser {
 	return result.Body
 }
 
-func SaveFile(fileName string, fileContents io.ReadCloser) *os.File {
-	file := p.NewFile(4, fileName)
-	_, err := p.Copy(file, fileContents)
+func SaveFile(fileName string, r io.Reader) *os.File {
+	img, err := png.Decode(r)
+	if err != nil {
+		panic(fmt.Sprintf("Failed to decode png: %v", err))
+	}
+	f, err := os.Create("test.png")
+	if err != nil {
+		panic(fmt.Sprintf("Failed to create file: %v", err))
+	}
+	err = png.Encode(f, img)
+	if err != nil {
+		panic(fmt.Sprintf("Failed to encode png: %v", err))
+	}
+	return f
+}
+
+// convert base64 string to image and store in s3
+func SaveImageToS3(imageName string, image io.Reader) {
+	// create s3 client
+	config := GetAWSConfig()
+	imageBucket := os.Getenv("IMAGE_BUCKET")
+	svc := *s3.NewFromConfig(config)
+	obj := &s3.PutObjectInput{
+		Bucket: aws.String(imageBucket),
+		Key:    aws.String(imageName),
+		Body:   image,
+	}
+	_, err := svc.PutObject(context.Background(), obj)
 	if err != nil {
 		panic(err)
 	}
-	return file
+}
+
+// convert base64 string to io.ReadCloser
+func ConvertBase64ToImage(base64String string) io.ReadSeeker {
+	decoded, err := base64.StdEncoding.DecodeString(base64String)
+	if err != nil {
+		panic(fmt.Sprintf("Failed to decode base64 string: %v", err))
+	}
+	r := bytes.NewReader(decoded)
+
+	return r
+	// convert base64 string to image
+	// reader := strings.NewReader(r)
+	// return io.NopCloser(reader)
 }

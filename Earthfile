@@ -22,6 +22,12 @@ test:
     ./functions/scheduler/reports/report.json \
     ./functions/lib/reports/report.json \
     > report.json
+    # RUN mkdir coverage && cp \
+    # ./functions/oracle/reports/coverage.out \
+    # ./functions/result/reports/coverage.out \
+    # ./functions/scheduler/reports/coverage.out \
+    # ./functions/lib/reports/coverage.out \
+    #  ./coverage/
 
 sonar:
     FROM sonarsource/sonar-scanner-cli:latest
@@ -33,6 +39,11 @@ sonar:
     -Dsonar.sources=/app \
     -Dsonar.host.url=http://localhost:9000
     
+sonar-local:
+    LOCALLY
+    BUILD +test
+    RUN sonar-scanner 
+
 deploy:
     BUILD +build-all
     BUILD ./infrastructure+apply

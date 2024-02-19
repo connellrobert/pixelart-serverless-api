@@ -1,12 +1,18 @@
 package internal
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	"os"
+	"time"
 
 	"github.com/aimless-it/ai-canvas/functions/lib/ai"
+	"github.com/aimless-it/ai-canvas/functions/lib/process"
 	"github.com/aimless-it/ai-canvas/functions/lib/types"
 	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/sashabaranov/go-openai"
 )
 
@@ -105,6 +111,7 @@ func AIImageController(request types.QueueRequest) types.ImageResponseWrapper {
 	switch request.Action {
 	case types.GenerateImageAction:
 		fmt.Println("Generating image")
+		request.CreateImage.ResponseFormat = types.BASE64
 		return GenerateImage(request.CreateImage)
 	case types.EditImageAction:
 		fmt.Println("Editing image")
@@ -117,4 +124,28 @@ func AIImageController(request types.QueueRequest) types.ImageResponseWrapper {
 		irw.Success = false
 		return irw
 	}
+}
+
+func GetPresignedUrl(key string) string {
+	region := process.Region()
+	imageBucket := os.Getenv("IMAGE_BUCKET")
+	// Create a presigned url for s3
+	svc := s3.New(s3.Options{
+		Region: region,
+	})
+	presign := s3.NewPresignClient(svc)
+	// disposition := "inline"
+	req, err := presign.PresignGetObject(context.Background(), &s3.GetObjectInput{
+		Bucket: aws.String(imageBucket),
+		Key:    aws.String(key),
+		// ResponseExpires:            aws.Time(time.Now().Add(24 * time.Hour)),
+		// ResponseContentDisposition: &disposition,
+	}, func(p *s3.PresignOptions) {
+		p.Expires = 24 * time.Hour
+	})
+	if err != nil {
+		fmt.Println("Failed to create request", err)
+	}
+	fmt.Printf("Presigned url response: %+v\n", req)
+	return req.URL
 }

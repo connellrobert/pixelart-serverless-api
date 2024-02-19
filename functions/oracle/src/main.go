@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 
 	"github.com/aimless-it/ai-canvas/functions/lib/process"
@@ -17,6 +18,8 @@ type subprocess interface {
 	AIImageController(request types.QueueRequest) types.ImageResponseWrapper
 	SendResult(request types.QueueRequest, wrapped types.ImageResponseWrapper)
 	SubmitXRayTraceSubSegment(traceId string, name string)
+	SaveImage(base64 string, fileName string)
+	GetPresignedUrl(bucket string) string
 }
 
 type subproc struct{}
@@ -41,6 +44,15 @@ func (s subproc) SubmitXRayTraceSubSegment(traceId string, name string) {
 	process.SubmitXRayTraceSubSegment(traceId, name)
 }
 
+func (s subproc) SaveImage(base64 string, fileName string) {
+	readSeeker := process.ConvertBase64ToImage(base64)
+	process.SaveImageToS3(fileName, readSeeker)
+}
+
+func (s subproc) GetPresignedUrl(key string) string {
+	return internal.GetPresignedUrl(key)
+}
+
 var subprocessor subprocess = subproc{}
 
 // List of environment variables:
@@ -55,6 +67,17 @@ func Handler(ctx context.Context, queueRequest events.SQSEvent) {
 		wrapped = subprocessor.TestMode()
 	} else {
 		wrapped = subprocessor.AIImageController(request)
+	}
+	for n, data := range wrapped.Response.Data {
+		if len(data.B64JSON) > 0 {
+			fmt.Printf("Saving image for %s\n", request.Id)
+			subprocessor.SaveImage(data.B64JSON, "./"+request.Id+".png")
+			url := subprocessor.GetPresignedUrl("./" + request.Id + ".png")
+			fmt.Printf("Presigned url: %s\n", url)
+			wrapped.Response.Data[n].URL = url
+			wrapped.Response.Data[n].B64JSON = ""
+			fmt.Printf("Updated data: %+v\n", wrapped.Response.Data[n])
+		}
 	}
 	subprocessor.SendResult(request, wrapped)
 	subprocessor.SubmitXRayTraceSubSegment(request.Metadata.TraceId, "Sent result to queue")

@@ -15,10 +15,12 @@ resource "random_string" "customer_data_suffix" {
 
 resource "aws_s3_bucket" "deployment_bucket" {
   bucket = "${var.deployment_bucket_name}-${random_string.deployment_suffix.result}"
+  force_destroy = true
 }
 
 resource "aws_s3_bucket" "customer_data_bucket" {
     bucket = "${var.customer-data-bucket-name}-${random_string.customer_data_suffix.result}"
+    force_destroy = true
 }
 
 module "core" {
@@ -45,6 +47,7 @@ module "result_function" {
     lambda_environment = {
         ANALYTICS_TABLE_NAME = module.core.analytics_table_name
         QUEUE_URL = module.function_queue.queue_url
+        IMAGE_BUCKET = aws_s3_bucket.customer_data_bucket.id
     }
 }
 
@@ -131,6 +134,7 @@ module "oracle_function" {
     "OPENAI_API_KEY_SECRET_ID" = aws_secretsmanager_secret.openai_secret.id
     "RESULT_QUEUE_URL" = module.core.result_queue_url
     "DEBUG_MODE"      = var.debug_mode
+    "IMAGE_BUCKET" = aws_s3_bucket.customer_data_bucket.id
   }
 }
 
@@ -154,6 +158,13 @@ resource "aws_iam_policy" "oracle_policy" {
 {
   "Version": "2012-10-17",
   "Statement": [
+    {
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "${aws_s3_bucket.customer_data_bucket.arn}/*"
+    },
     {
       "Action": [
         "sqs:DeleteMessage",
