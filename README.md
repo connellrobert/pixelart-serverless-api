@@ -13,5 +13,6 @@ Copy the `infrastructure/example.tfvars` to `infrastructure/auto.tfvars` for ter
 ## Deployment
 Run `earthly +deploy` from the root of the project. Earthly is used as the monorepo manager and build system orchestrator. This will compile all of the go functions, pull them into the terraform container, zip them up, and deploy them to s3 buckets for lambdas to pull from. 
 
+## Architecture
 ![Reference Architecture](./design/architecture.png)
 
