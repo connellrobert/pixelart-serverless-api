@@ -25,3 +25,7 @@ variable "queue_url" {
 variable "queue_arn" {
     type = string
 }
+
+variable "route53_domain" {
+    type = string
+}

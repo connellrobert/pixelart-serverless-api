@@ -1,15 +1,17 @@
-todo
-- [ ] Create route for returning POST-able s3 presigned urls for clients to upload images
-- [X] Scheduler should set cloudwatch alarm associated with the db table to OK when putting objects in
-- [ ] oracle should pull images from s3 prior to sending openai request
-- [ ] oracle should accept only b64 from openai to store image in s3. Eliminate option from request logic stream
-- [ ] oracle should delete sqs messages upon consumption
-- [ ] Create terraform plan file local save for proper caching of backend infra proposed state. 
-- [ ] state should be stored in aws, a backend should be created for it.
-- [ ] Convert hardcoded mapping for scheduler to aws paramater store configured in terraform
-- [ ] Add tracing configuration to terraform and xray sampling logic to functions
-- [ ] Add status function to poll the analytics table for completed results
+# PixelArt
+PixelArt is designed to be a serverless api built for working with OpenAI API in an event driven architectural approach.
 
-bugs
-- [ ] status errors when there are no attempts and only pulls the first. It should check for nil values and find the latest entry in the attempts
-- [ ] Poller still sends an sqs message even when erroring out. It's causing the result function to overwrite the db object and cause the entire request to be nil.
+## Environment Setup
+All anyone needs to work with this project is Docker. Dev container configuration files are stored under the `.devcontainer` directory. Open the project inside and the environment is complete
+
+## Secret Setup
+Due to limitations in Earthly, the aws access key and secret key must be provided at build time and stored in the `.secret` file. Copy the `example.secret` file to that location and replace the values with ones appropriate for your account.
+
+Copy the `infrastructure/example.tfvars` to `infrastructure/auto.tfvars` for terraform deployment. Fill in the values that are appropriate for your environment. You will need a registered domain in route53 and hosted zone.
+
+
+## Deployment
+Run `earthly +deploy` from the root of the project. Earthly is used as the monorepo manager and build system orchestrator. This will compile all of the go functions, pull them into the terraform container, zip them up, and deploy them to s3 buckets for lambdas to pull from. 
+
+![Reference Architecture](./design/architecture.png)
+

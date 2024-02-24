@@ -98,7 +98,7 @@ resource "aws_route53_record" "api" {
 }
 
 resource "aws_api_gateway_domain_name" "api_domain" {
-    domain_name  = "api.aimless.it"
+    domain_name  = "api." + var.route53_domain
     regional_certificate_arn = aws_acm_certificate_validation.api_domain_validation.certificate_arn
     endpoint_configuration {
         types = ["REGIONAL"]

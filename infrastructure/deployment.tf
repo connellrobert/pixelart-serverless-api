@@ -30,6 +30,7 @@ module "core" {
     hosted_zone_id = var.route_53_hosted_zone_id
     queue_url = module.function_queue.queue_url
     queue_arn = module.function_queue.queue_arn
+    route53_domain = var.route53_domain
 }
 
 module "function_queue" {

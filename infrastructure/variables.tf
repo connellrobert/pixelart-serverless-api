@@ -26,3 +26,7 @@ variable "route_53_hosted_zone_id" {
 variable "OPENAI_API_KEY" {
     type = string
 }
+
+variable "route53_domain" {
+    type = string
+}
