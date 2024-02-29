@@ -1,18 +1,18 @@
-module github.com/aimless-it/ai-canvas/functions/result
+module github.com/connellrobert/pixelart-serverless-api/functions/result
 
 go 1.20
 
 require (
-	github.com/aimless-it/ai-canvas/functions/lib v0.0.0
+	github.com/connellrobert/pixelart-serverless-api/functions/lib v0.0.0
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/aws/aws-sdk-go-v2 v1.19.0
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.20.1
 	github.com/stretchr/testify v1.8.4
 )
 
-replace github.com/aimless-it/ai-canvas/functions/lib v0.0.0 => ../lib
+replace github.com/connellrobert/pixelart-serverless-api/functions/lib v0.0.0 => ../lib
 
-replace gitub.com/aimless-it/ai-canvas/functions/result/internal v0.0.0 => ./internal
+replace gitub.com/connellrobert/pixelart-serverless-api/functions/result/internal v0.0.0 => ./internal
 
 require (
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10 // indirect

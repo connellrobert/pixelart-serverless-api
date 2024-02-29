@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	aiTypes "github.com/aimless-it/ai-canvas/functions/lib/types"
 	"github.com/aws/aws-lambda-go/events"
+	aiTypes "github.com/connellrobert/pixelart-serverless-api/functions/lib/types"
 	"github.com/sashabaranov/go-openai"
 )
 

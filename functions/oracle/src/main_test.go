@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/aimless-it/ai-canvas/functions/lib/types"
 	"github.com/aws/aws-lambda-go/events"
+	"github.com/connellrobert/pixelart-serverless-api/functions/lib/types"
 	"github.com/sashabaranov/go-openai"
 	"github.com/stretchr/testify/mock"
 )

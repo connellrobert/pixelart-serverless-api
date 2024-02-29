@@ -7,12 +7,12 @@ import (
 	"os"
 	"time"
 
-	"github.com/aimless-it/ai-canvas/functions/lib/ai"
-	"github.com/aimless-it/ai-canvas/functions/lib/process"
-	"github.com/aimless-it/ai-canvas/functions/lib/types"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/connellrobert/pixelart-serverless-api/functions/lib/ai"
+	"github.com/connellrobert/pixelart-serverless-api/functions/lib/process"
+	"github.com/connellrobert/pixelart-serverless-api/functions/lib/types"
 	"github.com/sashabaranov/go-openai"
 )
 
@@ -111,7 +111,7 @@ func AIImageController(request types.QueueRequest) types.ImageResponseWrapper {
 	switch request.Action {
 	case types.GenerateImageAction:
 		fmt.Println("Generating image")
-		request.CreateImage.ResponseFormat = types.BASE64
+		request.CreateImage.ResponseFormat = types.URL
 		return GenerateImage(request.CreateImage)
 	case types.EditImageAction:
 		fmt.Println("Editing image")

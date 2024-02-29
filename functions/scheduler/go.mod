@@ -1,17 +1,17 @@
-module github.com/aimless-it/ai-canvas/functions/scheduler
+module github.com/connellrobert/pixelart-serverless-api/functions/scheduler
 
 go 1.20
 
 require (
-	github.com/aimless-it/ai-canvas/functions/lib v0.0.0
+	github.com/connellrobert/pixelart-serverless-api/functions/lib v0.0.0
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/aws/aws-sdk-go-v2 v1.19.0
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.20.1
 	github.com/google/uuid v1.3.0
 )
 
-replace github.com/aimless-it/ai-canvas/functions/lib v0.0.0 => ../lib
-replace github.com/aimless-it/ai-canvas/functions/scheduler/internal v0.0.0 => ./internal
+replace github.com/connellrobert/pixelart-serverless-api/functions/lib v0.0.0 => ../lib
+replace github.com/connellrobert/pixelart-serverless-api/functions/scheduler/internal v0.0.0 => ./internal
 require (
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.18.28 // indirect

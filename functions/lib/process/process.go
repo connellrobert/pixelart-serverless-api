@@ -17,7 +17,6 @@ import (
 	"strings"
 	"time"
 
-	. "github.com/aimless-it/ai-canvas/functions/lib/types"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
@@ -25,6 +24,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/secretsmanager"
 	"github.com/aws/aws-sdk-go-v2/service/sqs"
 	"github.com/aws/aws-sdk-go-v2/service/xray"
+	. "github.com/connellrobert/pixelart-serverless-api/functions/lib/types"
 	"github.com/google/uuid"
 )
 

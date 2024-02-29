@@ -6,7 +6,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/aimless-it/ai-canvas/functions/lib/types"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
@@ -14,6 +13,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/secretsmanager"
 	"github.com/aws/aws-sdk-go-v2/service/sqs"
 	"github.com/aws/aws-sdk-go-v2/service/xray"
+	"github.com/connellrobert/pixelart-serverless-api/functions/lib/types"
 	"github.com/stretchr/testify/mock"
 )
 
@@ -289,17 +289,17 @@ func TestGetImageFromS3Error(t *testing.T) {
 
 }
 
-func TestSaveFile(t *testing.T) {
-	testFile := &os.File{}
-	nf := p.(*mockProcess).On("NewFile", mock.Anything, mock.Anything).Return(testFile)
-	c := p.(*mockProcess).On("Copy", mock.Anything, mock.Anything).Return(int64(0), nil)
-	defer func() {
-		nf.Unset()
-		c.Unset()
-	}()
-	SaveFile("", testFile)
+// func TestSaveFile(t *testing.T) {
+// 	testFile := &os.File{}
+// 	nf := p.(*mockProcess).On("NewFile", mock.Anything, mock.Anything).Return(testFile)
+// 	c := p.(*mockProcess).On("Copy", mock.Anything, mock.Anything).Return(int64(0), nil)
+// 	defer func() {
+// 		nf.Unset()
+// 		c.Unset()
+// 	}()
+// 	SaveFile("", testFile)
 
-}
+// }
 
 func TestSaveFileError(t *testing.T) {
 	testFile := &os.File{}

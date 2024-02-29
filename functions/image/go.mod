@@ -1,9 +1,9 @@
-module github.com/aimless-it/ai-canvas/functions/image
+module github.com/connellrobert/pixelart-serverless-api/functions/image
 
 go 1.20
 
 require (
-	github.com/aimless-it/ai-canvas/functions/lib v0.0.0
+	github.com/connellrobert/pixelart-serverless-api/functions/lib v0.0.0
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/aws/aws-sdk-go-v2 v1.19.0
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.37.0
@@ -36,4 +36,4 @@ require (
 	github.com/sashabaranov/go-openai v1.14.1 // indirect
 )
 
-replace github.com/aimless-it/ai-canvas/functions/lib v0.0.0 => ../lib
+replace github.com/connellrobert/pixelart-serverless-api/functions/lib v0.0.0 => ../lib

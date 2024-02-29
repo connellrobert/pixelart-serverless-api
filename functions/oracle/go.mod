@@ -1,16 +1,16 @@
-module github.com/aimless-it/ai-canvas/functions/oracle
+module github.com/connellrobert/pixelart-serverless-api/functions/oracle
 
 go 1.20
 
 require (
-	github.com/aimless-it/ai-canvas/functions/lib v0.0.0
+	github.com/connellrobert/pixelart-serverless-api/functions/lib v0.0.0
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/sashabaranov/go-openai v1.14.1
 	github.com/stretchr/testify v1.8.4
 )
 
-replace github.com/aimless-it/ai-canvas/functions/lib => ../lib
-replace github.com/aimless-it/ai-canvas/functions/oracle/internal => ./internal
+replace github.com/connellrobert/pixelart-serverless-api/functions/lib => ../lib
+replace github.com/connellrobert/pixelart-serverless-api/functions/oracle/internal => ./internal
 require (
 	github.com/aws/aws-sdk-go-v2 v1.20.1 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.12 // indirect

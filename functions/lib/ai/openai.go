@@ -5,8 +5,8 @@ import (
 	"io"
 	"os"
 
-	"github.com/aimless-it/ai-canvas/functions/lib/process"
-	"github.com/aimless-it/ai-canvas/functions/lib/types"
+	"github.com/connellrobert/pixelart-serverless-api/functions/lib/process"
+	"github.com/connellrobert/pixelart-serverless-api/functions/lib/types"
 	openai "github.com/sashabaranov/go-openai"
 )
 

@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/aimless-it/ai-canvas/functions/lib/process"
-	"github.com/aimless-it/ai-canvas/functions/lib/types"
-	"github.com/aimless-it/ai-canvas/functions/oracle/internal"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/connellrobert/pixelart-serverless-api/functions/lib/process"
+	"github.com/connellrobert/pixelart-serverless-api/functions/lib/types"
+	"github.com/connellrobert/pixelart-serverless-api/functions/oracle/internal"
 )
 
 type subprocess interface {

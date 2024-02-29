@@ -1,4 +1,4 @@
-module github.com/aimless-it/ai-canvas/functions/lib
+module github.com/connellrobert/pixelart-serverless-api/functions/lib
 
 go 1.20
 

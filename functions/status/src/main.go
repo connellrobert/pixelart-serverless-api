@@ -3,14 +3,14 @@ package main
 import (
 	"os"
 
-	"github.com/aimless-it/ai-canvas/functions/lib/process"
-	aiTypes "github.com/aimless-it/ai-canvas/functions/lib/types"
-	"github.com/aimless-it/ai-canvas/functions/status/internal"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
+	"github.com/connellrobert/pixelart-serverless-api/functions/lib/process"
+	aiTypes "github.com/connellrobert/pixelart-serverless-api/functions/lib/types"
+	"github.com/connellrobert/pixelart-serverless-api/functions/status/internal"
 )
 
 // List of environment variables:
